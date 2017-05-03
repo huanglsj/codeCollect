@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        @media screen and (min-width:240px) {
+            html,body,button,input,select,textarea {
+                font-size: 9px;
+            }
+        }
+        @media screen and (min-width:320px){
+            html,body,button,input,select,textarea {
+                font-size: 12px;
+            }
+        }
+        @media screen and (min-width:360px){
+            html,body,button,input,select,textarea {
+                font-size: 14px;
+            }
+        }
+        @media screen and (min-width:374px) {
+            html,body,button,input,select,textarea {
+                font-size: 14px;
+            }
+        }
+        @media screen and (min-width:400px) {
+            html,body,button,input,select,textarea {
+                font-size: 15px;
+            }
+        }
+        @media screen and (min-width:413px) {
+            html,body,button,input,select,textarea {
+                font-size: 15.5px;
+            }
+        }
+        @media screen and (min-width:426px) {
+            html,body,button,input,select,textarea {
+                font-size: 16px;
+            }
+        }
+        @media screen and (min-width:450px) {
+            html,body,button,input,select,textarea {
+                font-size: 18px;
+            }
+        }
+        @media screen and (min-width:480px) {
+            html,body,button,input,select,textarea {
+                font-size: 18px;
+            }
+        }
+        @media screen and (min-width:540px) {
+            html,body,button,input,select,textarea {
+                font-size: 20.25px;
+            }
+        }
+        @media screen and (min-width:590px) {
+            html,body,button,input,select,textarea {
+                font-size: 22.13px;
+            }
+        }
+        @media screen and (min-width:600px) {
+            html,body,button,input,select,textarea {
+                font-size: 22.5px;
+            }
+        }
+        @media screen and (min-width:640px) {
+            html,body,button,input,select,textarea {
+                font-size: 24px;
+            }
+        }
+        @media screen and (min-width:720px) {
+            html,body,button,input,select,textarea {
+                font-size: 27px;
+            }
+        }
+        @media screen and (min-width:800px) {
+            html,body,button,input,select,textarea {
+                font-size: 30px;
+            }
+        }
+        @media screen and (min-width:1080px) {
+            html,body,button,input,select,textarea {
+                font-size: 32px;
+            }
+        }
+        .share{
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #000;
+            opacity: 0.5;
+        }
+        .date{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 16.25rem;
+            background-color: #fff;
+            padding: 1.66rem 1.91rem;
+        }
+        .head{
+            height: 2.5rem;
+        }
+        .head a{
+            font-size: 0.83rem;
+            position: relative;
+        }
+        .head .qd{
+            /*position: absolute;*/
+            /*left: 20px;*/
+            /*top: 20px;*/
+            float: left;
+        }
+        .head .cal{
+            /*position: absolute;*/
+            /*right: 20px;*/
+            /*top: 20px;*/
+            float: right;
+        }
+        .con{
+            margin-top: 2.08rem;
+            height: 9.5rem;
+        }
+        .td{
+            height: 3rem;
+            line-height: 3rem;
+            color: #999;
+            text-align: center;
+        }
+        .td.active{
+            /*height: 3.5rem;*/
+            /*line-height: 3.5rem;*/
+            font-size: 1.08rem;
+            color: #222;
+        }
+        .table{
+            position: relative;
+        }
+        .w{
+            width: 33.3%;
+            float: left;
+
+        }
+        .space{
+            margin: 0 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .tr{
+            height:9.5rem;
+            position: relative;
+            /*transform: translate3d(0,-6rem,0);*/
+        }
+        .line{
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+            position: absolute;
+            height: 3rem;
+            top: 3rem;
+            width: 100%;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/dateJs.js"></script>
+    <script>
+
+
+        $(function(){
+
+//            $(document).mousedown(function(event){
+//                document.startY = event.pageY;
+//
+//            });
+//
+//            $(document).mousemove(function(event){
+//                if(!document.startY){
+//                    return;
+//                }
+//                var dy = event.pageY - document.startY;
+//                //document.title = 'y = ' + (dy);
+//
+//                document.dy = dy;
+//
+//                $("#tr").css("-moz-transform","translate3d(0,"+dy+"px,0)");
+//
+//            });
+//
+//            $(document).mouseup(function(){
+//
+//                var dy = document.dy;
+//
+//                var d =Math.floor( (dy + 15) / 30 );
+//                document.title = 'd = ' + d;
+//                dy = d * 30;
+//
+//                $("#tr").css("-moz-transform","translate3d(0,"+dy+"px,0)");
+//
+//                document.startY = false;
+//
+//            });
+
+            $("#year").bind("touchstart",function(){
+                event.preventDefault();
+                if (!event.touches.length) return;
+                var touch = event.touches[0];
+                this.startY = touch.pageY;
+                document.title = ' y = ' + this.startY;
+
+
+            });
+
+            $("#year").bind("touchmove",function(){
+                if(!this.startY){
+                    return;
+                }
+                var touch = event.touches[0];
+                var dy = touch.pageY - this.startY;
+                this.dy = dy;
+                document.title = ' dy = ' + this.dy;
+                $(this).css("transform","translate3d(0,"+this.dy+"px,0)");
+            });
+
+
+            $("#year").bind("touchend",function(){
+                $(this).children().removeClass('active');
+                var dy = this.dy;
+                var h = $(this).children().height();
+                var d = Math.floor((dy - h /2 )/h) + 1;
+                document.title = 'd = ' + d;
+                var len = $(this).children().length;
+                var active = $(this).children(".active").index();
+                if(dy<=(-(len-2)*h)){
+                    $(this).css("transform","translate3d(0,"+(len-2)*(-h)+"px,0)");
+                    $(this).children().eq(len-1).addClass('active');
+                }
+                if(dy>h){
+                    $(this).css("transform","translate3d(0,"+(h)+"px,0)");
+                    $(this).children().eq(0).addClass('active');
+                }
+                if(dy%h==0 || dy%h>-h/2){
+                    var y = Math.abs(Math.floor(dy/h));
+                    $(this).css("transform","translate3d(0,"+(dy)+"px,0)");
+                    $(this).children().eq(y).addClass('active');
+                }
+//                $(this).css("transform","translate3d(0,"+d*h+"px,0)");
+
+//                $(this).children().eq(-d+1).addClass('active');
+                this.startY = false;
+                this.dy = 0;
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function(){
+            year();
+            month();
+        })
+    </script>
+</head>
+<body>
+<div class="share"></div>
+<div class="date">
+    <div class="head">
+        <a class="qd">确定</a>
+        <a class="cal">取消</a>
+    </div>
+    <div class="con">
+        <div class="table">
+
+            <div class="w">
+                <div class="space">
+                    <div class="line"></div>
+                    <div class="tr" id="year">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="space">
+                    <div class="line"></div>
+                    <div class="tr" id="month">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w">
+                <div class="space">
+                    <div class="line"></div>
+                    <div class="tr" id="day">
+                        <div class="td">01</div>
+                        <div class="td active">02</div>
+                        <div class="td">03</div>
+                        <div class="td">04</div>
+                        <div class="td">05</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

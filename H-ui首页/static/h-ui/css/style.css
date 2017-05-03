@@ -1,0 +1,58 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.header{
+	background-color:#fff ;
+	font-family: "微软雅黑";
+}
+.wp1180{
+	width: 1180px;
+	margin:0 auto ;
+}
+.wp1180 .avatar{
+	padding: 2px 15px;
+}
+.wp1180 .size-XXL{
+	height: 60px;
+}
+.wp1180 .avatar.size-XXL, .wp1180 .avatar.size-XXL img {
+    height: 60px;
+    width: 100px;
+}
+.wp1180 .mainnav{
+	background-color:#fff;
+	line-height: 64px;
+}
+.header .mainnav > ul > li, .header .mainnav > ul > li a {
+    height: 62px;
+    line-height: 62px;
+    font-size: 18px;
+    font-weight: 300;
+}
+.wp1180 .mainnav > ul > li > a{
+	display:inline-block;
+	padding:0 18px;
+	color:#333;
+	text-align:center
+}/*链接颜色*/
+.mainnav > ul > li:hover{
+	border-bottom:2px solid #FF9933;
+}
+.mainnav > ul > li > a:hover,.mainnav > ul > li.current > a{
+	color:#000;
+	text-decoration:none; 
+	background-color:#fff;
+	-webkit-transition: background-color 0.3s ease 0s; 
+	-moz-transition: background-color 0.3s ease 0s; 
+	-o-transition: background-color 0.3s ease 0s; 
+	-ms-transition: background-color 0.3s ease 0s;
+	transition: background-color 0.3s ease 0s
+}/*交互颜色*/
+.slider{
+	width: 100%;
+}
+.slider img{
+	width: 100%;
+}

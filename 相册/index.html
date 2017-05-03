@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+			.pic{
+				width: 100%;
+				min-height: 1000px;
+			}
+			.pic img{
+				width: 100%;
+			}
+			
+			.show{
+				
+				width: 100%;
+				z-index:1;
+				background: #000;
+				opacity: 0.5;
+				filter: alpha(opcity=50);
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.close a{
+				color: #fff;
+				position: absolute;
+				font-size: 36px;
+				right: 25px;
+				top: 10px;
+				text-decoration: none;
+				opacity: 1;
+				z-index: 100;
+				display: none;
+			}
+            .picshow{
+            	z-index: 80;
+            	width: 100%;
+            	overflow: hidden;
+            	display: none;
+            	opacity: 1;
+            }
+             .picshow ul{
+             	position: absolute;
+                width: 80%;
+                height: 100%;
+                top: 0;              
+            	z-index: 81;
+            	left: 10%;
+            	right: 10%;
+             }
+            .picshow li{
+            	float: left;
+            	margin-bottom: 15%;
+            	margin-top: 15%;           	
+            	z-index: 82;
+            	position: relative;
+            }
+            .picshow img{
+            	width: 100%;
+            	vertical-align: middle;
+            	
+            	opacity: 0;
+            }
+            .picshow li.xcactive img{
+            	opacity: 1;
+            }
+             .arrow { 
+			 	cursor: pointer; 
+			 	/*display: none; */
+			 	line-height: 39px; 
+			 	text-align: center; 
+			 	font-size: 36px; 
+			 	font-weight: bold; 
+			 	width: 40px; 
+			 	height: 40px;  			 	
+			 	position: absolute; 
+			 	z-index: 2; 
+			 	top: 40%; 
+			 	background-color: RGBA(0,0,0,0.3); 
+			 	color: #fff;
+			 	border-radius:50%;
+			 	}
+			 	#prev { left: 20px;}
+	            #next { right: 20px;}
+
+	            .picwenzi{
+	            	background-color: RGBA(0,0,0,0.3);
+	            	position: absolute;
+	            	left: 0;
+	            	bottom: 0;
+	            	width: 100%;
+	            	height: 50px;
+	            	line-height: 50px;
+	            	padding-left: 15px;
+	            	color: #fff;
+	            	z-index: 85;
+	            	
+	            }
+	            .picwenzi p{
+	            	font-weight: bold;
+	            }
+		</style>
+	</head>
+	<body>
+		<div class="pic">
+			<a href="javascript:;"><img src="../img/1.jpg"  /></a>
+		</div>
+		<div class="close"><a href="javascript:;">×</a></div>
+		<div class="show"></div>
+		
+		<div class="picshow">
+			<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+            <a href="javascript:;" id="next" class="arrow">&gt;</a>
+            
+		   <ul>
+		      <li class="xcactive">
+		      	<img src="../img/1.jpg"/>
+		      	
+		      	<div class="picwenzi">
+		      	  <p>文字介绍</p>
+		      	</div>
+		      </li>
+		      <li><img src="../img/5.jpg"/></li>
+		   </ul>
+		</div>
+		
+		<script>
+		var hhh = $(document.body).height();
+		$(".show").css({"height":hhh});
+		$(".close a").click(function(){
+			$("body").css({ "overflow": "Scroll", "overflow-y": "visible", "overflow-x": "visible" });
+			$(".close a").hide();
+			$(".show").hide();
+			$(".picshow").hide();
+		});
+			$(".pic a").click(function(){
+				$("body").css({ "overflow": "-Scroll", "overflow-y": "hidden", "overflow-x": "hidden" });
+				$(".close a").show();
+				$(".show").show();
+				$(".picshow").show();
+			});
+			
+			var index=0;
+			var picLi=$(".picshow ul li").length;
+			
+			function animate(index){
+				$(".picshow ul li:eq("+index+")").addClass("xcactive").siblings().removeClass("xcactive");
+				$(".picshow ul li:eq("+index+")").fadeIn().siblings().fadeOut();
+			}
+			$("#next").click(function(){
+				
+				if(index==(picLi-1)){
+					index=0;
+				}else{
+					index++;					
+				}
+				animate(index);
+				
+			});
+			
+			$("#prev").click(function(){
+				
+				if(index==0){
+					index=picLi-1;
+				}else{
+					index--;					
+				}
+				animate(index);
+				
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+                margin: 0;
+			}
+			ol,ul{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			img{
+				border: 0;
+			}
+			.rollpic{
+				position: relative;
+				overflow: hidden;
+				height: 400px;
+			}
+			.rollpic ul{
+				position: absolute;
+				top: 0;
+				left: 0;	
+				width: 100%;			
+			}
+			.rollpic li img{
+				width: 100%;
+			}
+			.num{
+				position: absolute;
+				bottom: 10px;
+				right:20px;
+				z-index: 9;
+				height: 34px;
+			}
+			.num li{
+				float: left;
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				background-color:#666 ;
+				text-align: center;
+				line-height: 30px;
+				margin: 2px;
+				color: #fff;
+				cursor: pointer;
+			}
+			.num li:hover{
+				background-color: #0066CC;
+			}
+			.carousel-control{
+				position: absolute;
+				top: 200px;
+				display: block;
+				z-index: 999;
+				cursor: pointer;
+			}
+			.carousel-control.left{
+				left: 10px;
+				border-width:20px ;
+				border-color:transparent #fff transparent transparent ;
+				border-style: solid;
+				height: 0;
+				width: 0;
+			}
+			.carousel-control.right{
+				right: 10px;
+				border-width:20px ;
+				border-color:transparent transparent transparent #fff;
+				border-style: solid;
+				height: 0;
+				width: 0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="rollpic">
+			<span class="left carousel-control"></span>
+			<ul class="rollpic-ul">
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+				<li><img src="img/1.jpg" /></li>
+			</ul>
+			<span  class="right carousel-control"></span>
+			
+			<ol class="num">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+		
+		<script>
+//		$(function(){				
+//				setInterval(nextscroll,3000);
+//		});
+//		var index=1;
+//      var num =$(".rollpic-ul li").length;
+//			function nextscroll(){					
+//				var imgwidth=-($(".rollpic").height());
+//				
+//               if(index==num){
+//               	$(".rollpic-ul").stop().animate({top:0},"fast");
+//               	index=1;                	                   	
+//               }else{
+//               	var len=imgwidth*index;
+//                    $(".rollpic-ul").stop().animate({top:len},"fast");
+//index++;
+//
+//}
+//}
+      
+      	var intervalId = setInterval(huan, 3000);
+      
+      
+      var len=$(".rollpic-ul li").length;
+      var i=0;
+      var kuan=$(window).width();
+      $(".rollpic-ul li").css("width",kuan);
+      $(".num li:eq(0)").css("background","#0066CC");
+      function huan(){
+      	
+      	$(".num li:eq("+i+")").css("background","#0066CC");
+      	$(".num li:eq("+i+")").siblings().css("background","#666");
+      	$(".rollpic-ul li:eq("+i+")").siblings("li").fadeOut(500);
+      	$(".rollpic-ul li:eq("+i+")").fadeIn(500);
+      	i=i+1;
+      	if(i==len){
+      		i=0;
+      	}
+      }
+      
+      $(".num li").click(function(){
+      	 var j= $(this).index();
+      	 $(".num li:eq("+j+")").css("background","#0066CC");
+      	 $(".num li:eq("+j+")").siblings().css("background","#666");
+      	 i=j;
+      	 $(".rollpic-ul li:eq("+j+")").siblings("li").fadeOut(500);
+      	$(".rollpic-ul li:eq("+j+")").fadeIn(500);
+      });
+ 
+  //向左滚动
+ $(".carousel-control.left").click(function(){  
+ 	        var a=len-1;
+           if(i==0){
+           	 
+           	$(".num li:eq("+a+")").css("background","#0066CC");
+      	    $(".num li:eq("+a+")").siblings().css("background","#666");
+      	    $(".rollpic-ul li:eq("+a+")").siblings("li").fadeOut(500);
+      	    $(".rollpic-ul li:eq("+a+")").fadeIn(500);
+      	    i=a;
+           }else{
+           	i=i-1;
+           	 $(".num li:eq("+i+")").css("background","#0066CC");
+      	    $(".num li:eq("+i+")").siblings().css("background","#666");
+      	    $(".rollpic-ul li:eq("+i+")").siblings("li").fadeOut(500);
+      	    $(".rollpic-ul li:eq("+i+")").fadeIn(500);     	    
+           }
+      	     	 
+      });
+ 
+  //向右滚动
+ $(".carousel-control.right").click(function(){  
+ 	       i=i+1;
+ 	        
+           	 if(i==len){
+      	    	i=0;
+           }
+           	$(".num li:eq("+i+")").css("background","#0066CC");
+      	    $(".num li:eq("+i+")").siblings().css("background","#666");
+      	    $(".rollpic-ul li:eq("+i+")").siblings("li").fadeOut(500);
+      	    $(".rollpic-ul li:eq("+i+")").fadeIn(500);
+      	    i=i;
+      	    
+      	     	 
+      });
+      
+ //向左滚动
+//    $(".carousel-control.left").click(function(){  
+//         var x=i-1;
+//         if(x<0){
+//         	 x=4;
+//         }
+//    	$(".num li:eq("+x+")").css("background","#0066CC");
+//    	 $(".num li:eq("+x+")").siblings().css("background","#666");
+//    	 i=x;
+//    	 $(".rollpic-ul li:eq("+x+")").siblings("li").fadeOut(500);
+//    	$(".rollpic-ul li:eq("+x+")").fadeIn(1500);
+//    	x=x-1;
+//    });
+      
+      
+      
+//$(document).ready(function() {
+//	var len = $(".tu>a").length;
+//	var i = 0;
+//	var lunhuan;
+//	var kuan = $(window).width();
+//	$(".tu>a").css('width', kuan);
+//	$(".xu:eq(0)").css('backgroundImage', 'url(images/imagefen.png)');
+//
+//	function huan() {
+//		$(".xu:eq(" + i + ")").css('backgroundImage', 'url(images/imagefen.png)');
+//		$(".xu:eq(" + i + ")").siblings().css('backgroundImage', 'url(images/imagehei.png)');
+//		$(".txt>em:eq(" + i + ")").siblings("em").hide();
+//		$(".txt>em:eq(" + i + ")").show();
+//		$(".tu>a:eq(" + i + ")").siblings("a").fadeOut(500);
+//		$(".tu>a:eq(" + i + ")").fadeIn(1500);
+//		i = i + 1
+//		if (i == len) {
+//			i = 0
+//		}
+//	}
+//	lunhuan = setInterval(huan, 4000);
+//	$("#hao").find(".xu").click(function() {
+//		j = $(this).index();
+//		$(".xu:eq(" + j + ")").css('backgroundImage', 'url(images/imagefen.png)');
+//		$(".xu:eq(" + j + ")").siblings().css('backgroundImage', 'url(images/imagehei.png)');
+//		$(".txt>em:eq(" + j + ")").siblings("em").hide();
+//		$(".txt>em:eq(" + j + ")").show();
+//		i = j;
+//		$(".tu>a:eq(" + j + ")").siblings("a").fadeOut(500);
+//		$(".tu>a:eq(" + j + ")").fadeIn(3000);
+//	})
+//})
+		</script>
+	</body>
+</html>

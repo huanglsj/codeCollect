@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onunload="CloseOpen(event)">
+eryey
+</body>
+<script>
+    window.onbeforeunload=function window.onbeforeunload(){
+        if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){
+            alert("close");
+        }else{
+            window.event.returnValue="";
+            alert("refrash");
+            return false;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.nav{
+				margin: 50px auto;
+				width: 900px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+            .nav-ul{
+            	position: absolute;
+            	top: 0;
+            	left: 0;
+            	height: 400px;
+            }
+            .nav-ul li{
+            	float: left;
+            }
+            .nav-ul img{
+            	width: 900px;
+            	height: 400px;
+            }
+            .bgcolor{
+            	position: absolute;
+            	background-color: #000;
+            	opacity: 0.5;
+            	height: 100px;
+            	width: 900px;
+            	bottom: 0;
+            	left: 0;
+            }
+            .thumbnail-bg{
+            	/*display: inline-block;*/
+            	position: relative;
+            	height: 100px;
+            	width: 810px;
+            	overflow: hidden;
+            	margin: 300px auto;
+            }
+            .thumbnail{
+            	position: absolute;
+            	bottom: 0;
+            	left: 0;
+            	height: 100px;
+            }
+            .thumbnail li{
+            	width: 246px;
+            	height: 90px;
+            	float: left;
+            	margin-left: 10px;
+            	margin-right: 10px;
+            	display: inline-block;
+            	margin-top: 3px;
+            	cursor: pointer;
+            	background-color: #fff;
+            	border: 2px solid #ddd;
+            }
+            .thumbnail li.on{
+            	border: 2px solid #F0AD4E;
+            }
+            .thumbnail li.on img{
+            	opacity: 1;
+            }
+            .thumbnail li img{
+            	width: 246px;
+            	height: 90px;
+            	opacity: 0.7;
+            }
+            .arrow{
+				position: absolute;
+				background-color: RGBA(0,0,0,0.5); 
+				color: #fff;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				bottom: 30px;
+				font-size: 39;
+				font-weight: bold;
+				line-height: 40px;
+				border-radius: 50% ;
+			}
+			.arrow:hover{
+				background-color: RGBA(0,0,0,1);
+			}
+			.arrow.prev{
+				left: 5px;
+			}
+			.arrow.next{
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="nav">
+		 	 <ul class="nav-ul">
+		 	 	<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ul>
+		 	 
+		 	 <div class="bgcolor"></div>
+		 	 
+		 	<div class="thumbnail-bg">
+		 	 <ol class="thumbnail">
+		 	   <li class="on"><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ol>
+		 	 
+		 	 
+			</div> 
+			<a href="javascript:void(0);" class="arrow prev">&lt;</a>
+			 <a href="javascript:void(0);" class="arrow next">&gt;</a>
+		 </div>
+		 
+		 <script>
+				
+		    var j = 0; //缩略图游标
+		    var index=0; //大图游标
+		    var thindex=3; //缩略图每页显示3张
+		    var num = $(".nav-ul li").length; //一共有多少张图片
+		    var yu = num-thindex; //计算缩略图有没有超过3张
+		    var navWidth=$(".nav").width(); //大图的每张图片宽度
+		 	var navulWidth=$(".nav-ul").css("width",navWidth*num); //设置大图一共的宽度，如果在css设定宽度，我们不知道一共多少张图片，所以在这里设置，灵活性
+		 	var ThLiWidth=$(".thumbnail li").outerWidth()+20;  //缩略图每张所占的宽度，包括内边框和外边框，20就是外边框的
+		 	var ThWidth = $(".thumbnail").css("width",ThLiWidth*num); //设置缩略图一共的宽度，如果在css设定宽度，我们不知道一共多少张图片，所以在这里设置，灵活性
+		 	
+		 	//大图滚动
+		 	function animate(offset){              
+				$(".nav-ul").animate({"left":index*offset},300);
+			}
+		 	
+			//缩略图滚动
+		 	function thanimate(thoffset){
+		 		$(".thumbnail").animate({"left":thoffset*j},300);
+		 	}	
+		 	
+		 	//活动图片样式
+		 	function showbutton(){				
+					 $(".thumbnail li:eq("+index+")").attr("class","on").siblings().attr("class","");				
+			}
+		 	
+		 	//缩略图鼠标经过事件
+		 	$(".thumbnail li").mouseover(function(){
+				var offset= $(this).index();
+				index=offset;
+				j=offset-2;
+				showbutton();
+				animate(-navWidth);
+			});	
+			
+			//下一张事件
+			$(".next").click(function(){
+				if(index==(num-1)){
+					index=0;
+					j=0;
+				}else{
+					index++;					
+					if(yu>0 && index>=thindex){      //当缩略图有超过3张的时候触发                 
+                        j++;
+				   }else{
+				   	j=0;
+				   }
+				}
+				thanimate(-ThLiWidth);
+				showbutton();
+				animate(-navWidth);
+			});
+			
+			//上一张事件
+			$(".prev").click(function(){				
+				if(index==0){
+					index=num-1;
+					j=yu;
+				}else{
+					index--;					
+					if(yu>0 && index>=thindex){ //当缩略图有超过3张的时候触发                         
+                        j--;                      
+                    }else{
+                    	j=0;
+                    }
+				}
+				thanimate(-ThLiWidth);
+				animate(-navWidth);
+				showbutton();				
+			});
+			
+			//自动滚动事件
+			function play() {
+                timer = setInterval(function () {
+                    $(".next").click();
+                }, 3000);
+            }
+			
+			//鼠标经过停止自动滚动事件
+            function stop() {
+                clearInterval(timer);
+            }
+            
+            //鼠标经过事件
+             $(".nav").mouseenter(function(){
+            	stop();
+            });
+            
+            //鼠标离开事件
+            $(".nav").mouseleave(function(){
+            	play();
+            });
+            
+            //加载页面触发
+            $(function(){
+            	play();
+            })
+		 </script>
+	</body>
+</html>

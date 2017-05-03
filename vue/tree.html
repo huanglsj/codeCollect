@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<!--<link rel="stylesheet" type="text/css" href="../csscsstemplate/appcan.control.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../csscsstemplate/ui-box.css" />
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			ul li {
+				font-size: 1em;
+				color: #526580;
+			}
+			
+			ul li .depart-name {
+				padding: 0.7em;
+				border-bottom: 1px solid #e9eaee
+			}
+			
+			ul li .fa {
+				color: #5890ff;
+				font-size: 1.2em;
+			}
+			
+			li ul {
+				padding: 0 2em;
+			}
+			
+			.user li {
+				padding: 0.6em 0;
+			}
+			
+			ul li>ul {
+				display: none;
+			}
+			
+			.active{
+				display: block;
+			}
+			.bold {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<ul id="tree">
+			<li>
+				<div class="ub depart-name">
+					<div class="title ub-f1">哈哈哈</div>
+					<span>[+]</span>
+				</div>
+				<ul class="children user">
+					<li>
+						<label class="ub">
+								<div class="checkbox umar-r"><input type="checkbox" class="uabs ub-con" ></div>
+								<span>哈哈哈</span>
+							</label>
+					</li>
+					<li>
+						<label class="ub">
+								<div class="checkbox umar-r"><input type="checkbox" class="uabs ub-con" ></div>
+								<span>哈哈哈</span>
+							</label>
+					</li>
+				</ul>
+			</li>
+		</ul>-->
+		<template id="template">
+			<li>
+				<div class="ub depart-name" :class="{bold: isFolder}" @click="toggle($event)">
+					<div class="title ub-f1">{{model.departName}}</div>
+					<span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+				</div>
+				<ul class="children user" :class="{active: open}">
+					<li v-for="u in model.users">
+						<label class="ub">
+							<div class="checkbox umar-r"><input type="checkbox" class="uabs ub-con" ></div>
+							<span>{{u.realname}}</span>
+						</label>
+					</li>
+				</ul>
+				<ul :class="{active: open}">
+					<item v-for="model in model.children" :model="model">
+					</item>
+				</ul>
+			</li>
+		</template>
+
+		<ul id="tree">
+			<item  :model="p" v-for="p in treeData"></item>
+		</ul>
+
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="vue.min.2.2.6.js"></script>
+	<script>
+		var data = [{"id":"150A90CD2F3F475EA951C813B7144B1B","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"312C2B00D199455FA7F6996C9F007373","username":"88782429","realname":"王桂侠"},{"id":"3156E811B9484D9D852D83E4C83D68B1","username":"88611875","realname":"方苗"},{"id":"58BEC4D4D5C64549A1B8CA5DCD91BA39","username":"88936512","realname":"彭勇明"},{"id":"AB018AE529A4434785E0D6AAC28AB58E","username":"88248639","realname":"洪小梅"},{"id":"B31F9EFF3BB44D8D8E06A175DB6B37FB","username":"88252552","realname":"蒋婷婷"}],"departName":"党群纪检部","children":[]},{"id":"153DB2CF828D494782610D4750E80801","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"20CD9F44872748EDA48FD276F0CCB278","username":"88262750","realname":"骆杰锋"},{"id":"27598FD903CE4543AC91232FAC6C5082","username":"88768007","realname":"周婷"},{"id":"2C6A9B1D6F7145B5B2A63435FF0569EB","username":"88627855","realname":"李哲"},{"id":"36B488DC0BB24BF0895A03285F26AB70","username":"88975019","realname":"林建平"},{"id":"4A68FB1188724095BB479E6BDA5ED281","username":"88141176","realname":"黄新华"},{"id":"6DF8C6FE6352489182229343D0E6A9DB","username":"88134839","realname":"高正明"},{"id":"AF94154D6F8B40D2913C6414A22F0E02","username":"88589156","realname":"李汉尧"},{"id":"B4B59DBC44B64D6E8C6D8112AF7E7EF5","username":"88108625","realname":"曾庆峰"},{"id":"61E21FD1E0534E8F8DE8555AB1C681BE","username":"88459198","realname":"尹斌"},{"id":"924D21507DD84AE5A50B9C2F45F6C641","username":"88259665","realname":"屈益帆"},{"id":"A1F374ABE2DE4B58A6CF3907722DD0D7","username":"88564866","realname":"刘艳"},{"id":"85421BEC59F443908820C5C6127E32FB","username":"88865624","realname":"张利娟"},{"id":"1670977378FE40ED88AA9A5331CD5752","username":"88007596","realname":"陆金伟"},{"id":"95A3860547BD425FAFDC4B3715BB7C82","username":"88419577","realname":"麦倩敏"},{"id":"2124F8BF68174C66AB5C2EEDD8A37E94","username":"88031942","realname":"韩波"}],"departName":"弱电工程部","children":[]},{"id":"65E9E4CDA59444718863A024033E010A","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"0295388D507747888ADA31338B95E93D","username":"15000001","realname":"关华"},{"id":"0D527AF9AFAD4432B24DB10AEBB8A719","username":"88151152","realname":"李明"},{"id":"1E6362C1990341B1B6E9D1B291A25415","username":"88677955","realname":"杨洪宇"},{"id":"375C95357A154214A8B0775C54E6A931","username":"88482884","realname":"王晓军"},{"id":"AB306781A313466DA2479EAB9581FB6E","username":"15000018","realname":"麦钊明"},{"id":"244AB6E1FF404301852C43BE4DD5B4B4","username":"88775234","realname":"李丹"}],"departName":"公司领导","children":[]},{"id":"66AFA5EA42D24A339ED4F779D034F7CA","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"02B6961482DA4FF6BB80D7AD55366A4B","username":"81001808","realname":"沈汉文"},{"id":"068C98AC84A74E3098ABDA89D06A3C19","username":"88981369","realname":"丘彬炎"},{"id":"0A04C064187249EAA867569A8632B8C9","username":"88917903","realname":"钟伟标"},{"id":"0D5345BD9CA14DF8A12BE9BF2EA892B5","username":"81000717","realname":"黄桂全"},{"id":"0D6C753D0328422F90BD1CA6BCED3E4B","username":"88492357","realname":"杨天奇"},{"id":"0DD19704984241248E14A496E8DF46D2","username":"88552643","realname":"余俊"},{"id":"0EAD6B59C09F4886A6963AC555E31F42","username":"88253036","realname":"陈晓芝"},{"id":"0EBB561E475E46ADA47ABBEC477EB040","username":"88462924","realname":"朱滢铷"},{"id":"0ECF6769474D43AEBB9523F11BA51DE7","username":"88212409","realname":"李俊贤"},{"id":"19C611E5371840E58EA078CB92B9B9B9","username":"88854728","realname":"黄诚智"},{"id":"1AC3EDE0148B49B39CAC0A9042C71627","username":"88370717","realname":"梁猷"},{"id":"27DB79E38166476EB7EB84F8AAE47787","username":"88959219","realname":"郭宁"},{"id":"286E904735A74D95805C772DFAC1E673","username":"88080633","realname":"易涛"},{"id":"28C1BC8150E84D0DA50743C902AED564","username":"88265666","realname":"吉家冠"},{"id":"29278A6B0AE445E1BB29ED3D7598B6F7","username":"88833428","realname":"李齐兴"},{"id":"2B7D4B8CB01E4AF18E1A670AADD40039","username":"88992945","realname":"高飞"},{"id":"311B75ED1D6943ADB54F7D9A07912250","username":"88988639","realname":"丘国和"},{"id":"34DBAA4328F04D3891509A8533827DEA","username":"88454793","realname":"李泽雄"},{"id":"38669829468640C8801DEC7A3794AB52","username":"88335517","realname":"冯兴悦"},{"id":"3F8BC4C5596B4DA59AC52F7970FE583A","username":"88910585","realname":"郎军"},{"id":"435E72CFEBFC44AA9D46D2AF30CDB3FA","username":"88550694","realname":"邹伟华"},{"id":"4542B218330346E6B917AB0D6330991C","username":"32060618","realname":"陈见辉"},{"id":"4B93A57FBD4D42F1B7B23868262D3F35","username":"88676257","realname":"韩孟龙"},{"id":"5074F2A5CD1644AB9B1114B949DC0724","username":"88716298","realname":"沈福光"},{"id":"50EB5AAEC6124089B046A0FAEE15936B","username":"88242224","realname":"黄彪"},{"id":"52BE5F0EE41845B4A52EA9367DCAB266","username":"88386971","realname":"林祥星"},{"id":"603D9F3234F14236AB458B813C3AC09D","username":"88351188","realname":"王彬宇"},{"id":"604A54B8E1A247FAAA251A2CEBBAC12E","username":"88466805","realname":"黄泽英"},{"id":"628BD836CCA04912B8024F165DB7DD3A","username":"88006839","realname":"张跃军"},{"id":"6457BF780FF04C27939E36EB524B94EC","username":"88180929","realname":"岳亚飞"},{"id":"66EE7718FDE54BBD98B1524D231832BD","username":"88566407","realname":"彭璇"},{"id":"696AEC5430DC4C5C9060F883C05AB303","username":"88386940","realname":"黄子然"},{"id":"7821DA216D614F32B1001E0889533ED8","username":"88226317","realname":"白娟"},{"id":"79532E77DB8243279DC07E1952313EFC","username":"88928904","realname":"黄优宽"},{"id":"7CCAC78805484746BA7622F7784A541A","username":"88501426","realname":"戴勇"},{"id":"8CB3F414E9574A299EA06E31985648DF","username":"88005245","realname":"张庆"},{"id":"93196FED319A450C842E428E6D4BD0FE","username":"88964197","realname":"胡伟猛"},{"id":"99D3A3F27BC3438A88704EA26961137D","username":"88617686","realname":"周健华"},{"id":"9F3C6FF7939C4B96836DD2A654B8C70D","username":"88116146","realname":"黄昕"},{"id":"A3AFF612B38F42048CD78A5773018C56","username":"88087781","realname":"卢志威"},{"id":"A595FC26D103413DBBD842D5B4ADD447","username":"88278949","realname":"郑炎凤"},{"id":"A72027A592474B25919CAF531132CF88","username":"88624477","realname":"张灵华"},{"id":"A723285D46E0452087DDFBC3472E9E47","username":"88129179","realname":"彭晋年"},{"id":"B0AD2AC1B9784A63AE4CC7432C18EF93","username":"88871875","realname":"郑哲峰"},{"id":"B70ACED339814029A7EABF283F7E738A","username":"88438826","realname":"魏勇"},{"id":"C0C6B7E850B947B093E598704A9F8D82","username":"88519247","realname":"邹石"},{"id":"C1297295FC944735AA6EAD6D1E4DDB75","username":"88490163","realname":"曾向阳"},{"id":"C41BE17225E24711B74DE99AEE0EE80A","username":"88558495","realname":"李顺清"},{"id":"C8D869B0187841D9994910D39305715A","username":"88341853","realname":"谭志樑"},{"id":"D09062B62DB04F9CABD2E078FACE50BF","username":"88179086","realname":"莫肇銮"},{"id":"DDBCD4DCF5E242C38AA4DFD26032A469","username":"88464856","realname":"罗岗"},{"id":"DE24FACA700B4A6FA97E36E8973E78E7","username":"88470408","realname":"徐鹏"},{"id":"E672DB811050484693EF3C4068C6472E","username":"88513541","realname":"袁霄"},{"id":"EBF198A89FCE43418B76586FE596B08A","username":"88378463","realname":"黄伟浩"},{"id":"F008CB47A2ED43E9A6E0EEE98FAF5BC4","username":"88614390","realname":"苏睿"},{"id":"FEF38F1696574A7D8DB0DEFB796F6D7F","username":"88105589","realname":"马罗金"},{"id":"C69A7D1F6D27492780678BCF59B8D98E","username":"88043611","realname":"李青"},{"id":"65935E46688549C79BD4F32DEEF78630","username":"88790547","realname":"杨光"}],"departName":"运行维护部","children":[]},{"id":"8a9b2f0f5969698501596d892a570121","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"02249A9FF403447598C872BC6CD964B5","username":"61271541","realname":"李婷婷"},{"id":"0557E3B177C942CC9EA97A72025ADFDC","username":"88185341","realname":"黎露珠"},{"id":"14A49F14CA054A5FB7EFFEA2C122F910","username":"88115032","realname":"王婷"},{"id":"14D64A21629F4E4A82709671C9F9BB7B","username":"82001160","realname":"张红利"},{"id":"15823ED72C1E4DEA8045326DB36225E3","username":"88327720","realname":"赵畅达"},{"id":"4C0C6571E83D4D4E93EAB2DA6BD2215E","username":"81000130","realname":"冯少明"},{"id":"5D57381B00A0438288332651DA7CF8E0","username":"88735569","realname":"孙会娥"},{"id":"5F818611794F475E8550FBA67544C9EB","username":"61472537","realname":"任云荣"},{"id":"845B811CB4434BD9A5466AFD266FDD2E","username":"88626269","realname":"吴瑞贤"},{"id":"C0B56A0E433D4E0398BCD6DB44431A25","username":"88828655","realname":"赵亮程"},{"id":"D895C91C884F44C288B964E62B2F3D61","username":"88103399","realname":"李智毅"},{"id":"F517DD5EBBF044CFBD4F5B60B0B12667","username":"88694562","realname":"齐晓豫"},{"id":"38EEF9B603D8497EBD1D2CB46471A370","username":"88256008","realname":"张利"}],"departName":"安全技术组","children":[]},{"id":"8a9b2f0f5969698501596d8dce0c0135","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"AEEEFB51DCF141BEA1FA757AEA323571","username":"88322101","realname":"康曼勤"},{"id":"D228CC04E0754B9BBD8CCF64E181F421","username":"88932626","realname":"王洪涛"}],"departName":"项目管理组","children":[]},{"id":"8a9b2f0f5969698501596d91564b0151","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"8a9b2f0f5a8e57a6015aa80f5a1d0191","username":"88384682","realname":"陈嘉朗"},{"id":"8a9b2f0f5955a70301596777a2ba0363","username":"88414280","realname":"张霈霓"},{"id":"25EF9122-90BC-B0E6-4486-35EF5D22DAD3","username":"88927850","realname":"黄志华"},{"id":"20BF9997589042CC84A8BA1957396451","username":"88331216","realname":"李邑龙"},{"id":"69743B40-48B6-94D7-51C4-529215D193CF","username":"88910076","realname":"矫丽颖"},{"id":"D3D609C9F1E945DAB342E8A7C32A6A24","username":"88448115","realname":"张轶"},{"id":"5B89F7D1824041ECB95261B9DC2B35F6","username":"88482416","realname":"韩亮"},{"id":"6AAE1AC7-2906-900B-2246-DE81A5490E21","username":"88515370","realname":"肖杨"},{"id":"BFB7C28958CF4D8DA1F965E0104B338E","username":"88098901","realname":"石明杰"},{"id":"601C18327727471C899EFFEF93D013E0","username":"88870172","realname":"林绿文"},{"id":"E941EF5B637C4AF19F1921B100AFE8E6","username":"88004953","realname":"朱江"},{"id":"68853BC963F24D85968922BC1B40A52C","username":"88057987","realname":"廖伟"},{"id":"D0D54991-C09A-E9BE-674F-ACBB7A5D8F24","username":"88019201","realname":"陈杰"},{"id":"42571A2B-3687-3D2F-6452-6ED4E3C527C9","username":"88966234","realname":"冯成果"},{"id":"A46B126993D14D20AB969AE1C189EAE0","username":"88466768","realname":"邢丽"},{"id":"B42EB5BB763240B0A11E39EC5CEEFE37","username":"88829497","realname":"白冰"},{"id":"8a9b2f0f59687be70159688513730010","username":"88193401","realname":"曹杰龙"},{"id":"4028880b58f241260158f2512f070002","username":"xuweiming","realname":"徐威明"}],"departName":"智慧机场运营中心","children":[{"id":"402888f05b843347015b8504179a0069","parentId":"8a9b2f0f5969698501596d91564b0151","users":[{"id":"25EF9122-90BC-B0E6-4486-35EF5D22DAD3","username":"88927850","realname":"黄志华"}],"departName":"哈哈","children":[]}]},{"id":"8a9b2f0f596d95d601596dab3c2f0013","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"E6C7D3FA55EF45A3A07DF7CEBF767CAE","username":"88705790","realname":"刘剑波"},{"id":"ECD19EE728BB49BAB2FFA4A2B0347BC0","username":"88637944","realname":"杨磊"}],"departName":"借调T2","children":[]},{"id":"A7133A5850504F1DB4DE744B9ADE5B09","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"14C9D9D7867F4805B892ADDC917E6D00","username":"88391300","realname":"曾林华"},{"id":"494D17626A0F405E909A3A1A9046A64A","username":"88721375","realname":"刘增江"},{"id":"5ED395B987B6473C92299455DE7DFB54","username":"88590374","realname":"伍绍薇"},{"id":"6A24B94C554548D5835AAC5E7D51A4E6","username":"88378106","realname":"李春明"},{"id":"6AABD4551570455CA2AEDD03CD24FCEE","username":"88854020","realname":"黄俊翔"},{"id":"953616FA3EE14B7CB32F1A40F816E066","username":"88576499","realname":"李鹏"},{"id":"9B403D1DB9D542068A97307B0049C264","username":"88534138","realname":"蒋俊"},{"id":"9CF31FF74767463AA4F1171669820D8B","username":"88450052","realname":"王鹏"},{"id":"A3136BA29406476D97FB5A8DA357BD11","username":"88599492","realname":"潘伟强"},{"id":"B0F82D00A0ED4A86A9B7572481B86187","username":"88387757","realname":"何珊"},{"id":"D22F1E3AE67E44F2B1F3DF8A026F864C","username":"88789142","realname":"石嵘"},{"id":"B61FC8853CDE4FE8802907A302800923","username":"88191549","realname":"罗军"}],"departName":"研发中心","children":[]},{"id":"C198E003F3004953A2D4EF9090582536","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"3AB783E57B6E4A27B13063381A00E718","username":"88461531","realname":"费启翔"},{"id":"3B767750CB88445BA3CD13F800C5DAFE","username":"88185943","realname":"汪季"},{"id":"63B14CB17641447884D2EE07955BA860","username":"88025567","realname":"余少华"},{"id":"6CFEC744209242959037AD1B2607C387","username":"88578223","realname":"杨珏"},{"id":"913E2122773D491195964BE44AFD3FC4","username":"88273931","realname":"庞粤鸿"},{"id":"A323C787C6A6423D860DD0FDF0061E70","username":"88801073","realname":"孙江滢"},{"id":"EC373E8F3B274B9DB16CBD3FF95D4910","username":"88993780","realname":"黄昌鹏"}],"departName":"行政人事部","children":[]},{"id":"C6CAE5E06FA941DE8F0E49ADAD5E0A64","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"86C7E1F1CC8F4A44B59F8FDE31948DA6","username":"88142722","realname":"杜建辉"}],"departName":"外派拓康公司","children":[]},{"id":"E84369F878E04F59854F95ABAAE77A85","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"1639F98066C44D84A87424C87A6D9911","username":"88749960","realname":"牟小刚"},{"id":"19553D054DB047ABBA49DED710138194","username":"88811340","realname":"陈晓敏"},{"id":"6CE0D6BA20C9469A8F9A98A355C1C6AF","username":"88119835","realname":"刘俊"},{"id":"8a9b2f0f5a1cad8d015a1caf5b640002","username":"88578045","realname":"孙鑫"},{"id":"7E7B425A102F4AA186168B2B93E5F98F","username":"10142519","realname":"吴林漫"}],"departName":"市场部","children":[]},{"id":"EA866BB1D8B94715BEB2EB166B515F73","parentId":"E0A322B8CFDC4F548A711383BB8918C9","users":[{"id":"225A159E449B49A3BF9A15BC1217A23D","username":"85000201","realname":"梁丹丹"},{"id":"374475AB1A304CF2A69159281A0FCD5B","username":"88915186","realname":"黄宝翠"},{"id":"CC1606364F6D4113A83CED683EA30E14","username":"88521344","realname":"张琪"},{"id":"ED8A366457AF43319CBC572796A094F2","username":"88930626","realname":"厉高华"}],"departName":"财务部","children":[]}]
+
+		
+		Vue.component('item', {
+			template: '#template',
+			props: {
+				model: Array
+			},
+			data: function() {
+				return {
+					open: false
+				}
+			},
+			computed: {
+				isFolder: function() {
+					return this.model.users && this.model.users.length
+				}
+			},
+			methods: {
+				toggle: function(even) {
+//					console.log($(even.target).text());
+					var _this = $(even.target);
+//					if(_this.parent().parent().prev(".user").length>0){					
+//					   this.open = !this.open;
+//				}else{
+//					if($(fa).hasClass("fa-plus-square")) {
+//						$(".fa").not($(fa)).removeClass("fa-minus-square").addClass("fa-plus-square");
+//					    $("ul li > ul").not($(this).nextAll()).slideUp();
+//						$(fa).removeClass("fa-plus-square").addClass("fa-minus-square");
+//						$(this).nextAll().slideDown();
+//					} else {
+//						$(fa).removeClass("fa-minus-square").addClass("fa-plus-square");
+//						$(this).nextAll().slideUp();
+//					}
+//				}
+					
+					if(this.isFolder) {
+						this.open = !this.open;
+					}
+				}
+			}
+		})
+
+
+		var demo = new Vue({
+			el: '#tree',
+			data: {
+				treeData: data
+			}
+		})
+	</script>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/wow/bootstrap.css">
+    <link rel="stylesheet" href="/wow/variable.css">
+    <link rel="stylesheet" href="/wow/animate.css">
+    <link rel="stylesheet" href="/wow/web.css">
+    <script src="/wow/modernizr-2.7.2.js"></script>
+    <script src="/wow/jquery.min.js"></script>
+</head>
+<body>
+<div class="container-fluid web-home">
+    <div class="navigation">
+        <div class="navbar-share hidden-xs hide"></div>
+        <div class="navbar-menu navbar-menu-fixed hidden-xs">
+            <a href="/" class="navbar-brand"><img src="/wow/web_logo.png"></a>
+            <a href="/web/about" class="about">关于我们</a>
+        </div>
+        <div class="navbar-share visible-share visible-xs"></div>
+        <div class="logo visible-xs navbar-menu-fixed">
+            <a href="/"><img src="/wow/web_logo.png"></a>
+        </div>
+    </div>
+    <div class="banner">
+        <a href="/web/parent">
+            <img src="/wow/web_parent.jpg">
+            <div class="banner-share"></div>
+            <div class="banner-text" data-am-scrollspy="{animation: 'fade'}">
+                <p class="title">叮叮功课</p>
+                <p class="title"><span>专注小学功课辅导</span></p>
+            </div>
+        </a>
+    </div>
+    <div class="row pic">
+        <div class="col-md-4 one-img">
+            <a href="/web/parent">
+                <img src="/wow/web_index1.jpg">
+                <div class="des">
+                    <div class="revealOnScroll" data-animation="fadeInLeft">
+                        <p>“叮”一下</p>
+                        <p>轻松做作业</p>
+                        <p class="sub">了解家长端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 two-img">
+            <a href="/web/teacher">
+                <img src="/wow/web_index2.jpg">
+                <div class="des">
+                    <div data-am-scrollspy="{animation: 'slide-left'}">
+                        <p>生源不断</p>
+                        <p>赚钱更轻松</p>
+                        <p class="sub">了解教师端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 three-img">
+            <a href="/web/landlord">
+                <img src="/wow/web_index3.jpg">
+                <div class="des">
+                    <div data-am-scrollspy="{animation: 'slide-left'}">
+                        <p>房子不闲置</p>
+                        <p>共享更自由</p>
+                        <p class="sub">了解房东端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <p class="web-copyright hidden-xs">©2016 dingdinggongke.com 粤ICP备16009186号</p>
+    <div class="footer visible-xs">
+        <div class="info">
+            <a href="tel:<?= Yii::$app->params['contactPhone'] ?>">联系客服</a>
+            <a href="/web/about">关于我们</a>
+        </div>
+        <p class="copyright">©2016 dingdinggongke.com 粤ICP备16009186号</p>
+    </div>
+</div>
+
+
+<script>
+    //    $(document).ready(function(){
+    //        var p=0,t=0;
+    //
+    //        $(window).scroll(function(e){
+    //            p = $(this).scrollTop();
+    //
+    //            if(t<=p){//下滚
+    //            console.log("下滚")
+    //            }
+    //
+    //            else{//上滚
+    //                console.log("上滚")
+    //            }
+    //            setTimeout(function(){t = p;},0);
+    //        });
+    //    });
+
+    $(function() {
+
+        var $window           = $(window),
+                win_height_padded = $window.height() * 1.1,
+                isTouch           = Modernizr.touch;
+        down = 0;
+        up = 0;
+
+
+        if (isTouch) { $('.revealOnScroll').addClass('animated'); }
+
+        $window.on('scroll', revealOnScroll);
+
+
+        var bescroll = $window.scrollTop();
+        function revealOnScroll() {
+            var scrolled = $window.scrollTop(),
+                    win_height_padded = $window.height() * 1.1;
+            console.log(scrolled);
+
+            $(".revealOnScroll.animated").each(function(){
+                $(this).removeClass('animated ');
+            })
+
+            // Showed...
+            $(".revealOnScroll:not(.animated)").each(function () {
+                var $this     = $(this),
+                        offsetTop = $this.offset().top;
+                if (scrolled + win_height_padded > offsetTop) {
+                    if ($this.data('timeout')) {
+                        window.setTimeout(function(){
+                            $this.addClass('animated ' + $this.data('animation'));
+                        }, parseInt($this.data('timeout'),10));
+                    } else {
+                        $this.addClass('animated ' + $this.data('animation'));
+                    }
+                }else{
+                    $this.removeClass('animated ' + $this.data('animation'));
+                }
+            });
+            // Hidden...
+            $(".revealOnScroll.animated").each(function (index) {
+                var $this     = $(this),
+                        offsetTop = $this.offset().top;
+                ff = $this.attr("data-animation");
+                if (scrolled + win_height_padded < offsetTop) {
+                    $(this).removeClass('animated ').removeClass(ff);
+                }
+            });
+        }
+
+        revealOnScroll();
+    });
+</script>
+</body>
+</html>

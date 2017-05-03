@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="calendar.css"/>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+	<input type="text" placeholder="请选择日期" id="input" value="">
+		<div id="calendarPopup"></div>
+		<script src="calendar.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+
+    var calendarPopup = new Calendar({
+        el: '#calendarPopup',
+        input: '#input',
+        isPopup: false,
+        inputReadOnly: true,
+        value:new Date(),
+//      selectNav: ['周日','周一', '周二', '周三', '周四', '周五', '周六'],
+        onChange: function (e, v) {
+            console.log('你选的日期：' + v);
+//          toast('你选的日期：' + v);
+        }
+    });
+    
+    
+    this.defaults = {
+    /*
+     * 初始化日历开始年月，默认为null，例如：'2016-08-08'
+     * */
+    value: null,
+    /*
+     * 日期最小值，默认为null，例如：'2016-05-05'
+     * */
+    minDate: null,
+    /*
+     * 日期最大值，默认为null，例如：'2016-10-05'
+     * */
+    maxDate: null,
+    /*
+     * 是否使用弹窗模式，默认为内联
+     * */
+    isPopup: false,
+    /*
+     * 当模式是弹窗的是否，对应的Input是否要readonly
+     * */
+    inputReadOnly: true,
+    /*
+     * 日历组件nav文字内容
+     * */
+    selectNav: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    /*
+     * 点击日期，返回的内容格式，例如：'yyyy/MM/dd' ---> '2016/05/06'
+     * */
+    dateFormat: 'yyyy-MM-dd',
+    /*
+     * 选择日历的回调函数，返回点击对象和日期
+     * */
+    onChange: function (e, v) {
+        console.log(e, v);
+    }
+};
+</script>
+	</body>
+</html>

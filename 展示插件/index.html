@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .head{
+            height: 30px;
+        }
+        .head li{
+            float: left;
+            height: 30px;
+            width: 120px;
+            text-align: center;
+        }
+        .head li.active{
+            color: #008200;
+        }
+        .con .con-list{
+            display: none;
+        }
+        .con .con-list.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul class="head" id="headMenu">
+    <li class="active">黄哈哈</li>
+    <li>蒋建军</li>
+</ul>
+<div class="con" id="con">
+    <div class="con-list active">哈哈哈哈</div>
+    <div class="con-list">哈哈哈哈121</div>
+</div>
+<script src="jquery.min.js"></script>
+<script src="show.js"></script>
+<script>
+    $(function(){
+       show({
+            headMenu: "#headMenu li",
+            conList: "#con con-list",
+            active: ".active",
+        })
+    })
+
+</script>
+</body>
+</html>

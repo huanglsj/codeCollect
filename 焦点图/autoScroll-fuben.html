@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.nav{
+				margin: 50px auto;
+				width: 900px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+            .nav-ul{
+            	position: absolute;
+            	top: 0;
+            	left: 0;
+            	height: 400px;
+            }
+            .nav-ul li{
+            	float: left;
+            }
+            .nav-ul img{
+            	width: 900px;
+            	height: 400px;
+            }
+            .bgcolor{
+            	position: absolute;
+            	background-color: #000;
+            	opacity: 0.5;
+            	height: 100px;
+            	width: 900px;
+            	bottom: 0;
+            	left: 0;
+            }
+            .thumbnail-bg{
+            	/*display: inline-block;*/
+            	position: relative;
+            	height: 100px;
+            	width: 810px;
+            	overflow: hidden;
+            	margin: 300px auto;
+            }
+            .thumbnail{
+            	position: absolute;
+            	bottom: 0;
+            	left: 0;
+            	height: 100px;
+            }
+            .thumbnail li{
+            	width: 246px;
+            	height: 90px;
+            	float: left;
+            	margin-left: 10px;
+            	margin-right: 10px;
+            	display: inline-block;
+            	margin-top: 3px;
+            	cursor: pointer;
+            	background-color: #fff;
+            	border: 2px solid #ddd;
+            }
+            .thumbnail li.on{
+            	border: 2px solid #F0AD4E;
+            }
+            .thumbnail li.on img{
+            	opacity: 1;
+            }
+            .thumbnail li img{
+            	width: 246px;
+            	height: 90px;
+            	opacity: 0.7;
+            }
+            .arrow{
+				position: absolute;
+				background-color: RGBA(0,0,0,0.5); 
+				color: #fff;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				bottom: 30px;
+				font-size: 39;
+				font-weight: bold;
+				line-height: 40px;
+				border-radius: 50% ;
+			}
+			.arrow:hover{
+				background-color: RGBA(0,0,0,1);
+			}
+			.arrow.prev{
+				left: 5px;
+			}
+			.arrow.next{
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="nav">
+		 	 <ul class="nav-ul">
+		 	 	<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ul>
+		 	 
+		 	 <div class="bgcolor"></div>
+		 	 
+		 	<div class="thumbnail-bg">
+		 	 <ol class="thumbnail">
+		 	   <li class="on"><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ol>
+		 	 
+		 	 
+			</div> 
+			<a href="javascript:void(0);" class="arrow prev">&lt;</a>
+			 <a href="javascript:void(0);" class="arrow next">&gt;</a>
+		 </div>
+		 
+		 <script type="text/javascript">
+
+
+    	
+    
+				objScroll={	
+					timer:0,//定义滚动事件
+					autopicplay:true,//定义是否自动滚动
+					delayTime:3000, //定义每多少秒滚动一次
+					thcursor:0, //定义缩略图游标，从哪里开始，默认从第一张开始
+				    bigcursor:0,//定义大图游标，从哪里开始，默认从第一张开始
+				    thnumber:3, //定义缩略图每页显示多少张，默认3张
+			        allcount : 0, //定义一共有多少张图片
+			        spare : 0,//计算缩略图有没有超过 （默认缩略图每页显示多少，这里是3张） 张
+			        bigWidth:'', //定义大图的每张图片宽度
+			 	    bigPicWidth:'', //计算一共大图的宽度，等于allcount*navWidth
+			 	    thframe:20,//定义每张缩略图左右距离，默认是20px,左边10px，右边10px
+				 	thOuterWidth:'', //定义每张缩略图的宽度，包括外边框。
+				 	thWidth:'',//定义每张缩略图所占的宽度，等于thframe+thOuterWidth				
+				 	thPicWidth : '', //设置缩略图一共的宽度,等于thWidth*allcount
+				 	picScroll:'',//定义滚动图片所在的父类div
+				 	bigUl:'',//定义滚动图片所在的ul
+				 	thumbnail:'',//定义缩略图所在的ol
+				 	active:'',//定义活跃图片样式
+				 	prev:'',//定义上一张按钮
+				 	next:'',//定义下一张按钮
+			 	
+			 	autoAnimate:function(bWidth){
+			 		$(this.bigUl).animate({"left":this.bigcursor*bWidth},300);
+			 	},
+			 	thanimate:function(tWidth){
+			 		$(this.thumbnail).animate({"left":tWidth*this.thcursor},300);
+			 	},
+			 	showbutton:function(){
+			 		$(this.thumbnail).find('li:eq('+this.bigcursor+')').attr("class",this.active).siblings().attr("class","");
+			 	},
+			 	play:function(){
+			 		var that=this;
+			 		that.timer = setInterval(function () {
+	                    $(that.next).click();
+	                }, that.delayTime);
+			 	},
+			 	stop:function(){
+			 		clearInterval(this.timer);
+			 	},
+			 	init:function(data){
+			 		//picScroll,bigUl,thumbnail,active,prev,next
+			 		var that=this;
+			 		$.each(data, function(iKey,iValue) {    
+			 			   //alert(iKey+":"+iValue); 
+			 			   //var tem=iKey;
+			 			   that.iKey=iValue;
+			 			   //alert(that.iKey);
+			 			   //alert(that.picScroll);
+			 		});
+			 		that.allcount=$(that.bigUl).find('li').length;
+			 		that.spare=that.allcount-that.thnumber;
+			 		that.bigWidth=$(that.picScroll).width();
+			 		that.bigPicWidth=$(that.bigUl).css("width",that.bigWidth*that.allcount); 
+			 		that.thWidth=$(that.thumbnail).find('li').outerWidth()+that.thframe;
+			 		that.thPicWidth = $(that.thumbnail).css("width",that.thWidth*that.allcount);
+			 		
+			 		/*that.bigUl=bigUl;
+			 		that.thumbnail=thumbnail;
+			 		that.active=active;
+			 		that.prev=prev;
+			 		that.next=next;*/
+			 		alert(that.picScroll);
+			 		
+			 		
+			 		that.play();
+			 		
+			 		//缩略图鼠标经过事件
+				 	$(that.thumbnail).find("li").mouseover(function(){
+						var offset= $(this).index();
+						that.bigcursor=offset;
+						that.thcursor=offset-2;
+						that.showbutton();
+						that.autoAnimate(-that.bigWidth);
+					});	
+					//鼠标经过事件
+		             $(that.picScroll).mouseenter(function(){
+		            	that.stop();
+		            });
+						//鼠标离开事件
+		            $(that.picScroll).mouseleave(function(){
+		            	that.play();
+		            });
+		            
+		            //下一张事件
+			$(that.next).click(function(){
+				if(that.bigcursor==(that.allcount-1)){
+					that.bigcursor=0;
+					that.thcursor=0;
+				}else{
+					that.bigcursor++;					
+					if(that.spare>0 && that.bigcursor>=that.thnumber){      //当缩略图有超过3张的时候触发                 
+                        that.thcursor++;
+				   }else{
+				   	that.thcursor=0;
+				   }
+				}
+				that.thanimate(-that.thWidth);
+				that.showbutton();
+				that.autoAnimate(-that.bigWidth);
+			});
+			
+			//上一张事件
+			$(that.prev).click(function(){				
+				if(that.bigcursor==0){
+					that.bigcursor=that.allcount-1;
+					that.thcursor=that.spare;
+				}else{
+					that.bigcursor--;					
+					if(that.spare>0 && that.bigcursor>=that.thnumber){ //当缩略图有超过3张的时候触发                         
+                        that.thcursor--;                      
+                    }else{
+                    	that.thcursor=0;
+                    }
+				}
+				that.thanimate(-that.thWidth);
+				that.autoAnimate(-that.bigWidth);
+				that.showbutton();				
+			});
+	            
+			 	}
+		 	};
+		
+ 
+			//objScroll.init(".nav",".nav-ul",".thumbnail","on",".prev",".next");
+			objScroll.init({
+				picScroll:".nav",
+				bigUl:".nav-ul",
+				thumbnail:".thumbnail",
+				active:"on",
+				prev:".prev",
+				next:".next"
+				});
+
+				
+
+		 </script>
+	</body>
+</html>

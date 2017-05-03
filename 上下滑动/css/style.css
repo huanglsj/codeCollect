@@ -1,0 +1,269 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+
+.cl:after,
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+
+.cl,
+.clearfix {
+	zoom: 1
+}
+
+body,
+th,
+td,
+button,
+input,
+select,
+textarea {
+	font-family: "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, Verdana, sans-serif, "WenQuanYi Micro Hei", "\5B8B\4F53";
+	font-size: 14px;
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased
+}
+
+body {
+	line-height: 1.6;
+	background-color: #1C1B20;
+	font-family: Kaiti_GB2312, 妤蜂綋_GB2312;
+}
+
+@media screen and (min-width: 200px) {
+	html,
+	body {
+		font-size: 6px;
+	}
+}
+
+@media screen and (min-width: 340px) {
+	html,
+	body {
+		font-size: 7px;
+	}
+}
+
+@media screen and (min-width: 414px) {
+	html,
+	body {
+		font-size: 8px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	html,
+	body {
+		font-size: 9px;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	html,
+	body {
+		font-size: 15px;
+	}
+}
+
+@media screen and (min-width: 1024) {
+	html,
+	body {
+		font-size: 15.5px;
+	}
+}
+
+@media screen and (min-width: 1152) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 1280) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 1366) {
+	html,
+	body {
+		font-size: 16.5px;
+	}
+}
+
+@media screen and (min-width: 1600) {
+	html,
+	body {
+		font-size: 20px;
+	}
+}
+
+[v-cloak] {
+	display: none;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: 0;
+	border-color: transparent;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.table-div {
+	width: 50%;
+	font-size: 2rem;
+	float: left;
+	font-weight: 600;
+}
+
+.table-div .tr {
+	height: 8rem;
+	width: 100%;
+}
+
+.table-div .th,
+.table-div .td {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 1.5rem;
+}
+
+.table-div .td-2 {
+	width: 21%;
+}.table-div .td-3 {
+	width: 29%;
+}
+
+
+
+.table-div .t-head {
+	background-color: #EDC146;
+	/* padding: 1rem 0; */
+}
+
+.table-div .t-head .tr {
+	display: table;
+}
+
+.table-div .th {
+	font-size: 2.2rem;
+	color: #000;
+	text-align: left;	
+	padding-left: 0;
+}
+
+.table-div .th>div {
+	padding-left: 1.5rem;
+}
+
+.table-div .th:nth-of-type(1)>div {
+	padding-left: 10rem;
+}
+
+.t-con .tr {
+	/* padding: 0.5rem 0; */
+	position: relative;
+}
+
+.t-con .tr .td {
+	line-height: 2.4rem;
+}
+
+.t-con .tr .td-1 {
+	height: 8rem;
+	overflow: hidden;
+	position: relative;
+}
+.t-con .tr .td-1 .ub-ver{
+	overflow: hidden;
+}
+
+.t-con .tr:nth-of-type(2n) {
+	background-color: #4A4849;
+}
+
+.t-con .tr .tr-list {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.t-con .tr .tr-list.out{
+	display:none;	
+}
+
+
+
+.t-con .tr .logo {
+	width: 8rem;
+	height: 5rem;
+	margin-right: 1rem;
+}
+
+.t-con .tr .zh {
+	font-size: 2.4rem;
+	overflow: hidden;
+}
+
+.t-con .tr .t{
+	/*position: relative;*/
+}
+
+.t-con .tr .check{
+	margin-right: 1rem;
+    display: block;
+    float: left;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: 7rem;
+}
+.t-con .tr .check:nth-of-type(2n){
+	margin-right: 0;
+}
+.t-con .tr .check b{
+	font-size: 1rem;
+	display: block;
+	margin-top:0.5rem;
+}
+.t-con .tr .en{
+	font-size: 1.5rem;
+}
+.foot-title{
+	font-size:2rem;
+	text-align:right;
+	padding: 2rem;
+	clear: both;
+	color:red;
+}
+
+.big{
+    font-size:3rem;   
+}
+.logo-d{
+	float:left;
+}
+.text-d{
+	padding-top: 0.5rem;
+	white-space: nowrap !important;
+	position: absolute;
+    left: 10rem;
+    right: 0;
+}

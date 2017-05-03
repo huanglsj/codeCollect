@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			ul > li{
+				display: inline-block;
+				text-align: center;
+			}
+			ul > li > a{
+				display: block;
+				padding: 8px 15px;
+			}
+			.hx{
+				height: 2px;
+				background-color: #ddd;
+			}
+			.hx span{
+				display: block;
+				width: 80px;
+				height: 2px;
+				background-color: red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul>
+			<li class="active"><a href="">菜单一</a></li>
+			<li><a href="">菜单一</a></li>
+			<li><a href="">菜单一</a></li>
+			<li><a href="">菜单一</a></li>
+		</ul>
+		<div class="hx">
+			<span></span>
+		</div>
+		
+		<script>
+			var li=$('li');
+	        var span=$('.hx span');
+	        li.mouseenter(function(){
+	        	span.stop();
+	        	span.animate({'margin-left':80*$(this).index()},300);
+//	        	ul.animate({'background-position-x':100*$(this).index(),'background-position-y':'100%'},300);
+	        });
+	        
+	        li.mouseleave(function(){
+			span.stop();
+			for(var i=0;i<li.length;i++)
+			{
+				if(li.eq(i).hasClass('active'))
+				{	span.animate({'margin-left':80*li.eq(i).index()},300);
+//				ul.animate({'background-position-x':100*li.eq(i).index(),'background-position-y':'100%'},300);
+					}
+				}
+			
+			
+			});	
+		</script>
+	</body>
+</html>

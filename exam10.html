@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<style>
+		*{
+		padding: 0;
+		margin: 0;	
+		list-style: none;
+		}
+			.main{
+				position: relative;
+				background: #ccc;
+				width: 100%;
+				height: 300px;
+			}
+			.center{
+				width:50%;
+				height: 150px;
+				background: #fff;
+				position: absolute;
+				top: 50%;
+				margin-top: -75px;
+				left: 25%;
+				opacity: 0;
+				transition: all 5s ease 0.5s;
+				transform: scale(0.5);
+			}
+			.center p{
+				opacity: 0;
+			}
+			.center p:first-child{
+				margin-top:80px ;
+			}
+			.active{
+				transition: all 5s ease 0.5s;
+				transform: scale(1);
+				opacity: 1;
+			}
+			.active p:nth-of-type(1){
+				transition: all 0.5s ease-in 5s;
+				opacity: 1;	
+				transform: translateY(-50PX);
+				background: red;			
+			}
+			.active p:nth-of-type(2){
+				transition: all 0.5s ease-in 5.5s;
+				opacity: 1;	
+				transform: translateY(-40PX);	
+				background: blue;		
+			}
+			.active p:nth-of-type(3){
+				transition: all 0.5s ease-in 6s;
+				opacity: 1;	
+				transform: translateY(-30px);	
+				background: green;		
+				
+			}
+		</style>
+		<script>
+			$(function(){
+				$(".center").addClass("active");
+			})
+		</script>
+	</head>
+	<body>
+		<div class="main">
+		    
+			<div class="center">
+				<p>1212</p>
+				<p>abc</p>
+				<p>发给</p>
+			</div>
+		</div>
+	</body>
+</html>

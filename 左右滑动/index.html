@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			body{
+				background-color: #F4F4F4;
+			}
+			.list li{
+				background-color: #fff;
+				position: relative;
+				height: 45px;
+				line-height: 45px;
+				overflow: hidden;	
+				margin: 15px 0;			
+			}
+			.list li .main{
+				position: relative;
+			}
+			.list li .con{
+				width: 100%;
+				position: relative;
+			}
+			.list li .btn{
+				position: absolute;
+				top: 0;
+				right: -60px;
+				background-color: red;
+				color: #fff;
+				bottom: 0;
+				line-height: 45px;
+				width: 60px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<div class="main">
+					<div class="con">我是哈哈哈</div>
+				     <div class="btn">删除</div>
+				</div>				
+			</li>
+			<li>
+				<div class="main">
+					<div class="con">我是哈哈哈</div>
+				     <div class="btn">删除</div>
+				</div>
+				
+			</li>
+		</ul>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui(".main").on("swipeleft",".con",function(){
+				$(".con").not($(this)).animate({
+					marginLeft:0
+				});
+				var btn = $(this).next(".btn");
+				$(".btn").not(btn).animate({
+					right:'-60px'
+				});
+		
+				$(this).animate({
+					marginLeft:'-60px'
+				});
+				$(this).next(".btn").animate({
+					right:0
+				});
+			});
+			
+			mui(".main").on("swiperight",".con",function(){
+//				$(".con").not($(this)).animate({
+//					marginLeft:0
+//				});
+//				var btn = $(this).next(".btn");
+//				$(".btn").not(btn).animate({
+//					right:'-60px'
+//				});
+//		
+				$(this).animate({
+					marginLeft:0
+				});
+				$(this).next(".btn").animate({
+					right:'-60px'
+				});
+			});
+			
+			
+			mui(".main").on("tap",".con",function(){	
+				$('.con').animate({
+					marginLeft:0
+				});
+				$('.btn').animate({
+					right:'-60px'
+				});
+			});
+			
+		</script>
+	</body>
+</html>

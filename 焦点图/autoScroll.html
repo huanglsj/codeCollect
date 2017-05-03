@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.nav{
+				margin: 50px auto;
+				width: 900px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+            .nav-ul{
+            	position: absolute;
+            	top: 0;
+            	left: 0;
+            	height: 400px;
+            }
+            .nav-ul li{
+            	float: left;
+            }
+            .nav-ul img{
+            	width: 900px;
+            	height: 400px;
+            }
+            .bgcolor{
+            	position: absolute;
+            	background-color: #000;
+            	opacity: 0.5;
+            	height: 100px;
+            	width: 900px;
+            	bottom: 0;
+            	left: 0;
+            }
+            .thumbnail-bg{
+            	/*display: inline-block;*/
+            	position: relative;
+            	height: 100px;
+            	width: 810px;
+            	overflow: hidden;
+            	margin: 300px auto;
+            }
+            .thumbnail{
+            	position: absolute;
+            	bottom: 0;
+            	left: 0;
+            	height: 100px;
+            }
+            .thumbnail li{
+            	width: 246px;
+            	height: 90px;
+            	float: left;
+            	margin-left: 10px;
+            	margin-right: 10px;
+            	display: inline-block;
+            	margin-top: 3px;
+            	cursor: pointer;
+            	background-color: #fff;
+            	border: 2px solid #ddd;
+            }
+            .thumbnail li.on{
+            	border: 2px solid #F0AD4E;
+            }
+            .thumbnail li.on img{
+            	opacity: 1;
+            }
+            .thumbnail li img{
+            	width: 246px;
+            	height: 90px;
+            	opacity: 0.7;
+            }
+            .arrow{
+				position: absolute;
+				background-color: RGBA(0,0,0,0.5); 
+				color: #fff;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				bottom: 30px;
+				font-size: 39;
+				font-weight: bold;
+				line-height: 40px;
+				border-radius: 50% ;
+			}
+			.arrow:hover{
+				background-color: RGBA(0,0,0,1);
+			}
+			.arrow.prev{
+				left: 5px;
+			}
+			.arrow.next{
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="nav">
+		 	 <ul class="nav-ul">
+		 	 	<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ul>
+		 	 
+		 	 <div class="bgcolor"></div>
+		 	 
+		 	<div class="thumbnail-bg">
+		 	 <ol class="thumbnail">
+		 	   <li class="on"><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+		 	 </ol>
+		 	 
+		 	 
+			</div> 
+			<a href="javascript:void(0);" class="arrow prev">&lt;</a>
+			 <a href="javascript:void(0);" class="arrow next">&gt;</a>
+		 </div>
+		 
+		 <script type="text/javascript">
+		 			//var timer='';
+		 			//var objScroll;
+				objScroll={	
+					timer:0,
+					j:0, //缩略图游标
+				 index:0,//大图游标
+				  thindex:3, //缩略图每页显示3张
+			     num : 0, //一共有多少张图片
+			     yu : 0,//计算缩略图有没有超过3张
+			     navWidth:'', //大图的每张图片宽度
+			 	 navulWidth:'', //设置大图一共的宽度，如果在css设定宽度，我们不知道一共多少张图片，所以在这里设置，灵活性
+			 	 thLiWidth:'', //缩略图每张所占的宽度，包括内边框和外边框，20就是外边框的
+			 	 thWidth : '', //设置缩略图一共的宽度，如果在css设定宽度，我们不知道一共多少张图片，所以在这里设置，灵活性
+			 	 nav:'',
+			 	 navUl:'',
+			 	 thumbnail:'',
+			 	 prev:'',
+			 	 next:'',
+			 	
+			 	autoAnimate:function(width){
+			 		$(this.navUl).animate({"left":this.index*width},300);
+			 	},
+			 	thanimate:function(thOffset){
+			 		$(this.thumbnail).animate({"left":thOffset*this.j},300);
+			 	},
+			 	showbutton:function(){
+			 		$(this.thumbnail).find('li:eq('+this.index+')').attr("class","on").siblings().attr("class","");
+			 	},
+			 	play:function(){
+			 		var that=this;
+			 		that.timer = setInterval(function () {
+	                    $(that.next).click();
+	                }, 3000);
+			 	},
+			 	stop:function(){
+			 		clearInterval(this.timer);
+			 	},
+			 	init:function(nav,navUl,thumbnail,prev,next){
+			 		var that=this;
+			 		that.num=$(navUl).find('li').length;
+			 		that.yu=that.num-that.thindex;
+			 		that.navWidth=$(nav).width();
+			 		that.navulWidth=$(navUl).css("width",that.navWidth*that.num); 
+			 		that.thLiWidth=$(thumbnail).find('li').outerWidth()+20;
+			 		that.thWidth = $(thumbnail).css("width",that.thLiWidth*that.num);
+			 		that.nav=nav;
+			 		that.navUl=navUl;
+			 		that.thumbnail=thumbnail;
+			 		that.prev=prev;
+			 		that.next=next;
+			 		
+			 		that.play();
+			 		
+			 		//缩略图鼠标经过事件
+				 	$(that.thumbnail).find("li").mouseover(function(){
+						var offset= $(this).index();
+						that.index=offset;
+						that.j=offset-2;
+						that.showbutton();
+						that.autoAnimate(-that.navWidth);
+					});	
+					//鼠标经过事件
+		             $(that.nav).mouseenter(function(){
+		            	that.stop();
+		            });
+						//鼠标离开事件
+		            $(that.nav).mouseleave(function(){
+		            	that.play();
+		            });
+		            
+		            //下一张事件
+			$(that.next).click(function(){
+				if(that.index==(that.num-1)){
+					that.index=0;
+					that.j=0;
+				}else{
+					that.index++;					
+					if(that.yu>0 && that.index>=that.thindex){      //当缩略图有超过3张的时候触发                 
+                        that.j++;
+				   }else{
+				   	that.j=0;
+				   }
+				}
+				that.thanimate(-that.thLiWidth);
+				that.showbutton();
+				that.autoAnimate(-that.navWidth);
+			});
+			
+			//上一张事件
+			$(that.prev).click(function(){				
+				if(that.index==0){
+					that.index=that.num-1;
+					that.j=that.yu;
+				}else{
+					that.index--;					
+					if(that.yu>0 && that.index>=that.thindex){ //当缩略图有超过3张的时候触发                         
+                        that.j--;                      
+                    }else{
+                    	that.j=0;
+                    }
+				}
+				that.thanimate(-that.thLiWidth);
+				that.autoAnimate(-that.navWidth);
+				that.showbutton();				
+			});
+	            
+			 	}
+		 	};
+			
+			objScroll.init(".nav",".nav-ul",".thumbnail",".prev",".next");
+				
+
+		 </script>
+	</body>
+</html>

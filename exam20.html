@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+/* Reset style */
+* { margin:0; padding:0; word-break:break-all; }
+body { background:#FFF; color:#333; font:12px/1.6em Helvetica, Arial, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size:1em; }
+a { color:#039; text-decoration:none; }
+ a:hover { text-decoration:underline; }
+ul, li { list-style:none; }
+fieldset, img { border:none; }
+em, strong, cite, th { font-style:normal; font-weight:normal; }
+/* Focus_change style */
+#focus_change { position:relative; width:450px; height:295px; overflow:hidden; margin:20px 0 1px 60px; }
+ #focus_change_list { position:absolute; width:1800px; height:295px; }
+  #focus_change_list li { float:left; }
+  #focus_change_list li img { width:450px; height:295px; }
+ .focus_change_opacity { position:absolute; width:450px; height:70px; top:225px; left:0; background:#000; filter:alpha(opacity=50); -moz-opacity:0.5; opacity: 0.5; }
+ #focus_change_btn { position:absolute; width:450px; height:65px; top:225px; left:0; }
+  #focus_change_btn ul { padding-left:5px; }
+  #focus_change_btn li { display:inline; float:left; margin:0 15px; padding-top:12px; }
+  #focus_change_btn li img { width:76px; height:50px; border:2px solid #888; }
+  #focus_change_btn .current { background:url() no-repeat 37px 8px;}
+  #focus_change_btn .current img { border-color:#EEE; }
+</style>
+<script type="text/javascript">
+function $(id) { return document.getElementById(id); }
+function moveElement(elementID,final_x,final_y,interval) {
+  if (!document.getElementById) return false;
+  if (!document.getElementById(elementID)) return false;
+  var elem = document.getElementById(elementID);
+  if (elem.movement) {
+    clearTimeout(elem.movement);
+  }
+  if (!elem.style.left) {
+    elem.style.left = "0px";
+  }
+  if (!elem.style.top) {
+    elem.style.top = "0px";
+  }
+  var xpos = parseInt(elem.style.left);
+  var ypos = parseInt(elem.style.top);
+  if (xpos == final_x && ypos == final_y) {
+  return true;
+  }
+  if (xpos < final_x) {
+    var dist = Math.ceil((final_x - xpos)/10);
+    xpos = xpos + dist;
+  }
+  if (xpos > final_x) {
+    var dist = Math.ceil((xpos - final_x)/10);
+    xpos = xpos - dist;
+  }
+  if (ypos < final_y) {
+    var dist = Math.ceil((final_y - ypos)/10);
+    ypos = ypos + dist;
+  }
+  if (ypos > final_y) {
+    var dist = Math.ceil((ypos - final_y)/10);
+    ypos = ypos - dist;
+  }
+  elem.style.left = xpos + "px";
+  elem.style.top = ypos + "px";
+  var repeat = "moveElement('"+elementID+"',"+final_x+","+final_y+","+interval+")";
+  elem.movement = setTimeout(repeat,interval);
+}
+function classNormal(){
+ var focusBtnList = $('focus_change_btn').getElementsByTagName('li');
+ for(var i=0; i<focusBtnList.length; i++) {
+  focusBtnList[i].className='';
+ }
+}//欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+function focusChange() {
+ var focusBtnList = $('focus_change_btn').getElementsByTagName('li');
+  focusBtnList[0].onmouseover = function() {
+   moveElement('focus_change_list',0,0,5);
+   classNormal()
+   focusBtnList[0].className='current'
+  }
+  focusBtnList[1].onmouseover = function() {
+   moveElement('focus_change_list',-450,0,5);
+   classNormal()
+   focusBtnList[1].className='current'
+  }//欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+  focusBtnList[2].onmouseover = function() {
+   moveElement('focus_change_list',-900,0,5);
+   classNormal()
+   focusBtnList[2].className='current'
+  }
+  focusBtnList[3].onmouseover = function() {
+   moveElement('focus_change_list',-1350,0,5);
+   classNormal()
+   focusBtnList[3].className='current'
+  }
+}//欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+setInterval('autoFocusChange()', 5000);
+function autoFocusChange() {
+ var focusBtnList = $('focus_change_btn').getElementsByTagName('li');
+ for(var i=0; i<focusBtnList.length; i++) {
+  if (focusBtnList[i].className == 'current') {
+   var currentNum = i;
+  }
+ }
+   
+   
+ if (currentNum==0 ){
+  moveElement('focus_change_list',-450,0,5);
+  classNormal()
+  focusBtnList[1].className='current'
+ }
+ if (currentNum==1 ){
+  moveElement('focus_change_list',-900,0,5);
+  classNormal()
+  focusBtnList[2].className='current'
+ }
+ if (currentNum==2 ){
+  moveElement('focus_change_list',-1350,0,5);
+  classNormal()
+  focusBtnList[3].className='current'
+ }
+ if (currentNum==3 ){
+  moveElement('focus_change_list',0,0,5);
+  classNormal()
+  focusBtnList[0].className='current'
+ }
+}//欢迎来到站长特效网，我们的网址是www.zzjs.net，很好记，zz站长，js就是js特效，本站收集大量高质量js代码，还有许多广告代码下载。
+window.onload=function(){
+ focusChange();
+}
+</script>
+	</head>
+	<body>
+<div id="focus_change">
+ <div id="focus_change_list" style="top:0; left:0;">
+  <ul>
+  <li><img src="img/1.jpg" style="cursor:pointer;"/></li>
+  <li><img src="img/5.jpg" style="cursor:pointer;"/></li>
+  <li><img src="img/1.jpg"  style="cursor:pointer;"/></li>
+  <li><img src="img/5.jpg" style="cursor:pointer;"/></li>
+  <li><img src="img/1.jpg"  style="cursor:pointer;"/></li>
+  </ul>
+ </div>
+ <div class="focus_change_opacity"></div>
+ <div id="focus_change_btn">
+  <ul>
+  <li class="current"><a href="#"><img src="img/1.jpg" style="cursor:pointer;"/></a></li>
+  <li><a href="#"><img src="img/5.jpg"  style="cursor:pointer;"/></a></li>
+  <li><a href="#"><img src="img/1.jpg"  style="cursor:pointer;"/></a></li>
+  <li><a href="#"><img src="img/5.jpg" style="cursor:pointer;"/></a></li>
+  <li><a href="#"><img src="img/1.jpg"  style="cursor:pointer;"/></a></li>
+  </ul>
+ </div>
+</div><!--focus_change end-->
+
+	</body>
+</html>

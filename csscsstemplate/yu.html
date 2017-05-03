@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	    <link rel="stylesheet" href="reset.css" />
+	    <link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="header box bap">
+			业务单
+		</div>
+		<div class="content">
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+			<p>fsfsd</p>
+		</div>
+		<div class="footer box bap">
+			<ul class="box">
+				<li><a href="">哈哈</a></li>
+				<li><a href="">哈哈</a></li>
+				<li><a href="">哈哈</a></li>
+				<li><a href="">哈哈</a></li>
+			</ul>
+		</div>
+		
+		
+		
+		
+		<script>
+			function setFontSize(){
+				document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+				if(document.documentElement.clientWidth>767){
+					document.documentElement.style.fontSize = 50 +"px"
+				}
+			}
+			
+			window.onload = function(){
+				setFontSize()
+			}
+			
+		    var timer;
+			window.addEventListener("resize", function() {
+		        clearTimeout(timer);
+		        timer = setTimeout(setFontSize, 300);
+		    }, false);
+	   </script>
+	</body>
+</html>

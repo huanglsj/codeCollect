@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			a:focus{
+				outline: none;
+			}
+			.carousel{
+				position: relative;
+				overflow: hidden;
+				max-height:450px !important;
+				z-index: 1;
+			}
+			.fullwidthabnner{
+				max-height: 450px !important;
+			    position: relative;
+			    width: 100% !important;
+			}
+			.fullwidthabnner > ul > li{
+				max-height:450px !important;
+				display: inline-block;			
+			}
+			.fullwidthabnner img{
+				border: 0;
+				width: 100%;
+				height: 450px;
+		
+			}
+			.fullwidthabnner:hover .rrow{
+				display: block;
+			}
+		    .rrow{
+		    	position: absolute;
+		    	width:40px ;
+		    	height: 40px;
+		    	text-align: center;
+		    	line-height: 40px;
+		    	background: rgba(0,0,0,0.5);
+		    	display: block;
+		    	z-index: 2;
+		    	color: #fff;
+		    	top: 50%;
+		    	margin-top: -20px;
+		    	font-size: 18px;
+		    	display: none;
+		    }
+		    .prev{
+		    	left: 15px;
+		    }
+		    .next{
+		    	right: 15px;
+		    }
+		    .caption{
+		    	position: absolute;
+		    	bottom: 0;
+		    	color: #fff;
+		    	padding:10px 15px;
+		    	left: 100px;
+		    	opacity: 0;
+		    	transition: all 0.5s ease;
+		    }
+		    ul li > div:nth-of-type(1){
+		    	
+		    }
+		    .show1{
+		    	bottom: 250px;
+		    	background: #0066CC;
+		    	opacity: 1;
+		    	transition-delay: 1s;
+		    }
+		    .show2{
+		    	bottom: 180px;
+		    	background: #008000;
+		    	opacity: 1;
+		    	transition-delay: 1.1s;
+		    }
+		    .show3{
+		    	bottom: 100px;
+		    	background:#221199;
+		    	opacity: 1;
+		    	transition-delay: 1.3s;
+		    }
+		    ul li > div:nth-of-type(2){
+		    	
+		    }
+		    ul li > div:nth-of-type(3){
+		    	
+		    }
+		    .caption-img {
+		    	height: 300px;
+		    	position: absolute;
+		    	right: 100px;
+		    	bottom: -300px;
+		    	opacity: 0;
+		    	transition: all ease 0.5s; 
+		    }
+		    .imgshow{
+		    	bottom: 0;
+		    	opacity: 1;
+		    	transition:1s ;
+		    }
+		    .caption-img img{
+		    	max-width: 400px !important;
+		    	height: 300px ;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="carousel">
+			
+			<div class="fullwidthabnner">
+				<a href="javascript:;" class="prev rrow">&lt;</a>
+			<ul>
+				<li>
+					<img src="../img/bg1.jpg" />
+					
+					<div class="caption caption-div">
+						Need a website design ?
+					</div>
+					<div class="caption caption-div">
+						This is what you were looking for
+					</div>
+					<div class="caption caption-div">
+					    Lorem ipsum dolor sit amet, dolore eiusmod<br>
+                        quis tempor incididunt. Sed unde omnis iste.
+					</div>
+					<div class="caption-img">
+					   <img src="../img/img2-medium.jpg" />
+					</div>
+				</li>
+				<li><img src="../img/bg2.jpg" />
+					
+					<div class="caption caption-div">
+						151Need a website design ?
+					</div>
+					<div class="caption caption-div">
+						3252This is what you were looking for
+					</div>
+					<div class="caption caption-div">
+					    525572Lorem ipsum dolor sit amet, dolore eiusmod<br>
+                        quis tempor incididunt. Sed unde omnis iste.
+					</div>
+					<div class="caption-img">
+					   <img src="../img/lady.png" />
+					</div>
+				</li>
+				<li><img src="../img/bg3.jpg" />
+					
+					<div class="caption caption-div">
+						452rg24Need a website design ?
+					</div>
+					<div class="caption caption-div">
+						452rg24This is what you were looking for
+					</div>
+					<div class="caption caption-div">
+					    452rg24Lorem ipsum dolor sit amet, dolore eiusmod<br>
+                        quis tempor incididunt. Sed unde omnis iste.
+					</div>
+					<div class="caption-img">
+					   <img src="../img/mac.png" />
+					</div>
+				</li>
+			</ul>
+			   <a href="javascript:;" class="next rrow">&gt;</a>
+			   
+			</div>
+			
+		</div>
+		
+		<script>
+		var len = $(".fullwidthabnner ul li").length;
+		var lens = $(".fullwidthabnner ul li>div").length;
+		var i = 0;
+		var timer;
+		
+		function animate(i){
+
+			$(".fullwidthabnner ul li:eq("+i+")").siblings("li").fadeOut(500);
+			$(".fullwidthabnner ul li:eq("+i+")").fadeIn(500);
+		}
+		
+		function rollshow(i){
+//			    $("ul li > div:nth-of-type(1)").removeClass("[class^=show]");
+                $("ul li > div:nth-of-type(1)").removeClass("show1");
+				$("ul li > div:nth-of-type(2)").removeClass("show2");
+				$("ul li > div:nth-of-type(3)").removeClass("show3");
+				$("ul li > div:nth-of-type(4)").removeClass("imgshow");
+				
+			    $("ul li:eq("+i+") > div:nth-of-type(1)").addClass("show1");
+				$("ul li:eq("+i+") > div:nth-of-type(2)").addClass("show2");
+				$("ul li:eq("+i+") > div:nth-of-type(3)").addClass("show3");
+				$("ul li:eq("+i+") > div:nth-of-type(4)").addClass("imgshow");
+		}
+		
+//		function rollhide(i){
+//	            
+//	            
+//			    $("ul li:eq("+i+") > div:nth-of-type(1)").siblings().removeClass("show1");
+//				$("ul li:lt("+i+") > div:nth-of-type(2)").removeClass("show2");
+//				$("ul li:lt("+i+") > div:nth-of-type(3)").removeClass("show3");
+//				$("ul li:lt("+i+") > div:nth-of-type(4)").removeClass("imgshow");
+//				
+////				if(i==0){
+////					var a =len-1;
+////					$("ul li:eq("+a+") > div:nth-of-type(1)").removeClass("show1");
+////				$("ul li:eq("+a+") > div:nth-of-type(2)").removeClass("show2");
+////				$("ul li:eq("+a+") > div:nth-of-type(3)").removeClass("show3");
+////				$("ul li:eq("+a+") > div:nth-of-type(4)").removeClass("imgshow");
+////				}
+//				
+//		}
+		
+		  $(".prev").click(function(){
+		      var a = len-1;
+		      if(i==0){
+		      	i=a;
+		      }else{
+		      	i--;
+		      }
+		     animate(i);
+		     rollshow(i);
+//			 rollhide(i);
+		   });		
+		  $(".next").click(function(){
+				i++;
+				if(i==len){
+					i=0;
+				}
+				animate(i);
+				rollshow(i);
+//				rollhide(i);
+			});
+			
+			
+//			$(function(){
+//			
+//			    $("ul li > div:nth-of-type(1)").addClass("show1");
+//				$("ul li > div:nth-of-type(2)").addClass("show2");
+//				$("ul li > div:nth-of-type(3)").addClass("show3");
+//				$("ul li > div:nth-of-type(4)").addClass("imgshow");
+//				
+//				
+//			})
+			
+			function play(){
+				timer=setInterval(function(){
+					$(".next").click();
+				},5000)
+			}
+			function stop(){
+				clearInterval(timer);
+			}
+			
+			$(".fullwidthabnner").mouseenter(function(){
+				stop();
+			});
+			$(".fullwidthabnner").mouseleave(function(){
+				play();
+			});
+			$(function(){
+				play();
+				$("ul li:first-child > div:nth-of-type(1)").addClass("show1");
+				$("ul li:first-child > div:nth-of-type(2)").addClass("show2");
+				$("ul li:first-child > div:nth-of-type(3)").addClass("show3");
+				$("ul li:first-child > div:nth-of-type(4)").addClass("imgshow");
+			})
+		</script>
+	</body>
+</html>

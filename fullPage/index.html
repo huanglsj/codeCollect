@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="jquery.fullPage.css"  />
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.fullPage.js"></script>
+		<style>
+		.page1{
+			padding-top: 30%;
+		}
+			.page1 p{
+				opacity: 0;
+				text-align: center;
+				top: -30%;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="fullpage">
+		    <div class="section page1">
+		    	<p class="a1">第一屏</p>
+		    </div>
+		    <div class="section">第二屏</div>
+		    <div class="section">
+		        <div class="slide">第三屏的第一屏</div>
+		        <div class="slide">第三屏的第二屏</div>
+		        <div class="slide">第三屏的第三屏</div>
+		        <div class="slide">第三屏的第四屏</div>
+		    </div>
+		    <div class="section">第四屏</div>
+		</div>
+		
+		<script>
+			$(function(){
+			    $('#fullpage').fullpage({
+			        'verticalCentered': false,
+			        'resize':false,
+			        'css3': true,
+			        'sectionsColor': ['#254875', '#00FF00', '#254587', '#695684'],
+			        anchors: ['page1', 'page2', 'page3', 'page4'],
+			        'navigation': true,
+			        'navigationPosition': 'right',
+			        'navigationTooltips': ['fullPage.js', 'Powerful', 'Amazing', 'Simple'],
+//			        afterRender: function(){
+//			        	$(".a1").delay(100).animate({"left":"200px"},1000);
+//			        },
+			        afterLoad: function(anchorLink, index){
+			        	if(index==1){
+					        $('.page1').find('p').delay(200).animate({
+								top: '0%',
+								opacity: '1'
+							}, 1500);
+			        	}
+			        },
+			        onLeave: function(index,direction){
+			        	
+			        	if(index==1){
+			        		$('.page1').find('p').delay(200).animate({
+								top: '-30%',
+								opacity: '0'
+							}, 1500);
+			        	}
+			        	
+			        }
+			    });
+			})
+		</script>
+	</body>
+</html>

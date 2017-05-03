@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .canvas{
+            border: 1px solid #ddd;
+            margin: 50px auto;
+            width: 800px;
+            height: 800px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<canvas id="demo" class="canvas">您当前的浏览器不支持Canvas,请升级您的浏览器</canvas>
+
+<script>
+
+
+    window.onload = function(){
+        var canvas = document.getElementById("demo");
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext("2d");
+        context.lineWidth = 5;
+        context.strokeStyle = '#80afff';
+        context.arc(300,300,200,0,2*Math.PI);
+        context.stroke();
+    }
+
+</script>
+</body>
+</html>

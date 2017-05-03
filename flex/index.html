@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			ul{
+				display: -webkit-flex;
+				display:flex;
+				justify-content: center;
+				align-content: center;
+			}
+			li{
+				/*float: left;*/
+				flex: 1;
+				border: 1px solid #ddd;
+				list-style: none;
+				width: 25%;
+			}
+			img{
+				max-width: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="fdfd">
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li id="fdfd12"><img src="../img/1.jpg" id="yy" /></li>
+			<!--<li>菜单一</li>-->
+		</ul>
+		<script src="../js/jquery.min.js"></script>
+		<script>
+			$("#yy").click(function(){
+				var aa = $(this).closest("ul").attr("id");
+				alert(aa);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			.list{
+				margin: 10px;
+			}
+			.list > div{
+				float: left;
+				padding: 15px 0;
+				background-color: #fff;				
+			}
+			.list .left{
+				width: 60%;
+				border-radius: 5px 0 0 5px;				
+			}
+			.list .right{
+				width: 39%;
+				border-radius: 0 5px 5px 0;
+				text-align: center;
+				position: relative;
+				border-left: 1px dashed #ddd;
+			}
+			.list .right:before{
+				content: '';
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				position: absolute;
+				left: -5.5px;
+				top: -5px;
+				z-index: 11;
+				background-color: #F4F4F4;
+			}
+			.list .right:after{
+				content: '';
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				position: absolute;
+				left: -5.5px;
+				bottom: -5px;
+				z-index: 11;
+				background-color: #F4F4F4;
+			}
+		</style>
+	</head>
+	<body bgcolor="#F4F4F4">
+		<div class="list">
+			<div class="left">1654</div>
+			<div class="right">64564</div>
+		</div>
+	</body>
+</html>

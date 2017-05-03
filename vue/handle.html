@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" style="height: 300px;background-color: red;" v-gesture:swipeLeft="handle($event, 'swipeLeft')"></div>
+		<script src="vue.min.js"></script>
+		<script src="vue-gesture-master/vue-gesture.js"></script>
+		
+		<script type="text/javascript">
+  new Vue({
+  el: '#app',
+    data: {
+      message: 'Hello Vue.js!'
+    },
+    methods: {
+      handle: function(e, str){
+        e.target.innerHTML += ("  " + str)
+      }
+    }
+  })
+
+</script>
+	</body>
+</html>

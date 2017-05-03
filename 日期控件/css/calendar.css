@@ -1,0 +1,118 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#Header {
+	color:rgba(255,255,255,1);	
+}
+#Footer {
+	/*color: #fff;*/	
+}
+#ScrollContent {
+	padding:2.69em 0em 0em 0em;
+}
+.uinn-at4{
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4{
+    padding:2.69em .5em 0 !important;
+}
+body{
+	background-color: #F4F4F4;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+}
+td{
+	text-align: center;
+}
+.c-head{
+	padding: 0.8em;
+}
+.calendar-h{
+	background-color: #fff;
+	padding: 10px 0;
+}
+.calendar-h .fa{
+	padding: 0.8em;
+	width: 2em;
+}
+.calendar-h .fa-angle-right{
+	text-align: right;
+}
+.calendar-h .year{
+	text-align: center;
+}
+.calendar_day td{
+	padding: 0.5em 0;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+.calendar_date{
+	background-color: #fff;
+}
+.calendar_date td{
+	padding: 0.8em 0;
+	border-bottom: 1px solid #ccc;
+}
+.calendar_date tr:last-child td{
+	border-bottom: 0;
+}
+.calendar_date td.cur{
+	background-color: #f2cd48;
+	color: #fff;
+}
+.calendar_date td.grey{
+	color: #ccc;
+}
+.schedule {
+	background-color: #fff;
+	border-top: 0.6em solid #F4F4F4;
+}
+.schedule{
+	padding: 0.4em;
+}
+.schedule li{
+	width: 25%;
+	float: left;
+	padding: 0.4em;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.schedule li a{
+	display: block;
+	background-color: #eee;
+	text-align: center;
+	font-size: 0.8em;	
+	border-radius: 0.5em;
+	-webkit-box-sizing: border-box;
+}
+.schedule li .border{
+	border: 0.1em solid #eee;
+	padding: 0.5em 0;
+	border-radius: 0.5em;
+	position: relative;
+}
+.schedule li .time{
+	margin-bottom: 0.5em;
+}
+.schedule li.can a{
+	background-color: #f2cd48;
+}
+.schedule li.can .border{
+	border: 0.1em solid #f2cd48;
+}
+.schedule li.active .border{
+	border: 0.1em solid #ff7f45;
+}
+.schedule li.active .fa-check{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: #ff7f45;
+}

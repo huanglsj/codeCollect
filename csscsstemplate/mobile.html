@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="reset.css" />
+	<style>
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		width: 2rem;
+		height: 2rem;
+		background: red;
+		font-size: 0.4rem;
+	}
+	.header{
+		height: 1rem;
+		background-color: #80AFFF;
+		font-size: 0.4rem;
+		vertical-align: middle;
+		display: -moz-box;
+		display: -webkit-box;
+		display: box;
+		-moz-box-pack: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+	}
+	</style>
+</head>
+<body>
+
+    <div class="header">
+    	<span>hjhj</span>
+    </div>
+	<div class="box">
+	   <span>哈哈哈</span>
+	   <input type="text" placeholder="fff" />
+	</div>
+
+	
+
+	<script>
+	function setFontSize(){
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+		if(document.documentElement.clientWidth>767){
+			document.documentElement.style.fontSize = 50 +"px"
+		}
+	}
+	
+	window.onload = function(){
+		setFontSize()
+	}
+	
+    var timer;
+	window.addEventListener("resize", function() {
+        clearTimeout(timer);
+        timer = setTimeout(setFontSize, 300);
+    }, false);
+	</script>
+</body>
+</html>

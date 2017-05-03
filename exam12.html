@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.pic{
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+				height: 400px;
+			}
+			.pic ul{
+				width: 100%;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.pic ul li{
+				float: left;
+				width: 100%;
+				height: 400px;
+			}
+			.pic img{
+				width: 100%;
+			} 
+			.circle{
+					position: absolute;
+	bottom: 10px;
+	left: 50%;
+	z-index: 15;
+	width: 60%;
+	padding-left: 0;
+	margin-left: -30%;
+	text-align: center;
+	list-style: none;
+			}
+.circle li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 1px;
+	text-indent: -999px;
+	cursor: pointer;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid #fff;
+	border-radius: 10px;
+}
+.circle .circle-cur{background:#f00}
+		</style>
+	</head>
+	<body>
+		<div class="pic">
+			<ul class="picul">
+				<li><img src="img/1.jpg"</li>
+				<li><img src="img/5.jpg"</li>
+			</ul>
+			
+			<ol class="circle">
+				<li class="circle-cur"></li>
+				<li></li>
+			</ol>
+		</div>
+<!--<script>
+	var animateEnd = 1;
+	$(".circle li").click(function() {
+		if (animateEnd == 0) {
+			return
+		}
+		$(this).addClass("circle-cur").siblings().removeClass("circle-cur");
+		var nextindex = $(this).index();
+		var currentindex = $(".picul li").first().attr("index");
+		var curr = $(".picul li").first().clone();
+		if (nextindex > currentindex) {
+			for (var i = 0; i < nextindex - currentindex; i++) {
+				var firstItem = $(".picul li").first();
+				$(".picul").append(firstItem)
+			}
+			$(".picul").prepend(curr);
+			var offset = ($(".picul li").width()) * -1;
+			if (animateEnd == 1) {
+				animateEnd = 0;
+				$(".picul").stop().animate({
+					left: offset
+				}, "slow", function() {
+					$(".picul li").first().remove();
+					$(".picul").css("left", "0px");
+					animateEnd = 1
+				})
+			}
+		} else {
+			var curt = $(".picul li").last().clone();
+			for (var i = 0; i < currentindex - nextindex; i++) {
+				var lastItem = $(".picul li").last();
+				$(".picul").prepend(lastItem)
+			}
+			$(".picul").append(curt);
+			var offset = ($(".picul li").width()) * -1;
+			$(".picul").css("left", offset);
+			if (animateEnd == 1) {
+				animateEnd = 0;
+				$(".picul").stop().animate({
+					left: "0px"
+				}, "slow", function() {
+					$(".v_cont ul li").last().remove();
+					animateEnd = 1
+				})
+			}
+		}
+	})
+</script>-->
+	</body>
+</html>

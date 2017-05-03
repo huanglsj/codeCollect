@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" placeholder="搜索" v-model="searchText" />
+			<my-component :items="list" :filter-key="searchText"></my-component>
+		</div>
+		
+		<div class="container">
+			<template id="template">
+				<table>
+					<tr>
+						<th>序号</th>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>性别</th>
+					</tr>
+					<tr v-for="(index,item) in items | filterBy filterKey | orderBy 'name'">
+						<td>{{index}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.age}}</td>
+						<td>{{item.sex}}</td>
+					</tr>
+				</table>
+			</template>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			Vue.component("my-component",{
+				template:"#template",
+				props:{
+					items:Array,
+					filterKey:String
+				}
+			})
+			
+			new Vue({
+				el:"#app",
+				data:{
+					list:[{
+						name:"哈哈",
+						age:11,
+						sex:21,
+					},{
+						name:"hhh34",
+						age:11,
+						sex:0,
+					},{
+						name:"43",
+						age:11,
+						sex:2313,
+					},{
+						name:"23",
+						age:11,
+						sex:666,
+					}],
+					searchText:''
+				}
+			})
+		</script>
+	</body>
+</html>

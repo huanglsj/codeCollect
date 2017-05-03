@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title></title>
+    <!-- jQuery Include -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+
+    <script src="js/mobiscroll.core.js"></script>
+    <script src="js/mobiscroll.frame.js"></script>
+    <script src="js/mobiscroll.scroller.js"></script>
+
+    <script src="js/mobiscroll.util.datetime.js"></script>
+    <script src="js/mobiscroll.datetimebase.js"></script>
+    <script src="js/mobiscroll.datetime.js"></script>
+    <script src="js/mobiscroll.select.js"></script>
+
+    <script src="js/mobiscroll.frame.ios.js"></script>
+
+    <script src="js/i18n/mobiscroll.i18n.zh.js"></script>
+
+    <link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        $(function () {
+                date = new Date(),
+                $('#demo_date').mobiscroll().date({
+                    theme: 'ios',     // Specify theme like: theme: 'ios' or omit setting to use default
+                    mode: 'scroller',       // Specify scroller mode like: mode: 'mixed' or omit setting to use default
+                    display: 'bottom', // Specify display mode like: display: 'bottom' or omit setting to use default
+                    lang: 'zh',       // Specify language like: lang: 'pl' or omit setting to use default
+                    endYear: date.getFullYear()
+                });
+
+            $('#select').mobiscroll().select({
+                theme: 'ios',     // Specify theme like: theme: 'ios' or omit setting to use default
+                mode: 'scroller',       // Specify scroller mode like: mode: 'mixed' or omit setting to use default
+                display: 'bottom', // Specify display mode like: display: 'bottom' or omit setting to use default
+                lang: 'zh',       // Specify language like: lang: 'pl' or omit setting to use default
+            });
+
+        } )
+    </script>
+</head>
+<body>
+<input type="text" id="demo_date" placeholder="生日"  />
+
+<div data-role="fieldcontain" class="demo-cont" id="demo_cont_select">
+<select id="select" data-role="none">
+    <option>fg哈哈哈哈哈哈</option>
+    <option>fg哈哈哈哈哈哈</option>
+    <option>fg哈哈哈哈哈哈</option>
+    <option>fg哈哈哈哈哈哈</option>
+</select>
+    </div>
+</body>
+</html>

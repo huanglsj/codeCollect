@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/demo.css">
+	<script type="text/javascript" src="jquery-easyui-1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<div style="margin:20px 0;"></div>
+	<div class="easyui-layout" style="width:100%;height:500px;">
+		<div data-options="region:'north'" style="height:50px"></div>
+		<div data-options="region:'south',split:true" style="height:50px;"></div>
+		<div data-options="region:'east',split:true" title="East" style="width:100px;">
+			<div id="mm" class="easyui-menu" style="width:120px;">
+		<div>New</div>
+		<div>
+			<span>Open</span>
+			<div class="menu-content" style="text-align:left;padding:10px">
+				<div style="font-weight:bold;font-size:16px">Select your Language:</div>
+				<ul style="margin:0;padding:0 0 0 40px">
+					<li><a href="javascript:void(0)">Java</a></li>
+					<li><a href="javascript:void(0)">Basic</a></li>
+					<li><a href="javascript:void(0)">C++</a></li>
+					<li><a href="javascript:void(0)">Fortran</a></li>
+					<li>
+						<span>Other</span>
+						<input>
+					</li>
+				</ul>
+				<div style="padding:10px 0 0 30px">
+					<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">Ok</a>
+				</div>
+			</div>
+		</div>
+		<div data-options="iconCls:'icon-save'">Save</div>
+		<div data-options="iconCls:'icon-print'">Print</div>
+		<div class="menu-sep"></div>
+		<div>Exit</div>
+	</div>
+		</div>
+		<div data-options="region:'west',split:true" title="West" style="width:100px;"></div>
+		<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+			<table class="easyui-datagrid"
+					data-options="url:'datagrid_data1.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
+				<thead>
+					<tr>
+						<th data-options="field:'itemid'" width="80">Item ID</th>
+						<th data-options="field:'productid'" width="100">Product ID</th>
+						<th data-options="field:'listprice',align:'right'" width="80">List Price</th>
+						<th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+						<th data-options="field:'attr1'" width="150">Attribute</th>
+						<th data-options="field:'status',align:'center'" width="60">Status</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+ <script>
+		$(function(){
+			$(document).bind('contextmenu',function(e){
+				e.preventDefault();
+				$('#mm').menu('show', {
+					left: e.pageX,
+					top: e.pageY
+				});
+			});
+		});
+	</script>
+</body>
+</html>

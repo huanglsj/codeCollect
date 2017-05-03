@@ -1,0 +1,129 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color:#333;	
+}
+.box{
+	width: 800px;
+	height: 280px;
+	margin: 50px auto;
+}
+.box .link{
+	width:205px;
+	height: 280px;
+	float: left;
+	margin: 0 20px;
+}
+.box .icon{
+	display: inline-block;
+	width:100%;
+	height: 190px;
+	-o-transition:all 0.2s ease-out;
+	-webkit-transition:all 0.2s ease-out;
+	-moz-transition:all 0.2s ease-out;
+	-ms-transition:all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+}
+.link-miss .icon{
+	border: 1px solid red;
+}
+.link-play .icon{
+	border: 1px solid green;
+}
+.link-touch .icon{
+	border: 1px solid blue;
+}
+.link .icon:hover{
+	
+	-o-transform: rotate(360deg) scale(1.2);
+	-ms-transform: rotate(360deg) scale(1.2);
+	-webkit-transform: rotate(360deg) scale(1.2);
+	-moz-transform: rotate(360deg) scale(1.2);
+	transform: rotate(360deg) scale(1.2);
+	background-color: gold;
+}
+.button{
+	display: block;
+	width:180px;
+	height: 50px;
+	line-height: 50px;
+	text-decoration: none;
+	color: #2DCB70;
+	font-family: arial;
+	font-weight: bolder;
+	border: 2px solid rgba(255,255,255,0.5);
+	padding-left: 20px;
+	margin: 50px auto;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+.arrow{
+	border-color: transparent transparent transparent #2DCB70;
+	border-style: solid;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 20px;
+}
+.button:hover{
+	border: 2px solid rgba(255,255,255,1);
+}
+.button:hover .arrow{
+	transition: all 0.5s ease-out;
+	margin-right: 10px;
+}
+.button .line{
+	display: block;
+	position: absolute;
+	background:none;
+	transition: all 0.5s ease;
+}
+.button:hover .line{
+	background-color:#fff;
+	
+}
+.button .line-top{
+	height: 2px;
+	width:0;
+	left: -110%;
+	top:-2px;
+}
+.button:hover .line-top{
+	width: 100%;
+	left: -2px;
+}
+.button .line-right{
+	height: 0;
+	width:2px;
+	top: -110%;
+	right:-2px;
+}
+.button:hover .line-right{
+	height: 100%;
+	top: -2px;
+}
+.button .line-bottom{
+	height: 0;
+	width:2px;
+	bottom: -110%;
+	left:-2px;
+}
+.button:hover .line-bottom{
+	height: 100%;
+	bottom: -2px;
+}
+.button .line-left{
+	height: 2px;
+	width:0;
+	right: -110%;
+	bottom:-2px;
+}
+.button:hover .line-left{
+	width: 100%;
+	right: -2px;
+}

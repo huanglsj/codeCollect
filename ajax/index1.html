@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<form action="http://112.74.137.212/apploginController.do?applogin" method="post">-->
+		<div>
+			<input type="text" name="userName" placeholder="用户名" id="name" />
+		</div>
+		<div>
+			<input type="password" name="passWord" placeholder="密码" id="psw" />
+		</div>
+		<button id="btn">提交</button>
+		<!--		</form>-->
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$("#btn").click(function() {
+				var name = $("#name").val();
+				var psw = $("#psw").val();
+				$.ajax({
+					url: 'http://112.74.137.212/apploginController.do?applogin',
+					type: 'post',
+jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+					data: {
+						userName: name,
+						passWord: psw
+					},
+					dataType: 'jsonp',
+					success: function(data) {
+						console.log(data);
+					},
+					error: function(err) {
+
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

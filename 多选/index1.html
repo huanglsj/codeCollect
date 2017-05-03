@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+		<script>
+		$(function(){
+			
+//			var chkall = $("#checkall");
+//			var aCh = $(".check");
+//			chkall.on("click",function(){
+//			    aCh.prop("checked",this.checked);
+//			});
+			
+			var chkall = $("#checkall");
+			var aCh = $(".check");
+			chkall.on('click',function(){
+			var status = this.checked;
+			if(status==true){
+				aCh.each(function () {
+					this.checked = true;
+				});
+			}else{
+				aCh.each(function () {
+					this.checked = false;
+				});
+			}
+			
+			});
+			
+			aCh.on("click",function(){
+				var inputLen = 0,
+				checkboxLen = 0;
+			$(".check").each(function(i){ 
+				inputLen = i+1;
+			})
+
+			$(".check:checked").each(function(i){
+				checkboxLen = i+1;
+			})
+
+			if(inputLen == checkboxLen){
+				$("#checkall").each(function(){
+
+					this.checked=true;
+				})
+			} else{
+
+				$("#checkall").each(function(){
+
+					this.checked=false;
+				})
+			}
+			});
+			
+		})
+			
+		</script>
+	</head>
+	<body>
+		<p><input type="checkbox" id="checkall" checked="checked" name="checkall" >全选</p>
+		<p><input type="checkbox" name="check" checked="checked" class="check"></p>
+		<p><input type="checkbox" name="check" checked="checked" class="check"></p>
+		<p><input type="checkbox" name="check" checked="checked" class="check"></p>
+		<p><input type="checkbox" name="check" checked="checked" class="check"></p>
+	</body>
+</html>

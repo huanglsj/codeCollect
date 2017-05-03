@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.pic{
+				position: relative;
+				overflow: hidden;
+				width: 980px;
+				height: 400px;
+				margin: 0 auto;
+				background-color: #fff;
+			}
+			ul{
+				position: relative;
+			}
+			ul li{
+				display: block;
+				float: left;
+				width: 980px;
+				height: 400px;
+			}
+			li img{
+				width: 100%;
+			}
+			.olbg{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 120px;
+				background-color: #000;
+			    filter:alpha(opacity=50); 
+			    -moz-opacity:0.5; 
+			    opacity: 0.5;
+			    width: 980px;
+			    height: 120px;
+			}
+			/*.xiam{
+				width: 980px;
+				height: 120px;
+				overflow: hidden;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}*/
+			.xtu{
+				position: absolute;
+				bottom: 20px;
+				left:40px ;
+				height: 100px;
+			}
+			.xtu li{
+				width: 205px;
+				height: 100px;
+				float: left;
+				opacity: 1;
+				margin: 10px 8px;
+				border: 2px solid #666;
+				cursor: pointer;
+				z-index: 9;
+			}
+			.xtu li img{
+				width: 100%;
+				background-color:#fff ;
+				opacity: 0.8;
+				height: 100px;
+			}
+			.xtu li.active{
+				border: 2px solid #fff;
+				opacity: 1;
+			}
+			.xtu li.active img{
+				opacity: 1;
+			}
+			.prev{
+				position: absolute;
+				bottom: 40px;
+				display: block;
+				width: 0;
+				height: 0;
+				border-color: transparent #fff transparent transparent; 
+				border-style: solid;
+				border-width: 20px;
+				left: 0;
+				cursor: pointer;
+			}
+			.next{
+				position: absolute;
+				bottom: 40px;
+				display: block;
+				width: 0;
+				height: 0;
+				border-color: transparent transparent transparent #fff; 
+				border-style: solid;
+				border-width: 20px;
+				right: 0;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+
+					<div class="pic">
+						<ul>
+							<li><img src="img/1.jpg"</li>
+							<li><img src="img/5.jpg"</li>
+							<li><img src="img/1.jpg"</li>
+							<li><img src="img/5.jpg"</li>
+						</ul>
+						
+						<div class="olbg"></div>
+						
+						<!--<div class="xiam">-->
+						<span class="prev"></span>
+						<ol class="xtu">
+							<li class="active"><img src="img/1.jpg"</li>
+							<li><img src="img/5.jpg"</li>
+							<li><img src="img/1.jpg"</li>
+							<li><img src="img/5.jpg"</li>
+						</ol>
+						<span class="next"></span>
+		             <!--</div>-->
+		             
+		             </div>
+	
+		<script>
+		
+		
+		
+		var hh=4; //规定缩略图4张
+		var index=0;
+		var divpic=$(".pic").width();
+		var num  =$(".pic ul li").length;
+		var imgwidth=num*divpic;
+		
+			$(".pic ul").css("width",imgwidth);
+
+			function show(){
+								
+				if(index==num){
+					index=0;   
+                 	$(".pic ul").stop().animate({"margin-left":0},"fast");
+                 	$(".xtu li").removeClass("active");
+                 	$(".xtu li:eq("+index+")").addClass("active");
+                 	             	                   	
+                 }else{
+                 	  var len=divpic*index;
+                      $(".pic ul").stop().animate({"margin-left":-len},"fast");
+                      $(".xtu li").removeClass("active");
+                 	  $(".xtu li:eq("+index+")").addClass("active");
+                      index++;
+//                    alert(index+"gfg");
+
+}
+				
+//				$(".pic .xtu").css("width",imgwidth);
+			}
+			
+			$(".xtu li").mouseenter(function(){
+				var j= $(this).index();
+				var lenj=divpic*j;
+				$(".xtu li").removeClass("active");
+                $(".xtu li:eq("+j+")").addClass("active");
+		      	 index=j;
+		      	$(".pic ul").stop().animate({"margin-left":-lenj},"fast");
+			});
+			
+			$(".next").click(function(){  
+//				clearInterval(setIntervalid); 
+   	          index=index+1;
+   	         var lenh=divpic*index;
+           	 if(index==num){
+      	    	index=0;
+      	    	$(".pic ul").stop().animate({"margin-left":0},"fast");
+                 	$(".xtu li").removeClass("active");
+                 	$(".xtu li:eq("+index+")").addClass("active");
+              }else{
+              	alert(index);
+              	$(".xtu li").removeClass("active");
+                $(".xtu li:eq("+index+")").addClass("active");
+                $(".pic ul").stop().animate({"margin-left":-lenh},"fast");
+              }
+           	 
+      	       index=index;
+      	       alert(index+"a");
+//    	    setInterval(show,3000);
+      	     	
+      });
+      
+      var setIntervalid = setInterval(show,3000);
+		</script>
+	</body>
+</html>

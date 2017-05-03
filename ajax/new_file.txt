@@ -1,0 +1,24 @@
+Accept:*/*
+Accept-Encoding:gzip, deflate, sdch
+Accept-Language:zh-CN,zh;q=0.8
+Access-Control-Request-Headers:access-control-allow-origin
+Access-Control-Request-Method:POST
+Connection:keep-alive
+Host:112.74.137.212
+Origin:null
+User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+
+
+
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate
+Accept-Language:zh-CN,zh;q=0.8
+Cache-Control:max-age=0
+Connection:keep-alive
+Content-Length:27
+Content-Type:application/x-www-form-urlencoded
+Cookie:_bfa=1.1490842139825.23vqsi.1.1490842139825.1490842139825.1.2; _bfi=p1%3D0%26p2%3D0%26v1%3D2%26v2%3D0; JEECGINDEXSTYLE=ace; JSESSIONID=7EBF4CFBD5F0AE52C2F028B5AF93FAEC; SERVERID=28b4e64bd51a0252b65bb468519d52d1|1492079059|1492077165
+Host:112.74.137.212
+Origin:null
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36

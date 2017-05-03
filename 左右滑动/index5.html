@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			body {
+				background-color: #F4F4F4;
+			}
+			
+			.list li {
+				background-color: #fff;
+				position: relative;
+				height: 45px;
+				line-height: 45px;
+				overflow: hidden;
+				margin: 15px 0;
+			}
+			
+			.list li .main {
+				position: relative;
+			}
+			
+			.list li .con {
+				width: 100%;
+				position: relative;
+			}
+			
+			.list li .btn {
+				position: absolute;
+				top: 0;
+				right: -60px;
+				background-color: red;
+				color: #fff;
+				bottom: 0;
+				line-height: 45px;
+				width: 60px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="list" id="list">
+			<li v-for="(item,index) in item" v-bind="{id:'item'+index}">
+				<div class="main">
+					<div class="con">{{item.name}}</div>
+					<div class="btn">删除</div>
+				</div>
+			</li>
+		</ul>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="mui.touch.min.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="../vue/vue.min.2.2.6.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var items = [{
+				name: '我是哈哈哈'
+			}, {
+				name: '我是哈哈哈1'
+			}, {
+				name: '我是哈哈哈2'
+			}];
+
+			var app = new Vue({
+				el: "#list",
+				data: {
+					item: items
+				}
+			});
+
+			app.$nextTick(function() {
+
+				$(".con").on('swipeleft', function(e) {
+					$(".con").not($(this)).animate({
+					marginLeft:0
+				});
+				var btn = $(this).next(".btn");
+				$(".btn").not(btn).animate({
+					right:'-60px'
+				});
+		
+				$(this).animate({
+					marginLeft:'-60px'
+				});
+				$(this).next(".btn").animate({
+					right:0
+				});
+				});
+
+				$(".con").on("swiperight", function(e) {
+					var _this = e.target;
+					$(_this).animate({
+						marginLeft: 0
+					});
+					$(_this).next(".btn").animate({
+						right: '-60px'
+					});
+				});
+
+				$(".con").on("tap", function(e) {
+					$('.con').animate({
+						marginLeft: 0
+					});
+					$('.btn').animate({
+						right: '-60px'
+					});
+				});
+				
+//				$(".con").on('hold', function(e) {
+//					alert(1)
+//				})
+			});
+		</script>
+	</body>
+
+</html>

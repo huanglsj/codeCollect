@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+#focus{
+
+	position: relative;
+	}
+	ul{
+		width:100%;
+	    overflow:hidden;
+	}
+	ul li{
+		float: left;
+	}
+	#focus img{
+		display: block;
+		width: 100%;
+	}
+	.num{
+		position: absolute;
+		bottom: 15px;
+		right: 25px;
+	}
+	.num li{
+		float: left;
+		width: 10px;
+		height: 10px;
+		border-radius: 10px;
+		display: inline-block;
+		background-color: #000;
+	background-color: rgba(0, 0, 0, 0);
+		margin: 3px;
+	border: 1px solid red;
+	}
+</style>
+<div id="focus">
+	<ul>
+		<li><img src="img/1.jpg" ></li>
+		<li><img src="img/5.jpg" ></li>
+		<li><img src="img/1.jpg" ></li>
+	</ul>
+	<ol class="num">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ol>
+</div>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script>
+var a =0;
+$(function(){
+	play(0);
+	setInterval(tz,2000);
+});
+   
+function tz(){
+	a++;
+	if(a>=3) a=0;
+	play(a);
+}
+function play(a){
+	$("img").hide();
+	$("img:eq("+a+")").fadeIn(2000);
+}
+</script>
+	</body>
+</html>

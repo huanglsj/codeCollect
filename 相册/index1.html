@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.rollpic{
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+				min-height: 450px;
+			}
+			.rollpic ul{
+				width: 100%;
+				overflow: hidden;
+			}
+			.rollpic ul li{
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.rollpic ul li.active{
+				display: block;
+			}
+			.rollpic ul li img{ 
+				width: 100%;
+				display: block;
+			}
+			.bgblocked{
+				z-index: 1;
+				width: 100%;
+				background: rgba(0,0,0,0.7);
+				position: fixed;
+				left: 0;
+				top: 0;
+				/*display: none;*/
+			}
+			.bgblocked .close a{
+				color: #fff;
+				position: fixed;
+				font-size: 76px;
+				right: 3%;
+				top: 2%;
+				text-decoration: none;
+				opacity: 1;
+				z-index: 100;
+				/*display: none;*/
+			}
+			.showpic{
+				position: relative;
+				z-index: 3;
+				width: 100%;
+				height: 100%;
+			}
+			.showpic ul{
+				position: absolute;
+				width: 80%;
+				left: 50%;
+				margin-left: -40%;
+				height: 100%;
+			}
+			.showpic li{
+				position: absolute;
+				top: 15%;
+				bottom: 15%;
+				display: none;
+			}
+			.showpic li.active{
+				display: block;
+			}
+			.showpic img{
+				width: 100%;
+			}
+			.arrow{
+				position: absolute;
+				width: 10%;
+				top: 50%;
+				left: 0;
+				font-size: 46px;
+				color: #fff;
+				text-align: center;
+				height: 100%;
+				margin-top: -200px;
+			}
+			.arrow.prev{
+				left: 0;
+			}
+			.arrow.next{
+				left: auto;
+				right: 0;
+			}
+			.showpic li a{
+				position: relative;
+				display: block;
+			}
+			.picwenzi{
+	            	background-color: RGBA(0,0,0,0.5);
+	            	position: absolute;
+	            	left: 0;
+	            	bottom: 5px;
+	            	width: 100%;
+	            	max-height: 50px;
+	            	line-height: 50px;
+	            	color: #fff;
+	            	
+	            }
+	            .picwenzi p{
+	            	font-weight: bold;
+	            	margin-left: 15px;
+	            }
+	            .showpic ol{
+	            	width: 80%;
+	            	position: absolute;
+	            	top: 60%;
+	            	height: 100px;
+	            	left: 10%;
+	            	z-index: 999;
+	            	/*left: 50%;
+	            	margin-left: -40%;*/
+	            	/*overflow: hidden;*/
+	            }
+	            .showpic ol li{
+	            	display:table-cell;
+	            	width: 23%;
+	            	float: left;
+	            	position: static;
+	            	margin-left: 2.6%;
+/*	            	background-color: #fff;*/
+
+	            	height: 100%;
+	            	/*border-width: 0.1%;
+	            	border-style: solid;
+	            	border-color: #ddd;*/
+/*	            	border: 3px solid #ddd;*/
+	            }
+	            .showpic ol li:first-child{
+	            	margin-left: 0;
+	            }
+	            .showpic ol li a{
+	            	display: block;
+	            	overflow: hidden;
+	            	height: 100%;
+	            }
+	            .showpic ol li img{
+	            	display: block;
+	            	width: 100%;
+	            	opacity: 0.5;
+	            	vertical-align: middle;
+	            }
+	             /*.showpic ol li.on{
+	             	display: none;
+	             }*/
+	            .showpic ol li.on img{
+	            	opacity: 1;
+	            }
+		</style>
+	</head>
+	<body style="min-height: 1000px;">
+		<div class="rollpic">
+			<ul>
+				<li class="active"><a href="javascript:;"><img src="../img/1.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="../img/2.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="../img/3.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="../img/4.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="../img/5.jpg"/></a></li>
+			</ul>
+		</div>
+		
+		<div class="bgblocked">
+		    <div class="close"><a href="javascript:;">×</a></div>
+		    
+		    <div class="showpic">
+		       <a href="javascript:;" class="arrow prev"><span>&lt;</span></a>
+               <a href="javascript:;" class="arrow next">&gt;</a>
+		       <ul>
+		         <li class="active">
+		         	<a href="javascript:;">
+		         		<img src="../img/1.jpg"/>
+		         		<div class="picwenzi">
+		      	         <p>文字介绍</p>
+		      	        </div>
+		         	</a>
+		         </li>
+		         <li>
+		         	<a href="javascript:;">
+		         		<img src="../img/2.jpg"/>
+		         		<div class="picwenzi">
+		      	         <p>文字介绍</p>
+		      	        </div>
+		         	</a>
+		         </li>
+		         <li>
+		         	<a href="javascript:;">
+		         		<img src="../img/3.jpg"/>
+		         		<div class="picwenzi">
+		      	         <p>文字介绍</p>
+		      	        </div>
+		         	</a>
+		         </li>
+		         <li>
+		         	<a href="javascript:;">
+		         		<img src="../img/4.jpg"/>
+		         		<div class="picwenzi">
+		      	         <p>文字介绍</p>
+		      	        </div>
+		         	</a>
+		         </li>
+		         <li>
+		         	<a href="javascript:;">
+		         		<img src="../img/5.jpg"/>
+		         		<div class="picwenzi">
+		      	         <p>文字介绍</p>
+		      	        </div>
+		         	</a>
+		         </li>
+		       </ul>
+		       
+		       <ol>
+		         <li class="on"><a href="javascript:;"><img src="../img/1.jpg"/></a></li>
+		         <li><a href="javascript:;"><img src="../img/2.jpg"/></a></li>
+		         <li><a href="javascript:;"><img src="../img/3.jpg"/></a></li>
+		         <li><a href="javascript:;"><img src="../img/4.jpg"/></a></li>
+		         <li><a href="javascript:;"><img src="../img/5.jpg"/></a></li>
+		       </ol>
+		    </div>
+		</div>
+		
+		<script>
+		    var timer;
+			var index = 0;
+			var olindex = 0;
+			var num = 4;
+			var rollpicli = $(".rollpic ul li").length;
+			var sy = rollpicli-num;
+			
+			function animate(index){				
+				$(".rollpic ul li:eq("+index+")").fadeIn().siblings().fadeOut();
+				$(".showpic ul li:eq("+index+")").fadeIn().siblings().fadeOut();
+				$(".showpic ol li:eq("+index+")").addClass("on").siblings().removeClass("on");
+			}
+			
+			function olanimate(olindex){
+				if(olindex!=0){
+					$(".showpic ol li:lt("+(olindex-num)+")").fadeOut();
+					$(".showpic ol li:eq("+olindex+")").fadeIn();
+					$(".showpic ol li:gt("+(olindex-num)+")").fadeIn();
+				}else{
+					$(".showpic ol li").show();
+				}
+				
+			}
+			
+			function nextshow(){
+				if(index == (rollpicli-1)){
+					index=0;
+					olindex=0;
+				}else{
+					index++;
+					
+					if(sy>0 && index>=num){      //当缩略图有超过3张的时候触发       
+						olindex=index;
+                        olindex++;
+				   }else{
+				   	olindex=0;
+				   }
+				}				
+				animate(index);
+				olanimate(olindex);
+			}
+			
+			function prevshow(){
+				if(index == 0){
+					index=rollpicli-1;
+				}else{
+					index--;
+				}				
+				animate(index);
+				
+			}
+			
+			function play() {
+                timer = setInterval(function () {
+                    nextshow();
+                }, 3000);
+            }
+			
+			 function stop() {
+                clearInterval(timer);
+            }
+			
+			$(function(){
+				play();
+			})
+			
+			$(".rollpic li img").mouseenter(function(){
+				stop();
+			});
+			
+			$(".bgblocked").mouseenter(function(){
+				stop();
+			})
+			
+			$(".rollpic li img").mouseleave(function(){
+				play();
+			});
+			
+			$(".rollpic li img").click(function(){
+				stop();
+				$(".bgblocked").fadeIn();
+				
+			});
+			$(".bgblocked .close a").click(function(){
+				play();
+				$(".bgblocked").fadeOut();
+			});
+			
+			var bgHeight = $(document.body).height();
+		    $(".bgblocked").css({"height":bgHeight});
+//          var imgh = $(".showpic ul img").height()/2;
+//          alert(imgh);
+//          $(".showpic .arrow").css({"margin-top":-imgh});
+            
+            $(".showpic .next").click(function(){
+            	nextshow();
+            });
+            
+            $(".showpic .prev").click(function(){
+            	prevshow();
+            });
+		</script>
+	</body>
+</html>

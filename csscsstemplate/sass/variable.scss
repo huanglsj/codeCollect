@@ -1,0 +1,74 @@
+@import "reset";
+$mainTextColor:#80afff;
+$mainBackgroundColor:#80afff;
+$mainBorderColor:#dcdcdc;
+$dpr:2;
+$baseFontSize: 10px;
+
+@import "screen";
+html,body{
+  @include screen;
+}
+
+@mixin btn($color:$mainBackgroundColor,$width:100%,$height:auto){
+  background-color: $color;
+  width: $width;
+  height: $height;
+  line-height: $height;
+  color: #fff;
+  text-align: center;
+  border: 0;
+  outline: none;
+  border-radius: 6px;
+  display: block;
+}
+@mixin share($color:#000,$opacity:0.4,$position:fixed,$z-index:1000){
+  background-color: $color;
+  opacity: $opacity;
+  filter:alpha(opacity=$opacity*100);
+  position: $position;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: $z-index;
+  display: none;
+}
+@mixin page($color:$mainBackgroundColor,$borderColor:$mainBorderColor){
+  margin: 10px 5px;
+  border: 1px solid $borderColor;
+  color: #333;
+  padding: 3px 15px;
+  &:hover{
+    color: #fff;
+    background-color: $color;
+    border: 1px solid $color;
+  }
+  &.disabled{
+    cursor: default;
+    border: 1px solid $borderColor;
+    color: #dcdcdc;
+    &:hover{
+      color: $borderColor;
+      background-color: transparent;
+    }
+  }
+  &.dot{
+    border: 0;
+    cursor: default;
+    &:hover{
+      color: #333;
+      background-color: transparent;
+    }
+  }
+  &.active{
+    color: #fff;
+    background-color: $color;
+    border: 1px solid $color;
+  }
+}
+
+@function pxToRem($px) {
+  $size:$px / $baseFontSize / $dpr;
+  @return $size*1rem;
+}

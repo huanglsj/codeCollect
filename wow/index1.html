@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/wow/bootstrap.css">
+    <link rel="stylesheet" href="/wow/animate.css">
+    <link rel="stylesheet" href="/wow/web.css">
+    <script src="/wow/jquery.min.js"></script>
+    <script src="/wow/story-box.min.js"></script>
+</head>
+<body>
+<div class="container-fluid web-home">
+    <div class="navigation">
+        <div class="navbar-share hidden-xs hide"></div>
+        <div class="navbar-menu navbar-menu-fixed hidden-xs">
+            <a href="/" class="navbar-brand"><img src="/wow/web_logo.png"></a>
+            <a href="/web/about" class="about">关于我们</a>
+        </div>
+        <div class="navbar-share visible-share visible-xs"></div>
+        <div class="logo visible-xs navbar-menu-fixed">
+            <a href="/"><img src="/wow/web_logo.png"></a>
+        </div>
+    </div>
+    <div class="banner">
+        <a href="/web/parent">
+            <img src="/wow/web_parent.jpg">
+            <div class="banner-share"></div>
+            <div class="banner-text">
+                <div data-sb="bounceInDown" data-sb-hide="">
+                    <p class="title">叮叮功课</p>
+                    <p class="title"><span>专注小学功课辅导</span></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row pic">
+        <div class="col-md-4 one-img">
+            <a href="/web/parent">
+                <img src="/wow/web_index1.jpg">
+                <div class="des">
+                    <div data-sb="fadeInLeft" data-sb-hide="">
+                        <p>“叮”一下</p>
+                        <p>轻松做作业</p>
+                        <p class="sub">了解家长端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 two-img">
+            <a href="/web/teacher">
+                <img src="/wow/web_index2.jpg">
+                <div class="des">
+                    <div data-sb="fadeInLeft" data-sb-hide="">
+                        <p>生源不断</p>
+                        <p>赚钱更轻松</p>
+                        <p class="sub">了解教师端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 three-img">
+            <a href="/web/landlord">
+                <img src="/wow/web_index3.jpg">
+                <div class="des">
+                    <div data-sb="fadeInLeft" data-sb-hide="">
+                        <p>房子不闲置</p>
+                        <p>共享更自由</p>
+                        <p class="sub">了解房东端 <span class="arrow">》</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <p class="web-copyright hidden-xs">©2016 dingdinggongke.com 粤ICP备16009186号</p>
+    <div class="footer visible-xs">
+        <div class="info">
+            <a href="tel:<?= Yii::$app->params['contactPhone'] ?>">联系客服</a>
+            <a href="/web/about">关于我们</a>
+        </div>
+        <p class="copyright">©2016 dingdinggongke.com 粤ICP备16009186号</p>
+    </div>
+</div>
+</body>
+</html>

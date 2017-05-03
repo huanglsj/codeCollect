@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a:link,a:active,a:focus{
+				text-decoration: none;
+				outline: none;
+			}
+			.nav{
+				margin: 50px auto;
+				width: 900px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+            .nav-ul{
+            	width: 900px;
+            	height: 400px;
+            	overflow: hidden;
+            	position: relative;
+            }
+            .nav-ul li{
+            	
+                /*position: absolute;
+                top: 0;
+                left: 0;*/
+                width: 900px;
+            }
+            .nav-ul img{
+            	width: 900px;
+            	height: 400px;
+            }
+            .bgcolor{
+            	position: absolute;
+            	background-color: #000;
+            	opacity: 0.5;
+            	height: 100px;
+            	width: 900px;
+            	bottom: 0;
+            	left: 0;
+            }
+            .thumbnail-bg{
+            	/*display: inline-block;*/
+            	position: relative;
+            	height: 100px;
+            	width: 810px;
+            	overflow: hidden;
+            	margin: -100px auto;
+            }
+            .thumbnail{
+            	position: absolute;
+            	bottom: 0;
+            	left: 0;
+            	height: 100px;
+            }
+            .thumbnail li{
+            	width: 246px;
+            	height: 90px;
+            	float: left;
+            	margin-left: 10px;
+            	margin-right: 10px;
+            	display: inline-block;
+            	margin-top: 3px;
+            	cursor: pointer;
+            	background-color: #fff;
+            	border: 2px solid #ddd;
+            }
+            .thumbnail li.on{
+            	border: 2px solid #F0AD4E;
+            }
+            .thumbnail li.on img{
+            	opacity: 1;
+            }
+            .thumbnail li img{
+            	width: 246px;
+            	height: 90px;
+            	opacity: 0.7;
+            }
+            .arrow{
+				position: absolute;
+				background-color: RGBA(0,0,0,0.5); 
+				color: #fff;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				bottom: 30px;
+				font-size: 39;
+				font-weight: bold;
+				line-height: 40px;
+				border-radius: 50% ;
+			}
+			.arrow:hover{
+				background-color: RGBA(0,0,0,1);
+			}
+			.arrow.prev{
+				left: 5px;
+			}
+			.arrow.next{
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		 <div class="nav">
+		 	 <ul class="nav-ul">
+		 	 	<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+		 	 </ul>
+		 	 
+		 	 <div class="bgcolor"></div>
+		 	 
+		 	<div class="thumbnail-bg">
+		 		
+		 	 <ul class="thumbnail">
+		 	    <li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+		 	 </ul>
+		 	 
+		 	 
+			</div> 
+			<a href="javascript:void(0);" class="arrow prev">&lt;</a>
+			 <a href="javascript:void(0);" class="arrow next">&gt;</a>
+		 </div>
+	
+		 <script type="text/javascript">
+$(document).ready(function () {
+	
+	/* 图片滚动效果 */
+	$(".nav").slide({
+		mainCell: ".nav-ul",
+		autoPage: true,
+		effect: "left",
+		autoPlay: true,
+		vis: 1
+	});
+	
+	$(".nav .thumbnail-bg").slide({
+		mainCell: "ul",
+		autoPage: true,
+		effect: "left",
+		autoPlay: true,
+		vis: 3,
+		scroll:1,
+		prevCell:".prev",
+		nextCell:".next"
+	});
+})
+	</script>
+	</body>
+</html>

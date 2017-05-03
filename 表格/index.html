@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--[if IE]>
+        <script src="../js/html5.js"></script>
+        <script src="../js/selectivizr.js"></script>
+        <![endif]-->
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				font-family: "微软雅黑";
+			}
+			.kebiao{
+				margin: 35px auto;
+				width: 1200px;
+				margin-top: 200px;
+			}
+			.kebiao-list-one{
+				height: 62px;
+			}
+			.kebiao-list-two{
+				height: 152px;
+			}
+			.kebiao-list > div{
+				float: left;
+				border-top: 1px solid #ebebeb;
+				border-left: 1px solid #ebebeb;
+				color: #535353;
+				font-size: 16px;
+				width: 110px;
+				z-index: 200;				
+			}
+			.kebiao-list > div.kblast-div{
+				border-right: 1px solid #ebebeb;
+			}
+			.kebiao-list.kebiao-list-three > div{
+				border-bottom: 1px solid #ebebeb;
+			}
+			.kebiao-list-one > div{
+				width: 110px;
+				text-align: center;
+				line-height: 60px;
+				background-color: #fafafa;			
+			}
+			.kebiao-list-two > div{
+				height: 150px;
+			}
+			.kebiao-list-name{
+				overflow: hidden;
+				background-color: #fafafa;
+			}
+			.kebiao-list-name > div{
+				float: left;
+			}
+			.kebiao-list-name  > .kebiao-list-zw{
+				padding: 15.5px 10px;
+			}
+			.kebiao-list-name  > .kebiao-list-zw p{
+				margin: 25px 0;
+				color: #535353;
+				font-size: 16px;
+			}
+			.kebiao-list-name .kebiao-list-sz{
+				padding-left: 12px;
+				height: 150px;
+			}
+			.kebiao-list-name .kebiao-list-sz p{
+				vertical-align: bottom;
+				line-height: 37px;
+				height: 30px;
+				color: #535353;
+				font-size: 16px;
+			}
+			.kebiao-list-name .kebiao-list-sz p:first-child{
+				margin-top: 3px;
+			}
+			.kebiao-list-name .kebiao-list-sz p span{
+				margin-left: 6px;
+				color: #c0bebe;
+				font-size: 16px;
+			}
+			.kebiao-other{
+				position: relative;
+			}
+			.kebiao-other .km-default{
+				background-color: #d8d8d8;
+				text-align: center;
+				color: #fff;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			.kebiao-green .km-default{
+				background-color:#8bc728;
+			}
+			.kebiao-gray .km-default{
+				background-color:#d8d8d8;
+			}
+			.kebiao-blue .km-default{
+				background-color:#3d92ef;
+			}
+			.kebiao-orange .km-default{
+				background-color:#f59618;
+			}
+			.kebiao-other .schedule-dw{
+				position: absolute;
+				width: 260px;
+				height: 155px;
+				border: 1px solid #d8d8d8;
+				padding: 10px;
+				z-index: 1;
+				top: -195px;
+				left: 15px;
+				background-color: #fff;
+				/*display: none;*/
+			}
+			.kebiao-other .triangle{
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 17px;
+				border-color: #d8d8d8 transparent transparent transparent; 
+				top: -22px;
+				left: 55px;
+				/*display: none;*/
+			}
+			.kebiao-other .triangle-bs{
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 14px;
+				border-color: #fff transparent transparent transparent; 
+				top: -21px;
+				left: 58px;
+				z-index: 301;
+				/*display: none;*/
+			}
+			.kebiao-other .schedule-dw p{
+				text-align: left;
+				margin-bottom: 8px;
+				font-size: 12px;
+				color: #535353;
+			}
+			.kebiao-other .schedule-dw p span{
+				color: #939393;
+				margin-right: 8px;
+			}
+			.kebiao-other .schedule-dw .schedule-spandw-right{
+				float: right;
+				color: #f59618;
+			}
+			.kebiao-other .schedule-dw .schedule-pdw-right{
+				text-align: right;
+				margin-top: 16px;
+			}
+			.kebiao-other .schedule-dw .schedule-pdw-right span{
+				width: 80px;
+				line-height: 20px;
+				background-color: #f2f2f2;
+				display: inline-block;
+				text-align: center;
+				cursor: pointer;
+			}
+			.kebiao-other .schedule-dw .schedule-pdw-right span:last-child{
+				background-color: #f59618;
+				color: #fff;
+			}
+			
+			.kebiao-gray .schedule-dw{
+				border: 1px solid #d8d8d8;
+			}
+			.kebiao-gray .triangle{
+				border-color: #d8d8d8 transparent transparent transparent;
+			}
+			.kebiao-green .schedule-dw{
+				border: 1px solid #8bc728;
+			}
+			.kebiao-green .triangle{
+				border-color: #8bc728 transparent transparent transparent;
+			}
+			.kebiao-blue .schedule-dw{
+				border: 1px solid #3d92ef;
+			}
+			.kebiao-blue .triangle{
+				border-color: #3d92ef transparent transparent transparent;
+			}
+			.kebiao-orange .schedule-dw{
+				border: 1px solid #f59618;
+			}
+			.kebiao-orange .triangle{
+				border-color: #f59618 transparent transparent transparent;
+			}
+			.kebiao-orange .schedule-dw .schedule-spandw-right{
+				color: #f59618;
+			}
+			.kebiao-gray .schedule-dw .schedule-spandw-right{
+				color: #d8d8d8;
+			}
+			.kebiao-green .schedule-dw .schedule-spandw-right{
+				color: #8bc728;
+			}
+			.kebiao-blue .schedule-dw .schedule-spandw-right{
+				color: #3d92ef;
+			}
+			.kebiao-orange .schedule-dw .schedule-pdw-right span:last-child{
+				background-color: #f59618;
+			}
+			.kebiao-blue .schedule-dw .schedule-pdw-right span:last-child{
+				background-color: #3d92ef;
+			}
+			.kebiao-gray .schedule-dw .schedule-pdw-right span:last-child{
+				background-color: #d8d8d8;
+			}
+			.kebiao-green .schedule-dw .schedule-pdw-right span:last-child{
+				background-color: #8bc728;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="kebiao">
+			<div class="kebiao-list kebiao-list-one">
+				<div>&nbsp;</div>
+				<div>周一</div>
+				<div>周二</div>
+				<div>周三</div>
+				<div>周四</div>
+				<div>周五</div>
+				<div>周六</div>
+				<div class="kblast-div">周日</div>
+			</div>
+			<div class="kebiao-list kebiao-list-two">
+				<div class="kebiao-list-name">
+					<div class="kebiao-list-zw">
+						<p>上</p>
+						<p>午</p>
+					</div>
+					<div class="kebiao-list-sz">
+						<p>09:00<span>__</span></p>
+						<p>10:00<span>__</span></p>
+						<p>11:00<span>__</span></p>
+						<p>12:00<span>__</span></p>
+					</div>
+				</div>
+				<div>
+					<div class="kebiao-other kebiao-green">
+			       	   	  <p class="km-default">语文</p>
+			       	   	  <div class="schedule-dw">
+				       	   	  	<p><span>科目：</span>初一英语<span class="schedule-spandw-right">上课中</span></p>
+				       	   	  	<p><span>学生：</span>刘玲玲</p>
+				       	   	  	<p><span>时间：</span>2015-03-31 15:21:31</p>
+				       	   	  	<p><span>课时：</span>1.5小时</p>
+				       	   	  	<p><span>地点：</span>广州市天河区黄埔大道</p>	
+				       	   	  	<p class="schedule-pdw-right"><span>下课</span></p>	    
+			       	   	  </div>
+				       	  <div class="triangle"></div>
+				       	  <div class="triangle-bs"></div>	
+			       	 </div>
+				</div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div class="kblast-div"></div>
+			</div>
+			<div class="kebiao-list kebiao-list-two">
+				<div class="kebiao-list-name">
+					<div class="kebiao-list-zw">
+						<p>下</p>
+						<p>午</p>
+					</div>
+					<div class="kebiao-list-sz">
+						<p>14:00<span>__</span></p>
+						<p>15:00<span>__</span></p>
+						<p>16:00<span>__</span></p>
+						<p>17:00<span>__</span></p>
+					</div>
+				</div>
+				<div></div>
+				<div></div>
+				<div>
+					<div class="kebiao-other kebiao-gray">
+			       	   	  <p class="km-default">语文</p>
+			       	   	 <div class="schedule-dw">
+				       	   	<p><span>科目：</span>初一英语<span class="schedule-spandw-right">已下课</span></p>
+				       	   	<p><span>学生：</span>刘玲玲</p>
+				       	   	<p><span>时间：</span>2015-03-31 15:21:31</p>
+				       	   	<p><span>课时：</span>1.5小时</p>
+				       	   	<p><span>地点：</span>广州市天河区黄埔大道</p>
+				       	   	<p class="schedule-pdw-right"><span>查看课程总结</span></p>
+			       	   	  </div>
+				       	  <div class="triangle"></div>
+				       	  <div class="triangle-bs"></div>	
+			       	 </div>
+				</div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div class="kblast-div"></div>
+			</div>
+			<div class="kebiao-list kebiao-list-two kebiao-list-three">
+				<div class="kebiao-list-name">
+					<div class="kebiao-list-zw">
+						<p>晚</p>
+						<p>上</p>
+					</div>
+					<div class="kebiao-list-sz">
+						<p>19:00<span>__</span></p>
+						<p>20:00<span>__</span></p>
+						<p>21:00<span>__</span></p>
+						<p>22:00<span>__</span></p>
+					</div>
+				</div>
+				<div></div>
+				<div>
+					<div class="kebiao-other kebiao-blue">
+			       	   	  <p class="km-default">语文</p>
+			       	   	  <div class="schedule-dw">
+				       	   	  <p><span>科目：</span>初一英语<span class="schedule-spandw-right">未评价</span></p>
+				       	   	  <p><span>学生：</span>刘玲玲</p>
+				       	   	  <p><span>时间：</span>2015-03-31 15:21:31</p>
+				       	   	  <p><span>课时：</span>1.5小时</p>
+				       	   	  <p><span>地点：</span>广州市天河区黄埔大道</p>
+				       	   	  <p class="schedule-pdw-right"><span>评价</span></p>
+			       	   	  </div>
+				       	  <div class="triangle"></div>
+				       	  <div class="triangle-bs"></div>	
+			       	 </div>
+				</div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div>
+					<div class="kebiao-other kebiao-orange">
+			       	   	  <p class="km-default">语文</p>
+			       	   	  <div class="schedule-dw">
+				       	   	 <p><span>科目：</span>初一英语<span class="schedule-spandw-right">未上课</span></p>
+				       	   	 <p><span>学生：</span>刘玲玲</p>
+				       	   	 <p><span>时间：</span>2015-03-31 15:21:31</p>
+				       	   	 <p><span>课时：</span>1.5小时</p>
+				       	   	 <p><span>地点：</span>广州市天河区黄埔大道</p>	
+				       	   	 <p class="schedule-pdw-right"><span>取消课程</span><span>上课</span></p>				    
+			       	   	  </div>
+				       	  <div class="triangle"></div>
+				       	  <div class="triangle-bs"></div>	
+			       	 </div>
+				</div>
+				<div class="kblast-div"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+@import "variable";
+.share{
+  @include share;
+}
+.btn{
+   @include btn;
+}
+.tex{
+  font-size: pxToRem(26px);
+}
+.page{
+  a{
+    @include page;
+  }
+}

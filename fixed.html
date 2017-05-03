@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+*{padding:0;margin:0;border:0}
+#rollpic{width:100px;height:100px;margin:0 auto;overflow:hidden;position:relative}
+#rollpic>ul{height:100px;list-style:none;position:absolute}
+#rollpic>ul>li{float:left;width:100px;height:100px;background:#c0c0c0}
+</style>
+<script src="js/jquery.min.js"></script>
+<script>
+$(function(){
+	var index = 0;
+	function nextScroll(){
+		if(index < 3){
+			index++;
+			$('#rollpic>ul').stop().animate({left:-100 * index}, 500);
+		}else{
+			index = 0;
+			$('#rollpic>ul').stop().animate({left:0}, 'slow');
+		};
+		console.error(index);
+	};
+	setInterval(nextScroll, 2000);
+})
+</script>
+<style>
+*{padding:0;margin:0}
+#wrap{width:500px;height:200px;margin:0 auto;overflow-y:scroll;border-top:100px solid #ccc}
+</style>
+</head>
+
+<body>
+<div id="rollpic">
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</div>
+</body>
+</html>

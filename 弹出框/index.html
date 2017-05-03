@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+		   *{
+		   	padding: 0;
+		   	margin: 0;
+		   	list-style: none;
+		   }
+			.mask{
+				background: #000;
+				opacity: 0.5;
+				filter: alpha(opcity=50);
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 999;
+				display: none;
+			}
+			.login{
+				display: none;
+				position: fixed;
+				left: 50%;
+				margin-left: -200px;
+				top: 50%;
+				margin-top: -190px;
+				border: 1px solid #ddd;
+				padding: 15px;
+				z-index: 1000;
+			}
+			.logincon{
+				width: 400px;
+				height: 280px;			
+			}
+			.loginhead{
+				height: 40px;
+				border-bottom: 1px solid #ddd;
+				color: #fff;
+			}
+			.title{
+				float: left;
+			}
+			.close{
+				float: right;
+				display: block;
+				cursor: pointer;
+			    width:16px ;
+			    height:16px ;
+			    font-weight: 300;
+			    color: #ccc;
+			}
+			.close:hover{
+				color: #000;
+			}
+			.loginmain{
+				clear: both;
+				margin-top: 15px;
+			}
+			.ground{
+				padding: 15px;
+			}
+			.ground label{
+				width: 100px;
+				text-align: right;
+				display: inline-block;
+				color: #fff;
+			}
+			.forinput{
+				width: 200px;
+				height: 20px;
+				padding: 5px;
+				border-radius: 3px;
+				border: 1px solid #ddd;
+			}
+			.btn{
+				background: #0066CC;
+				outline: none;
+				padding: 5px 20px;
+				border: 0;
+				color: #fff;
+				border-radius: 5px;
+				display: block;
+				margin: 0 auto;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="min-height: 10000px;">
+			<span class="denglu">登陆</span>
+		</div>
+		<div class="mask"></div>
+		<div class="login">
+			<div class="logincon">
+				<div class="loginhead">
+					<h3 class="title">登陆</h3>
+					<span class="close">×</span>
+				</div>
+				<div class="loginmain">
+					<div class="ground">
+						<label>用户名：</label><input type="text" class="forinput"/>
+					</div>
+					<div class="ground">
+						<label>密码 ：</label><input type="password" class="forinput"/>
+					</div>
+					<div class="ground">
+						<input value="登  陆" type="submit" class="btn"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$(function(){
+				var colse=$(".close");
+				var mask=$(".mask");
+				var swidth=$(window).width();
+				var sheight=$(document.body).height();
+				mask.css("height",sheight);
+			});
+			
+			$(".denglu").click(function(){
+				$(".mask").show();
+				$(".login").show();
+			});
+			
+			$(".close").click(function(){
+				$(".mask").hide();
+				$(".login").hide();
+			})
+		</script>
+	</body>
+</html>

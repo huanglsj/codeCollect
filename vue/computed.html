@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/ui-box.css" />
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			.left,
+			.right {
+				padding: 10px;
+			}
+			
+			.left .active {
+				color: #0000FF;
+			}
+			
+			.right .list {
+				display: none;
+			}
+			
+			.right .list.active {
+				display: block;
+			}
+			
+			.totel {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<p class="totel">总价：{{moneyCount}}</p>
+			<div class="ub">
+				<div class="left">
+					<ul>
+						<li v-for="(item,index) in lists" :class="{active:active==index}" @click="active=index">{{item.name}}</li>
+					</ul>
+				</div>
+				<div class="right ub-f1">
+					<div class="list" v-for="(item,index) in lists" :class="{active:active==index}">
+						<p>自己的总价：{{item.totel}}</p>
+						<ul>
+							<li v-for="typeList in item.list">
+								<span>{{typeList.type}}</span>
+								<input type="text" v-model="typeList.money" v-on:input="updateValue($event.target.value)" />
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="vue.min.2.2.6.js"></script>
+	<script>
+		var data = [{
+			totel: 0,
+			name: '张三',
+			list: [{
+				type: '飞机',
+				money: 0
+			}, {
+				type: '火车',
+				money: 0
+			}, {
+				type: '轮船',
+				money: 0
+			}]
+		}, {
+			totel: 0,
+			name: '李四',
+			list: [{
+				type: '飞机',
+				money: 0
+			}, {
+				type: '火车',
+				money: 0
+			}, {
+				type: '轮船',
+				money: 0
+			}]
+		}];
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				active: 0,
+				lists: data,
+				moneyCount: 0
+			},
+			
+//			 methods: {
+//  // 不是直接更新值，而是使用此方法来对输入值进行格式化和位数限制
+//  updateValue: function (value) {
+//    var formattedValue = value
+//      // 删除两侧的空格符
+//      .trim()
+//      // 保留 2 小数位
+//      .slice(0, value.indexOf('.') + 3)
+//    // 如果值不统一，手动覆盖以保持一致
+////    if (formattedValue !== value) {
+////      this.$refs.input.value = formattedValue
+////    }
+//    // 通过 input 事件发出数值
+//    this.$emit('input', Number(formattedValue))
+//  }
+//},
+			
+			created: function(){ //created
+				var _this = this;
+				this.active = 1;
+				_this.$watch('lists', function(newD, oldD) {
+					var myCount = 0;
+					for(var i = 0; i < _this.lists.length; i++) {
+						var count = 0;
+						var list = _this.lists[i].list;
+						for(var j = 0; j < list.length; j++) {
+							var money = list[j].money;
+//							if(money % 1 === 0) {
+								count += parseInt(money);
+//							} else {
+//								list[j].money = 0;
+//								return;
+//							}
+						};
+						_this.lists[i].totel = count;
+						myCount += _this.lists[i].totel;
+					};
+					_this.moneyCount = myCount;
+				}, {
+					deep: true
+				});
+			}
+		})
+	</script>
+
+</html>

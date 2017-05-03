@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	</head>
+	<body>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="img/1.jpg" alt="...">
+      
+      <div class="imgshow">
+      	<div class="row">
+      	<div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      	 <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>  
+         <div class="col-xs-3 col-md-3">
+      	 	<img src="img/img2-medium.jpg" height="300" class="img-thumbnail"/>
+      	 </div>
+      </div>
+    </div>
+    </div>
+    <div class="item">
+      <img src="img/bg2.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="img/bg3.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+  </div>
+
+ 
+</div>
+
+<style>
+.imgshow{
+	position: absolute;
+	width: 100%;
+    height: 100%;
+	color: #000;
+	bottom: 0;
+	left: 0;
+	padding: 15px;
+  padding-top: 10%;
+}
+.imgshow .col-xs-3 img{
+	opacity: 0;
+}
+.imgshow1 .col-xs-3:nth-of-type(1) img{
+    transition: all 2s ease-in-out;
+	transform:translateY(-30%) translateX(50%) rotate(360deg) rotate(10deg)  translateZ(0);
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(2) img{
+    transition: all 2s ease-in-out 2s;
+	transform:translateY(-45%) translateX(100%) rotate(360deg) rotate(-40deg) translateX(-130%) translateY(-90%);
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(3) img{
+    transition: all 2s ease-in-out 4s;
+	transform:translateY(-30%) translateX(-150%) rotate(360deg) rotate(30deg) translateX(30%);
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(4) img{
+    transition: all 2s ease-in-out 6s;
+    transform: skew(30deg) translateX(-160%);
+	/*transform:translateY(-45%) translateX(-100%) rotate(40deg) translateX(160%);*/
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(5) img{
+    transition: all 2s ease-in 8s;
+    transform: scale(1.15) translatey(-120%) translateX(160%);
+	/*transform:translateY(-45%) translateX(-100%) rotate(40deg) translateX(160%);*/
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(6) img{
+    transition: all 2s ease-out 8s;
+    transform: translatey(130%) translateX(150%) translateY(-180%);
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(7) img{
+    transition: all 2s ease-in 8s;
+    transform: translateY(-50%) translateX(-50%) rotate(-60deg);
+	opacity: 1;
+}
+.imgshow1 .col-xs-3:nth-of-type(8) img{
+    transition: all 3s ease-in-out 10s;
+    transform: rotate(360deg) translateY(90%) translateX(-180%) rotate(-60deg) translateY(60%) translateX(180%);
+	opacity: 1;
+}
+	/*.carousel-caption1{
+		transition: all 5s ease 0.5s;
+		transform: scale(1);
+		opacity: 1;
+	}
+    .carousel-caption1 p{
+    	opacity: 0;
+    }
+	.carousel-caption1 p:nth-of-type(1){
+		transition: all 0.5s ease-in;
+		opacity: 1;	
+		transform: translateY(-50PX);
+	}*/
+</style>
+<script>
+//$(function(){
+//	$(".imgshow").addClass("imgshow1");
+//})
+
+$('#carousel-example-generic').carousel({
+  interval: 10000,
+  $(".imgshow").addClass("imgshow1");
+})
+</script>
+	</body>
+</html>

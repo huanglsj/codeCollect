@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Tab标签</title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.tab{
+				width: 604px;
+				margin: 50px auto;
+			}
+			.tab-ul{
+				height: 40px;
+			}
+			.tab-ul li{
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				float: left;
+				text-align: center;
+				border: 1px solid #ccc;
+				border-right: 0;
+				background-color:#ddd ;
+				color: #fff;
+				cursor: pointer;
+			}
+			.tab-ul li:last-child{
+				border-right: 1px solid #ccc;
+			}
+		    .tab-ul li.on{
+				border-bottom: 0;
+				background-color: #fff;
+				color: #000;
+			}
+			.tab-con{
+				width: 602px;
+				border-left: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+				/*clear: both;*/
+			}
+			.tab-con div{
+				padding: 15px;
+			}
+		</style>
+	</head>
+	<body>
+	   <div class="tab">
+	   	  <ul class="tab-ul">
+	   	  	 <li class="on">Tab-1</li>
+	   	  	 <li>Tab-2</li>
+	   	  	 <li>Tab-3</li>
+	   	  </ul>
+	   	  
+	   	  <div class="tab-con">	   	  	
+	   	  	<div class="tab-1">
+	   	  		dfgg
+	   	  	</div>	   	  	
+	   	  	<div class="tab-2" style="display: none;">
+	   	  		3434
+	   	  	</div>
+	   	  	<div class="tab-3" style="display: none;">
+	   	  		哈哈哈
+	   	  	</div>	   	  	
+	   	  </div>
+	   	  
+	   </div>
+	   
+	   <script>
+	   var num =$(".tab-ul li").length;
+	   var i=0;
+	   	  $(".tab-ul li").click(function(){
+	   	  	 var index=$(this).index()+1;
+	   	  	 $(".tab-ul li").removeClass("on");
+	   	  	 $(this).addClass("on");
+	   	  	 
+	   	  	 $(".tab-con div").hide();
+	   	  	 $(".tab-con div[class=tab-"+index+"]").show();
+	   	  });
+	   	
+	   	function play() {
+	   	  setInterval(function(){
+	   	  	  
+	   	  	  if(i<num){
+	   	  	  	$(".tab-ul li:eq("+i+")").addClass("on").siblings().removeClass("on");
+	   	  	  	i++;
+	   	  	  	$(".tab-con div").hide();
+	   	  	    $(".tab-con div[class=tab-"+i+"]").show();
+	   	  	  }else{
+	   	  	  	i=0;
+	   	  	  }
+	   	  	  
+	   	  	  
+	   	  },3000);
+	   	  }
+	   	
+	   	$(function(){
+	   		play();
+	   	})
+	   </script>
+	</body>
+</html>

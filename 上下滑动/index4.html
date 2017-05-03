@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>国际航班</title>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/ui-box.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	</head>
+
+	<body>
+		<div id="list" class="cl" v-cloak>
+			<div class="table-div" id="one">
+
+				<div class="t-head">
+					<div class="tr">
+						<div class="th td-1">
+							<div>
+								<p class="company">国内航空公司</p>
+								<p>AIRLINE</p>
+							</div>
+						</div>
+						<div class="th td-2">
+							<div>
+								<p>IATA代码</p>
+								<p>IATA code</p>
+							</div>
+						</div>
+						<div class="th td-3">
+							<div>
+								<p>值机岛</p>
+								<p>Check in</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="t-con">
+					<div class="tr" v-for="o in one">
+						<div v-if="(o.page==2 || o.page>2) && o.type=='I'">
+							<div class="tr-list out">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="o.a.logo" class="logo" v-if="o.a.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t">
+												<marquee scrollamount=2 scrolldelay=10>{{o.a.comcname}}</marquee>
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{o.a.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{o.a.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="c in o.a.check"> {{c.name}} <b>{{c.time}}</b>
+								</span>
+								</div>
+							</div>
+							<div class="tr-list">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="o.b.logo" class="logo" v-if="o.b.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t">
+												<marquee scrollamount=2 scrolldelay=10>{{o.b.comcname}}</marquee>
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{o.b.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{o.b.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="cb in o.b.check"> {{cb.name}}
+									<b>{{cb.time}}</b>
+								</span>
+								</div>
+							</div>
+						</div>
+
+						<div v-else>
+							<div class="tr-list">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="o.logo" class="logo" v-if="o.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t zh-t">
+												{{o.comcname}}
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{o.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{o.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="c in o.check"> {{c.name}} <b>{{c.time}}</b>
+								</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="table-div" id="two">
+
+				<div class="t-head">
+					<div class="tr">
+						<div class="th td-1">
+							<div>
+								<p class="company">国内航空公司</p>
+								<p>AIRLINE</p>
+							</div>
+						</div>
+						<div class="th td-2">
+							<div>
+								<p>IATA代码</p>
+								<p>IATA code</p>
+							</div>
+						</div>
+						<div class="th td-3">
+							<div>
+								<p>值机岛</p>
+								<p>Check in</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="t-con">
+					<div class="tr" v-for="t in two">
+						<div v-if="(t.page==2 || t.page>2) && t.type=='I'">
+							<div class="tr-list out">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="t.a1.logo" class="logo" v-if="t.a1.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t">
+												<marquee scrollamount=2 scrolldelay=10>{{t.a1.comcname}}</marquee>
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{t.a1.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{t.a1.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="ct in t.a1.check"> {{ct.name}} <b>{{ct.time}}</b>
+								</span>
+								</div>
+							</div>
+							<div class="tr-list">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="t.b1.logo" class="logo" v-if="t.b1.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t">
+												<marquee scrollamount=2 scrolldelay=10>{{t.b1.comcname}}</marquee>
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{t.b1.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{t.b1.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="ct1 in t.b1.check"> {{ct1.name}}
+									<b>{{ct1.time}}</b>
+								</span>
+								</div>
+							</div>
+						</div>
+
+						<div v-else>
+							<div class="tr-list">
+								<div class="td td-1">
+									<div class="logo-d">
+										<img :src="t.logo" class="logo" v-if="t.logo">
+									</div>
+									<div class="text-d">
+										<div class="zh">
+											<div class="t">
+												<marquee scrollamount=2 scrolldelay=10>{{t.comcname}}</marquee>
+											</div>
+										</div>
+										<div class="en">
+											<div class="t">{{t.comename}}</div>
+										</div>
+									</div>
+								</div>
+								<div class="td td-2 big">{{t.iait}}</div>
+								<div class="td td-3">
+									<span class="check big" v-for="cc in t.check"> {{cc.name}} <b>{{cc.time}}</b>
+								</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="foot-title">目上</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
+		<!--<script type="text/javascript" src="js/jquery.cxscroll.min.js"></script>-->
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#list",
+				data: {
+					one: [],
+					two: []
+				},
+
+			});
+
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+
+			var type = getQueryString("type"); //类型
+			var page = getQueryString("page"); //页数
+			var pagingTime = 8000; //翻页时间 30秒
+			var trTime = 800; //每隔0.5秒每列滚动一次
+			var pageSize = 16; //每页显示多少条
+			var tableSize = pageSize / 2; //每边显示多少条
+			var howTime = tableSize * trTime; //每边一共要多久才能滚完     翻滚完时间不能大于翻页时间
+			var trIndex = 0; //每列的游标
+
+			type == 'D' ? $(".company").text("国内航空公司") : $(".company").text("国际航空公司");
+
+			page == 2 ? $(".foot-title").show() : $(".foot-title").hide();
+			
+			page ==2 ? $(".table-div .tr").height("7.4rem") : $(".table-div .tr").height("7.8rem");
+
+			if(!type) {
+				type = 'D';
+			}
+			if(!page) {
+				page = 1;
+			}
+
+			if(type == 'I' && page >= 2) {
+				setInterval(function() {
+					/* if(page == 3) {
+						page = 2;
+					} else {
+						page++;
+					} */
+					//jsonRequst();
+					animate();
+
+					//pageSetInterval();
+
+				}, pagingTime);
+			}
+
+			var one = [];
+			var two = [];
+			//var reqUrl = 'http://10.10.11.124:8080/single/';
+			var reqUrl = 'http://swzl.byia.com.cn:80/jeezz-consumer/';
+
+			function jsonRequst() {
+				console.log(page);
+				//				$.ajax({
+				//					url:reqUrl+'focAirlinesController.do?thefrontendDorIListJosn',
+				//					dataType:'json',
+				//					type:'post',
+				//					data:{
+				//						di:type,
+				//						pageSize:page
+				//					},
+				//					success:function(data){
+				//						console.info(data);
+				var data = { "attributes": null, "obj": [{ "id": "001a7f82-68ff-483a-afc3-93ab78dc6a71", "dori": "I", "checkinisland": "F,G,", "logo": "upload/files/20170306164314dffHhPUI.jpg", "iait": "CZ", "showorder": 1, "comename": "China Southern Airlines", "comcname": "中国南方航空公司" }, { "id": "0013a1f8-396c-4a55-a41f-9b512d8d0718", "dori": "I", "checkinisland": "G,", "logo": "upload/files/20170306164352jnXcj3Ia.jpg", "iait": "TG", "showorder": 2, "comename": "Thailand Airlines", "comcname": "泰国航空公司" }, { "id": "0059dc52-1934-4e5d-81b3-b039bb7c1e9c", "dori": "I", "checkinisland": "F,G,", "logo": "upload/files/20170306164428ewqVEVyG.jpg", "iait": "AF", "showorder": 3, "comename": "Air France", "comcname": "法国航空公司" }, { "id": "0022f5c0-1cf8-49bd-875e-91aab5b03c18", "dori": "I", "checkinisland": "G,", "logo": "upload/files/20170306164504SrM5V2zU.jpg", "iait": "OZ", "showorder": 4, "comename": "Asia Airlines of Korea", "comcname": "南韩韩亚航空公司" }, { "id": "00478a6f-0fac-4bfd-9312-ac983a1f09d6", "dori": "I", "checkinisland": "G,J,", "logo": "upload/files/201703061646001T6sZeiP.jpg", "iait": "SQ", "showorder": 5, "comename": "Singapore Airlines", "comcname": "新加坡航空公司" }, { "id": "005c7390-2283-459c-91ad-be325a9003eb", "dori": "I", "checkinisland": "G,", "logo": "upload/files/201703061646393YjP9T3H.jpg", "iait": "CX", "showorder": 6, "comename": "Cathay Pacific Airlines", "comcname": "国泰(太平洋)航空公司" }, { "id": "06b5abb3-5f95-45ec-9816-873c2d0f3690", "dori": "I", "checkinisland": "G,", "logo": "upload/files/20170306164713ka5st4gX.jpg", "iait": "KA", "showorder": 7, "comename": "Hong Kong Dragonair", "comcname": "中国香港港龙航空公司" }, { "id": "004370df-7f64-41ae-9b83-fa819970b8f1", "dori": "I", "checkinisland": "F,G,", "logo": "upload/files/20170306164744nYvuJ2eP.jpg", "iait": "CI", "showorder": 8, "comename": "China Airlines", "comcname": "中华航空公司" }, { "id": "0135b6f7-a910-4ce7-a142-8720604bcb45", "dori": "I", "checkinisland": "G,", "logo": "upload/files/20170306164817Zvfef88H.jpg", "iait": "AK", "showorder": 9, "comename": "", "comcname": "亚洲航空公司" }, { "id": "00838694-e96b-472d-ae0f-bd9277fecae6", "dori": "I", "checkinisland": "H,", "logo": "upload/files/20170306164919qkZcm8zK.jpg", "iait": "FD", "showorder": 10, "comename": "", "comcname": "泰国亚洲航空公司" }, { "id": "0005768e-92de-4ec7-b2f8-ddddafdc0bbd", "dori": "I", "checkinisland": "F,H,", "logo": "upload/files/20170306165105XmnPBae5.jpg", "iait": "JL", "showorder": 11, "comename": "Japan Airlines", "comcname": "日本航空公司" }, { "id": "00076fa0-e289-45f9-9393-c30fe184njhu", "dori": "I", "checkinisland": "H,", "logo": "upload/files/20170306165226B9N5sZOP.jpg", "iait": "K6", "showorder": 12, "comename": "National flag carrier", "comcname": "柬埔寨昊哥航空" }, { "id": "01588614-288c-49ba-a016-1d9ace988793", "dori": "I", "checkinisland": "F,J,", "logo": "upload/files/20170306165346fTpknjmQ.jpg", "iait": "KE", "showorder": 12, "comename": "Korean Air", "comcname": "南韩大韩航空公司" }, { "id": "0d45a3e0-22a5-4c25-947a-f2c95d061202", "dori": "I", "checkinisland": "E,H,Q,", "logo": "upload/files/201703061656226xvZ0cRk.jpg", "iait": "ET", "showorder": 14, "comename": "Ethiopian Airlines", "comcname": "埃塞俄比亚航空公司" }, { "id": "010c7b8b-88fa-4032-babc-82a8b850b431", "dori": "I", "checkinisland": "F,H,", "logo": "upload/files/20170306165726g2gysrE1.jpg", "iait": "VN", "showorder": 15, "comename": "", "comcname": "越南航空公司" }, { "id": "0075cbb3-f4ca-485f-b47a-00e67a661e2e", "dori": "I", "checkinisland": "H,", "logo": "upload/files/20170306165817bif19UQE.jpg", "iait": "HU", "showorder": 16, "comename": "China Hainan Airlines", "comcname": "中国海南航空公司" }], "success": true, "msg": "操作成功" }
+				two = [];
+				if(data.success) {
+					var obj = data.obj;
+					for(var i = 0; i < obj.length; i++) {
+						obj[i].logo = reqUrl + obj[i].logo;
+						var check = [];
+						if(obj[i].checkinisland != null && obj[i].checkinisland != 'undefined') {
+							var checkinisland = obj[i].checkinisland.split(",");
+							for(var j = 0; j < checkinisland.length - 1; j++) {
+								var time = checkinisland[j].substring(checkinisland[j].indexOf("(") + 1, checkinisland[j].indexOf(")"));
+								var name = checkinisland[j].substring(0, 1);
+								var l = {
+									name: name,
+									time: time
+								}
+								check.push(l);
+							}
+						}
+						obj[i].check = check;
+					}
+
+					if(type == "I" && page >= 2) {
+						if(obj.length < 32) {
+							var len = 32 - obj.length;
+							for(var i = 0; i < len; i++) {
+								var l = {
+									logo: '',
+									comcname: '',
+									comename: '',
+									iait: '',
+									check: []
+								};
+								obj.push(l);
+							}
+						}
+					} else {
+						if(obj.length < 16) {
+							var len = 16 - obj.length;
+							for(var i = 0; i < len; i++) {
+								var l = {
+									logo: '',
+									comcname: '',
+									comename: '',
+									iait: '',
+									check: []
+								};
+								obj.push(l);
+							}
+						}
+					}
+
+					console.log(obj);
+
+					if(page >= 2 && type == 'I') {
+						var d = [];
+						var e = [];
+						for(var i = 0; i < obj.length; i++) {
+							obj[i].page = page;
+							obj[i].type = type;
+							if(i < 16) {
+								var a = obj[i];
+								if((i + 1) != obj.length) {
+									i++;
+									var b = obj[i];
+								}
+								var c = { a, b, page: page, type: type };
+								d.push(c);
+							} else {
+								var a1 = obj[i];
+								if((i + 1) != obj.length) {
+									i++;
+									var b1 = obj[i];
+								}
+								var c1 = { a1, b1, page: page, type: type };
+								e.push(c1);
+							}
+
+						}
+
+						console.log(d);
+
+						app.one = d;
+						app.two = e;
+					} else {
+						for(var i = 0; i < obj.length; i++) {
+							obj[i].page = page;
+							obj[i].type = type;
+							if(i < 8) {
+								one.push(obj[i]);
+							} else {
+								two.push(obj[i]);
+							}
+
+						}
+
+						app.one = one;
+						app.two = two;
+					}
+
+					console.log(one);
+					//app.one = d;
+
+					//pageSetInterval();
+
+				}
+
+				//					},
+				//					error:function(err){
+				//						
+				//					}
+				//				})
+			}
+
+			jsonRequst();
+
+			function pageSetInterval() {
+				var oneInterval = setInterval(function() {
+					if(trIndex == tableSize) {
+						removeAnimate();
+						clearInterval(oneInterval);
+						trIndex = 0;
+					}
+					animate(trIndex);
+					trIndex++;
+				}, trTime);
+
+			}
+
+			function animate(index) {
+				//var out = $("#one .t-con .tr").eq(index).find(".tr-list");
+				// var out1 = $("#two .t-con .tr").eq(index).find(".tr-list");
+				// /* out.each(function(){
+				// if($(this).hasClass("out")){
+				//  }else{
+				//   $(this).addClass("out").removeClass("animated flipInX in");
+				//  }
+				//  });
+
+				//  out1.each(function(){
+				//     if($(this).hasClass("out")){
+				//      $(this).removeClass("out").addClass("animated flipInX in");
+				//   }else{
+				//     $(this).addClass("out").removeClass("animated flipInX in");
+				//  }
+				// })*/
+
+				//  if($(".tr-list").hasClass("out")){
+				// $(this).removeClass("out").addClass("animated flipInX in");
+				//  }else{
+				//   $(this).addClass("out").removeClass("animated flipInX in");
+				//  }
+
+				$(".tr-list").each(function() {
+					if($(this).hasClass("out")) {
+						$(this).removeClass("out").addClass("animated flipInX in");
+					} else {
+						$(this).addClass("out").removeClass("animated flipInX in");
+					}
+				})
+
+				//$("#one .t-con .tr").eq(index).find(".tr-list").addClass("animated flipInX");
+				//$("#two .t-con .tr").eq(index).find(".tr-list").addClass("animated flipInX");
+			}
+
+			function removeAnimate() {
+				//console.log(trIndex);
+				//$("#one .tr-list").removeClass("animated flipInX");
+				//$("#two .tr-list").removeClass("animated flipInX");
+				$(".tr-list").removeClass("animated flipInX");
+			}
+
+			function sliderText() {
+				//$(".zh").find("marquee").attr("loop","1"); 
+				//				$(".zh").each(function() {
+				//					var self = $(this);
+				//					var zh = self.find(".t");
+				//					console.log(zh);
+				//					var zhTxt = zh.text();
+				//					console.log(zhTxt);
+				//					if(zhTxt.length > 8) {
+				//						var len = zhTxt.length - 6;
+				//						
+				//
+				//						var index = 1;
+				//						var rem = -len * 3 + 'rem';
+				//						if(index==len){
+				//							zh.animate({ marginLeft: 0 }, len * 1000);
+				//						}else{
+				//							zh.animate({ marginLeft: rem }, len * 1000);
+				//						}
+				//						
+				//						//						var gg = setInterval(function() {
+				//						//
+				//						//							if(index > len) {
+				//						//								index = 1;
+				//						//								zh.find(".t").animate({ marginLeft: 0 });
+				//						//								return;
+				//						//							}
+				//						//							var rem = -index * 3 + 'rem';
+				//						//							zh.find(".t").animate({ marginLeft: rem });
+				//						//							index++;
+				//						//						}, 800)
+				//
+				//						setInterval(function() {
+				//							index++;
+				//						}, 1000)
+				//
+				//					}
+				//				})
+
+				console.log($(".zh-t"));
+				var zhList = $(".zh-t");
+				//				for(var i=0;i<zhList.length;i++){
+				//					var self = 
+				//					var len = $(zhList[i]).text().trim();
+				//					console.log(len);
+				//				}
+
+				$(".zh-t").each(function(){
+					var self = $(this);
+					var txt = self.text().trim();
+					console.log(txt);
+					var len = txt.length;
+					console.log(len);
+					var cutLen = len-6;
+					if(len>6){
+//						var gg = $("<marquee scrollamount=2 scrolldelay=10></marquee>");
+						self.html("<marquee scrollamount=2 scrolldelay=10>"+txt+"</marquee>");
+//						var rem = -cutLen * 3 + 'rem';
+//						self.animate({ marginLeft: rem }, cutLen*1000);
+					}
+				});
+				
+//				setInterval(function(){
+//					
+//				},)
+
+			}
+
+			function getByteLen(val) {
+				var len = 0;
+				for(var i = 0; i < val.length; i++) {
+					var a = val.charAt(i);
+					if(a.match(/[^\x00-\xff]/ig) != null) {
+						len += 2;
+					} else {
+						len += 1;
+					}
+				}
+				return len;
+			}
+
+			var GetLength = function(str) {
+				var realLength = 0;
+				for(var i = 0; i < str.length; i++) {
+					charCode = str.charCodeAt(i);
+					if(charCode >= 0 && charCode <= 128)
+						realLength += 1;
+					else
+						realLength += 2;
+				}
+				return realLength;
+			}
+
+			$(document).ready(function() {
+
+				setTimeout(function() {
+					sliderText();
+				}, 1000);
+
+			});
+
+			//			$('#one').cxScroll();
+		</script>
+	</body>
+
+</html>

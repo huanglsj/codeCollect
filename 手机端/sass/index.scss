@@ -1,0 +1,186 @@
+@mixin size($size: 2.6rem){
+    font-size: $size;
+}
+html,body,.container{
+    height: 100%; 
+    width: 100%;
+    overflow: hidden;
+    background-color: #ebebeb;
+}
+img{
+    width: 100%;
+}
+.container{
+    position: absolute; 
+    left: 0; 
+    top: 0;
+    & > header,& > .content,& > footer{
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+    & > header,& > footer{
+        height: 4rem;
+        text-align: center;
+        z-index: 1;
+        line-height: 4rem;
+    }
+    & > header{       
+        background-color: #4898f0;
+        padding: 0 1.5rem;
+        top: 0;       
+    }
+    & > footer{
+        background-color: #bfbfbf;
+        bottom: 0;
+    }    
+    & > header > i{
+        float: left;
+        color: #fff;
+        @include size(1.6rem);
+        cursor: pointer;
+        line-height: 4rem;
+    }
+    & > header > p{
+        color: #fff;
+        @include size(1.6rem);
+    }      
+    & > footer > a{
+        @include size(1.6rem);
+        color: #fff;
+    }
+    & > .content{
+        top: 4rem;
+        bottom: 4rem;
+        overflow: auto;
+        & > .panel{  
+            clear: both;               
+            & > .panel-heading{
+                color: #737373;
+                @include size(1.6rem);
+                padding: 1rem 1.5rem;
+            }  
+            & > .panel-body{
+                padding: 0 1.5rem;
+                background-color: #fff;
+            } 
+            & > .panel-bodyed{
+                padding: 0 1rem;
+            }       
+        }
+    }
+}
+.panel-body{
+    & > .col-table{
+        display: table;
+        width: 100%;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #ddd;
+        &:last-child{
+          border-bottom: 0;  
+        }
+        & > .col-table-left,& > .col-table-right{
+            display: table-cell;
+            vertical-align: top;
+        }
+        & > .col-table-left{
+                color: #262626;
+                @include size(1.6rem);
+                width: 6rem;
+            & > i{
+                color: #737373;
+                @include size(1.6rem);
+                &.uk-icon-map-marker{
+                    padding: 0 0.4rem;
+                }
+            }
+        }
+        & > .col-table-right{
+            padding-left: 2rem;
+            color: #737373;
+            @include size(1.6rem);           
+            & > span{
+                color: #4794e6;
+                &:first-child{
+                    padding-right: 1.5rem;
+                }
+            }
+        }
+    }
+    & > .reason{
+        padding: 0.75rem 0;
+        & > span{
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            margin: 0.75rem 0.5rem;
+            color: #737373;
+            @include size(1rem);
+            border-radius: 3px;
+            cursor: pointer;
+            &.active{
+                background-color: #4898f0;
+                color: #fff;
+                border: 1px solid #4898f0;
+            }
+        }
+    }
+}
+.inputreason{
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    & > .textarea{
+        resize: none;
+        width: 100%;
+        color: #999999;
+        @include size(1.6rem);
+        height: 20rem;
+        border: 0;
+    }
+}
+.news-icon{
+    background-color: #fff;
+    width: 100%;
+    &.active{
+        position: fixed;
+        border-bottom: 1px solid #ddd;
+    }   
+    & > ul{       
+        & > a{
+            &:last-child{
+                & > li{
+                    border-right: 0;
+                }
+            }
+            & > li{
+            float: left;
+            text-align: center;
+            font-size: 1.2rem;
+            border-right: 0.1rem solid #ddd;
+            width: 19.5%;
+            padding: 0.5rem 0;
+            
+            & > i{
+                display: block;
+                color: #2193e3;
+                @include size(3rem);
+                height: 3rem;
+            }
+            & > span{
+                display: block;
+                @include size(1rem);
+                font-weight: normal;
+                margin-top: 0.5rem;
+            }
+        }
+        }
+    }
+}
+.pic{
+    & > .pic-list{
+        width: 25%;
+        float: left;
+    }
+}

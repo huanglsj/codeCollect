@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="ul">
+			<li v-for="list in lists">{{list.address}}</li>
+		</ul>
+		<script src="../js/jquery.min.js"></script>
+		<script src="vue.min.2.2.6.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#ul',
+				data: {
+					lists: []
+				},
+				mounted: function() {
+					
+					
+				}
+			});
+
+			$.ajax({
+				type: "post",
+				url: "json.json",
+				async: true,
+				dataType: 'json',
+				success: function(data) {
+					app.lists = data.data;
+					
+					app.$nextTick(function(){
+						changerHeight()
+					})
+				},
+				error: function() {
+
+				}
+			});
+			
+			function changerHeight(){
+//				alert(1)
+				$("#ul li").css({"height":"30px"});
+			}
+		</script>
+	</body>
+
+</html>

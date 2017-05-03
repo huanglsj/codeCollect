@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<title></title>
+		    <!--[if lt IE 9]>
+		    <script type="text/javascript" src="Lib/html5.js"></script>
+		    <script type="text/javascript" src="Lib/respond.min.js"></script>
+		    <script type="text/javascript" src="Lib/PIE_IE678.js"></script>
+		    <![endif]-->
+		    <link rel="stylesheet" href="static/h-ui/css/H-ui.css" />
+		    <link rel="stylesheet" href="Lib/font-awesome/font-awesome.css" />
+		    <link rel="stylesheet" href="static/h-ui/css/style.css" />
+		    <!--[if IE 7]>
+			<link href="Lib/font-awesome-ie7.css" rel="stylesheet" type="text/css" />
+			<![endif]-->
+			<script type="text/javascript" src="Lib/jquery.min.js" ></script>
+			<script type="text/javascript" src="static/h-ui/js/H-ui.js" ></script>
+		    <!--[if IE 6]>
+		    <script type="text/javascript" src="Lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+		    <script>DD_belatedPNG.fix('.pngfix,.icon');</script>
+		    <![endif]--> 
+	</head>
+	<body>
+		<header class="header">
+			<div class="container">
+				<nav class="mainnav cl">		 
+			      <a href="javascript:;" class="avatar size-XXL l"><img src="img/logo.png" /></a>
+			      <ul class="l cl">
+			        <li class="current"><a href="#">首页</a></li>
+			        <li><a href="#">牛玩法</a></li>
+			     </ul>
+			     <ul class="r cl">
+			        <li><a href="#">登陆</a></li>      
+			        <li><a href="#">注册</a></li>
+			        <li><a href="#">成为当地人</a></li>
+			     </ul>		  
+	            </nav>
+            </div>
+		</header>
+	        <section class="slider cl has-dots">
+      <a href="javascript:void(0)" class="unslider-arrow prev"></a><!--上一张控制按钮-->
+      <a href="javascript:void(0)" class="unslider-arrow next"></a><!--下一张控制按钮-->
+      <!--左右控制按钮，如果不需要可以直接删除代码。-->
+      <ul class="tabcon">
+        <li><img name="" src="img/1.jpg" ></li>
+        <li><img name="" src="img/5.jpg" ></li>
+        <li><img name="" src="img/1.jpg"></li>
+      </ul>
+    </section> 
+    	<script type="text/javascript" src="Lib/unslider.min.js"></script> 
+	<script type="text/javascript">
+	$(function() {
+		$('.slider').unslider({deplay:3000,fluid: true,dots: true});
+		var unslider = $('.slider').unslider();
+    	$('.unslider-arrow').click(function() {
+        	var fn = this.className.split(' ')[1];
+			unslider.data('unslider')[fn]()})});
+	</script>
+	</body>
+</html>

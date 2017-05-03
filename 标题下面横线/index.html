@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.hx{
+				margin: 0 auto;
+				width: 400px;
+			}
+			.title {
+    color: #000;
+    font-size: 35px;
+    padding: 50px 0;
+    text-align: center;
+}
+.title span:before{
+	background: #333 none repeat scroll 0 0;
+    bottom: -20px;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+.title span::before {
+
+}
+.title span:after {
+    background: #333 none repeat scroll 0 0;
+    border: 10px solid #fff;
+    border-radius: 100%;
+    bottom: -32px;
+    content: "";
+    display: block;
+    height: 5px;
+    left: 50%;
+    margin-left: -12px;
+    overflow: hidden;
+    position: absolute;
+    width: 5px;
+}
+.title span {
+    display: inline-block;
+    font-weight: normal;
+    line-height: 40px;
+    padding: 0 6%;
+    position: relative;
+}
+		</style>
+	</head>
+	<body>
+		<div class="hx">
+			<h2 class="title"><span>我是一个标题</span></h2>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css"  />
+    <link rel="stylesheet" href="css/style.css" type="text/css"  />
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slotmachine.js"></script>
+</head>
+<body>
+<div class="line">
+
+    <div class="content" style="text-align: center; background: url('./img/machine.png') no-repeat 50% 120px; height: 500px;">
+
+        <div style="clear:both">
+            <p class="title"></p>
+        </div>
+
+        <div style="clear:both; margin-top: 250px;">
+            <div id="machine4" class="slotMachine" style="margin-left: -65px;">
+                <div class="slot slot1">现金奖4999元</div>
+                <div class="slot slot2">TOTO高级卫洗丽1件</div>
+                <div class="slot slot13">马会家居环保袋和收纳盒一份</div>
+                <div class="slot slot3">OTHELLO欧德罗高级厨具一件</div>
+                <div class="slot slot19">马会家居环保袋和收纳盒一份</div>
+                <div class="slot slot17">舒达卡通小羊</div>
+                <div class="slot slot4">欧派高级定制陶瓷早春碗一套</div>
+                <div class="slot slot14">马会家居环保袋和收纳盒一份</div>
+                <div class="slot slot5">雅兰舒适枕头一对</div>
+                <div class="slot slot16">舒达卡通小羊</div>
+                <div class="slot slot6">威法高级定制厨房用具一套</div>
+                <div class="slot slot20">马会家居环保袋和收纳盒一份</div>
+                <div class="slot slot7">好太太落地衣架一套</div>
+                <div class="slot slot15">舒达卡通小羊</div>
+                <div class="slot slot8">大自然地板定制可折叠单车一辆</div>
+                <div class="slot slot9">TOTO花洒一套</div>
+                <div class="slot slot10">珍惜实木大礼包一份</div>
+                <div class="slot slot11">舒达卡通小羊</div>
+                <div class="slot slot12">马会家居环保袋和收纳盒一份</div>
+                <div class="slot slot18">马会家居环保袋和收纳盒一份</div>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    var machine4 = $("#machine4").slotMachine({
+                        active	: 0,
+                        delay	: 500
+                    });
+
+
+                    $("#slotMachineButtonShuffle").click(function(){
+
+                        machine4.shuffle();
+                        $(this).hide();
+                        $("#slotMachineButtonStop").show();
+
+                    });
+
+
+                    $("#slotMachineButtonStop").click(function(){
+
+                        if( machine4.isRunning() ){
+                            machine4.stop(true);
+                            $("#slotMachineButtonShuffle").show();
+                            $(this).hide();
+
+                        }
+                    });
+                });
+
+                var isStart = true;
+                document.onkeydown=keyListener;
+                function keyListener(e){
+                    if(e.keyCode == 13){
+                        if( isStart){
+                            $("#slotMachineButtonShuffle").click();
+                            isStart=false;
+                            return;
+                        }
+                       else{
+                            $("#slotMachineButtonStop").click();
+                            isStart=true;
+                            return;
+                        }
+                    }
+                }
+            </script>
+        </div>
+
+    </div>
+
+    <div class="content" style="margin-top:-60px;text-align: center">
+        <div id="slotMachineButtonShuffle" class="slotMachineButton" style="font-size: 25px">开始抽奖</div>
+        <div id="slotMachineButtonStop" class="slotMachineButton" style="font-size: 25px;display: none">停止抽奖</div>
+    </div>
+
+    <div class="explain">
+        <div class="list">
+            <p class="l-title">一）、<span>一等奖（共3名、每天1名）：</span></p>
+            <p class="con">现金奖4999元；</p>
+        </div>
+
+        <div class="list">
+            <p class="l-title">二）、二等奖（共3名、每天1名）：</p>
+            <p class="con">TOTO高级卫洗丽1件（价值3999元）；</p>
+        </div>
+        <div class="list">
+            <p class="l-title">三）、三等奖（共15名、每天5名）价值600元：</p>
+            <p class="con">OTHELLO欧德罗高级厨具一件（4名）、</p>
+            <p class="con">欧派高级定制陶瓷早春碗一套（3名）、</p>
+            <p class="con">雅兰舒适枕头一对（3名）、</p>
+            <p class="con">威法高级定制厨房用具一套（5名）；</p>
+        </div>
+        <div class="list">
+            <p class="l-title">四）、四等奖（共12名、每天4名）价值380元：</p>
+            <p class="con">好太太落地衣架一套（2名）、</p>
+            <p class="con">TOTO花洒一套（3名）、</p>
+            <p class="con">大自然地板定制可折叠单车一辆（7名）；</p>
+        </div>
+        <div class="list">
+            <p class="l-title">五）、五等奖（共18名、每天6名）价值168元：</p>
+            <p class="con">珍惜实木大礼包一份；</p>
+        </div>
+        <div class="list">
+            <p class="l-title">六）、幸运奖（共18名、每天6名）：</p>
+            <p class="con">舒达卡通小羊；</p>
+        </div>
+        <div class="list">
+            <p class="l-title">七）、谢谢惠顾奖（不限名）：</p>
+            <p class="con">马会家居环保袋和收纳盒一份。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

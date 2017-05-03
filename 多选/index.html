@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+ $(document).ready(function() {  
+   //定义全选框的名称为$chkall 
+   var chkall = $('#checkedAll');
+   var chkarry = $('input[type="checkbox"]').not ($('#checkedAll'));//取到除全选框的其它复选框 
+   //全选框的实现函数 
+   chkall.click(function(){
+    var b = $(this).attr('checked');//取到全选框的值
+    chkarry.each(function(){ $(this).attr('checked', b); });//设置其它复选框值与全选框同步 ，实现全选，取消全选功能 
+   });
+   //除了全选的其它复选框 
+   chkarry.each(function(){
+    $(this).click(function(){
+     //先把每个其它复选框的值赋给全选框
+     chkall.attr('checked', $(this).attr('checked'));
+     //再循环所有其它的复选框是否已经全部选择，实现全选与其它复选框出现全选情况下同步。 
+    //即如果其它复选都已经选择，则全选也选择。 
+     chkarry.each(function(index){ chkall.attr('checked', (chkall.attr('checked') && chkarry.eq(index).attr('checked'))? true:false); });
+    });
+   });  
+});
+ </script>
+  </head>  
+  <body>
+   <font color="red">复选框全选</font><br>
+    <input type="checkbox" name="checkbox_name[]" id="checkbox_name_1" /><br />
+        <input type="checkbox" name="checkbox_name[]" id="checkbox_name_2" /><br />
+        <input type="checkbox" name="checkedAll" id="checkedAll" />
+        全选/取消全选     
+  </body>
+</html>

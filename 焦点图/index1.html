@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.nav{
+				width: 980px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+				margin: 50px auto;
+			}
+			.nav-ul{
+				width: 4900px;
+				height: 400px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.nav-ul li{
+				float: left;
+			}
+			.nav-ul img{
+				height: 400px;
+				width: 980px;
+			}
+			.nav-ol{
+				position: absolute;
+				bottom: 15px;
+				width: 400px;
+				height: 20px;
+				left: 290px;
+				text-align: center;
+			}
+			.nav-ol li{
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				border: 1px solid #fff;
+				margin: 1px;
+				cursor: pointer;
+			}
+			.nav-ol li.on{
+				background-color:#FF7800;
+			}
+			.arrow{
+				position: absolute;
+				background-color: RGBA(0,0,0,0.3); 
+				color: #fff;
+				text-align: center;
+				width: 40px;
+				height: 40px;
+				top: 180px;
+				font-size: 39;
+				font-weight: bold;
+				line-height: 40px;
+				border-radius: 50% ;
+				display: none;
+			}
+			.arrow:hover { 
+				background-color: RGBA(0,0,0,0.7);
+			}
+			.nav:hover .arrow{
+				display: block;
+			}
+			.arrow.prev{
+				left: 20px;
+			}
+			.arrow.next{
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul class="nav-ul">
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+				<li><img src="../img/img2-medium.jpg"></li>
+				<li><img src="../img/1.jpg"></li>
+				<li><img src="../img/5.jpg"></li>
+			</ul>
+			
+			<ol class="nav-ol">
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+			
+			<a href="javascript:void(0);" class="arrow prev">&lt;</a>
+			<a href="javascript:void(0);" class="arrow next">&gt;</a>
+			
+		</div>
+		
+		
+		<script>
+			
+			var index = 0;
+			var navWidth = $(".nav").width();
+			var num = $(".nav-ul li").length;
+			var numol = $(".nav-ol li").length;
+			var timer;
+			
+			function animate(offset){              
+				$(".nav-ul").animate({"left":index*offset},500);
+			}
+			
+			function showbutton(){				
+					 $(".nav-ol li:eq("+index+")").addClass("on").siblings().removeClass("on");				
+			}
+			
+			$(".next").click(function(){
+				
+				if(index==(num-1)){
+					index=0;
+				}else{
+					index++;
+				}
+				animate(-navWidth);
+				showbutton();
+				
+			});
+			
+			$(".prev").click(function(){
+				
+				if(index==0){
+					index=num-1;
+				}else{
+					index--;
+				}
+				animate(-navWidth);
+				showbutton();
+				
+			});
+			
+			$(".nav-ol li").click(function(){
+				var offset= $(this).index();
+				index=offset;
+				showbutton();
+				animate(-navWidth);
+			});
+			
+			function play() {
+                timer = setInterval(function () {
+                    $(".next").click();
+                }, 3000);
+            }
+            function stop() {
+                clearInterval(timer);
+            }
+            
+            $(".nav").mouseenter(function(){
+            	stop();
+            });
+            
+            $(".nav").mouseleave(function(){
+            	play();
+            });
+            
+            $(function(){
+            	play();
+            })
+		</script>
+	</body>
+</html>

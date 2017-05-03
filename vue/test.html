@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+
+			<ul>
+				<li v-for="(list,key,index) in lists">{{list}}:{{key}}:{{index}}</li>
+			</ul>
+			<button @click="show">添加</button>
+		</div>
+		<script src="vue.min.2.2.6.js"></script>
+		<script>
+			var app = new Vue({
+				el: "#app",
+				data: {
+					lists: { a: 123, b: 23 }
+				},
+				methods: {
+					show: function() {
+						var _this = this;
+						_this.$set(_this.lists, 'dd', 1239)
+						console.log(_this.lists);
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

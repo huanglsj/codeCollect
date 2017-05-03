@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+ul{list-style: none;background:url(../img/line.jpg) no-repeat;height: 20px;width: 400px; background-position:0 bottom;}    
+li{width: 99px;float: left;height: 20px; border:1px solid blue;margin-right: -1px;}
+.on{color:red;}
+</style>
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+	var li=$('li');
+	var ul=$('ul');
+	li.mouseover(function(){
+		ul.stop();
+		ul.animate({'background-position-x':100*$(this).index(),'background-position-y':'100%'},300);
+		});
+	li.click(function(){
+		$(this).addClass('on').siblings('li').removeClass('on')
+		});	
+//  li.click(function(){
+//		$(this).addClass('on').siblings('li').removeClass('on')
+// 	});
+	
+		li.mouseout(function(){
+			ul.stop();
+			for(var i=0;i<li.length;i++)
+			{
+				if(li.eq(i).hasClass('on'))
+				{	ul.animate({'background-position-x':100*li.eq(i).index(),'background-position-y':'100%'},300);
+					}
+				}
+			
+			
+			});	
+	})
+</script>
+<body>
+    <ul>
+        <li class="on">12</li>
+        <li >456</li>
+        <li>4</li>
+        <li>44 </li>
+        
+    </ul>
+</body>
+</html>

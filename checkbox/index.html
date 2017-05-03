@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<form method="post">
+    <label>
+        <input type="checkbox" name="h" value="0">哈哈
+    </label>
+    <label>
+        <input type="checkbox" name="h" value="1">哈哈1
+    </label>
+    <label>
+        <input type="checkbox" name="h" value="2">哈哈2
+    </label>
+    <label>
+        <input type="checkbox" name="h" value="3">哈哈3
+    </label>
+    <input type="submit" value="骏景" onclick="hh()">
+</form>
+
+
+<script>
+    function hh(){
+        var s = $('input[name="h"]').val();
+//        console.log($('input[checked="checked"]'));
+        alert(s);
+//        var j='';
+//        $('input[name="h"]').each(function(){
+//            var s=$(this).prop("checked");
+//            if(s){
+//                j+=$(this).val();
+//            }
+//        })
+//        alert(j);
+    }
+</script>
+</body>
+</html>
