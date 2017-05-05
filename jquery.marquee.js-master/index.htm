@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Marquee 中文网 - 700工具</title>
+
+	<link href="../css/bootstrap.css" rel="stylesheet">
+	<link type="text/css" href="./css/docs.css" rel="stylesheet" media="all" />
+	<link type="text/css" href="./css/jquery.marquee.css" rel="stylesheet" media="all" />
+
+	<!---// load jQuery from the GoogleAPIs CDN //--->
+	<script src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="./lib/jquery.marquee.js"></script>
+
+	<script type="text/javascript">
+	<!--//
+	// on DOM ready
+	$(document).ready(function (){
+		$("#current_rev").html("v"+$.marquee.version);
+		$("#marquee").marquee();
+	});
+	//-->
+	</script>
+</head>
+
+<body>
+
+			<h1 class="company-h1"><a href="index.htm">jQuery Marquee 中文网</a> - <a href="http://www.700tools.com" target="_blank">700工具</a></h1>
+
+			<h3 class="company-h3" id="overview">概述</h3>
+			<p>
+				jQuery Marquee 转换列表元素 (&lt;ul /&gt; 或 &lt;ol /&gt;)
+				到 ESPN-style scrolling marquee. 消息会从顶部或底部滚动
+				(基于 yScroll 选项) 更长的消息向左滚动以显示完整的消息。
+			</p>
+
+			<h3 class="company-h3" id="requirements">要求</h3>
+			<p>为了使用Marquee插件，需要具备以下条件：</p>
+			<ul>
+				<li>jQuery v1.2.6 (或更高版本)</li>
+				<li>jquery.marquee.js 插件</li>
+			</ul>
+			<blockquote>
+				*这个插件可以在1.2家庭旧版本的jQuery的工作。如果您尝试使用这种使用旧版本的jQuery，你将需要包括jquery.dimensions.js插件（如jQuery的V1.2.6插件包含在jQuery的核心jquery.dimensions.js）
+			</blockquote>
+
+			<h3 class="company-h3" id="usage">用法</h3>
+
+			<p>
+				要转换您的 &lt;ul /&gt; (or &lt;ol /&gt; 元素融入选取框的元素，只需调用jQuery插件使用如下语法：
+			</p>
+
+			<pre><code class="js">$(&quot;ul&quot;).marquee(<em>[options]</em>);</code></pre>
+
+			<h4 id="arguments">参数</h4>
+			<dl>
+				<dt>选项</dt>
+				<dd>
+					<p>
+						此参数是<em><strong>可选的</strong></em>，并允许您自定义用于插件的每个实例的设置。有关所有可用选项的列表，请参阅 <a href="#options">选项</a> 部分。
+					</p>
+				</dd>
+			</dl>
+			
+			<p>现在我们已经到窗口小部件的引用，我们可以调用任何公共API调用。</p>
+
+			<h4 id="methods">公共API</h4>
+			<dl class="methods">
+				<dt>$("#id").marquee("update")</dt>
+				<dd>
+					<p>
+						这将更新字幕的缓存，这是在动态更新&lt;ul /&gt; 元素内容后，以显示新的元素。
+					</p>
+				</dd>
+				<dt>$("#id").marquee("pause")</dt>
+				<dd>
+					<p>暂停当前选取框，以防止其滚动。</p>
+				</dd>
+				<dt>$("#id").marquee("resume")</dt>
+				<dd>
+					<p>恢复选取框所以它再次开始滚动。</p>
+				</dd>
+				<dt>$("#id").marquee("object")</dt>
+				<dd>
+					<p>
+						返回到内部 $.Marquee 对象的引用。这是唯一的高级用法。
+						检查使用了 $.Marquee 对象的源代码。
+					</p>
+				</dd>
+			</dl>
+
+			<h4 id="options">选项</h4>
+			<p>若干选项可用于定制 Marquee 小部件的外观和感觉</p>
+<pre><code class="js">{
+      yScroll: "top"              // 初始滚动方向 (还可以是"top" 或 "bottom")
+    , showSpeed: 850              // 初始下拉速度
+	, scrollSpeed: 12             // 滚动速度
+	, pauseSpeed: 5000            // 滚动完到下一条的间隔时间
+	, pauseOnHover: true          // 鼠标滑向文字时是否停止滚动
+    , loop: -1                    // 设置循环滚动次数 （-1为无限循环）
+	, fxEasingShow: "swing"       // 缓冲效果
+    , fxEasingScroll: "linear"    // 缓冲效果
+    , cssShowing: "marquee-showing"//定义class
+
+    // event handlers
+    , init: null                // 初始调用函数
+	, beforeshow: null          // 滚动前回调函数
+	, show: null                // 当新的滚动内容显示时回调函数
+	, aftershow: null           // 滚动完了回调函数
+}</code></pre>
+
+			<h3 class="company-h3" id="getting_started">入门</h3>
+			<p>我们需要做的第一件事就是加载所需的JavaScript库和小部件所使用的CSS样式表：</p>
+<pre><code class="html">&lt;!---// load jQuery and the jQuery Marquee Plug-in //---&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/jquery/1.3.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;./lib/jquery.marquee.js&quot;&gt;&lt;/script&gt;
+
+&lt;!---// load the Marquee CSS stylesheet //---&gt;
+&lt;link type=&quot;text/css&quot; href=&quot;./css/jquery.marquee.css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; /&gt;</code></pre>
+
+			<p>
+				在可以调用 Marquee 小部件的一个实例，您得让网页上存在一个或多个列表元素。
+			</p>
+
+			<pre><code class="html">&lt;ul id="marquee" class="marquee"&gt;
+  &lt;li&gt;
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed a nulla. 
+    Lorem ipsum dolor sit amet, consectetuer.&lt;/li&gt;
+  &lt;li&gt;
+    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
+    inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti 
+    sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. 
+    Fusce tincidunt adipiscing,massa.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
+    inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Mauris ullamcorper euismod leo. Nulla congue tellus vitae ante at pede eu 
+    ligula lacinia. Integer sed sapien, rutrum nec.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Aliquam erat volutpat. Fusce dolor. Vestibulum ornare congue turpis 
+    sollicitudin nunc elit. Nullam erat neque, facilisis quis.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur 
+    ridiculus mus. Nam non eros sed facilisis, bibendum eu.
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+			<p>
+				下一步是实际创建一个 Marquee 实例。你要确保初始化后，所有必要的DOM元素可用，这使得 document.ready 事件很好的初始化小部件。
+			</p>
+<pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function (){
+  $("#marquee").marquee();
+});
+&lt;/script&gt;</code></pre>
+			<p>现在让我们来看看什么上面的代码产生的效果。</p>
+			<h3 class="company-h3" id="example">实例</h3>
+			
+			<ul id="marquee" class="marquee" style="margin: 20px;">
+				<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed a nulla. Lorem ipsum dolor sit amet, consectetuer.</li>
+				<li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.</li>
+				<li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.</li>
+				<li>Mauris ullamcorper euismod leo. Nulla congue tellus vitae ante at pede eu ligula lacinia. Integer sed sapien, rutrum nec.</li>
+				<li>Aliquam erat volutpat. Fusce dolor. Vestibulum ornare congue turpis sollicitudin nunc elit. Nullam erat neque, facilisis quis.</li>
+				<li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam non eros sed facilisis, bibendum eu.</li>
+			</ul>
+			<!--// end example code //-->
+
+			<p>
+				您可以将鼠标放在消息，以防止消息滚动 - 如果你的消息带有链接，这种设计是很好的。
+			</p>
+			
+			<p>
+				有关更多示例，请参阅 <a href="example.htm">Jquery Marquee 演示</a> 页面.
+			</p>
+
+			<h3 class="company-h3" id="license">License</h3>
+			<pre>Copyright 2016 <a href="http://www.700tools.com/" target="_blank">700工具</a> （<a href="index.htm">jQuery Marquee 中文网</a>）
+Copyright 2009 Giva, Inc. (<a href="http://www.givainc.com/labs/" target="_blank">http://www.givainc.com/labs/</a>)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+	<a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">http://www.apache.org/licenses/LICENSE-2.0</a>
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+
+			<h3 class="company-h3" id="revision">
+				修订
+			</h3>
+			<dl class="revisions">
+				<dt>v1.0.01 (2016-07-29)</dt>
+				<dd>
+					<ul>
+						<li>中文版</li>
+					</ul>
+				</dd>
+			</dl>
+			<dl class="revisions">
+				<dt>v1.0.01 (2009-05-20)</dt>
+				<dd>
+					<ul>
+						<li>发行版</li>
+					</ul>
+				</dd>
+			</dl>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b00ae9777e888c5da579c1058d8fd86f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
