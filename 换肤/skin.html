@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>网页焕肤</title>
+
+<style type="text/css">
+
+#main
+
+{
+
+       width:800px;
+
+       height:600px;
+
+       margin:auto;
+
+       font-family:"新宋体";
+
+       font-size:15px;
+
+}
+
+#top
+
+{
+
+       width:800px;
+
+       height:30px;
+
+       border:1px #666666 solid;
+
+       border-bottom:1px #333333 dotted;
+
+}
+
+#bottom
+
+{
+
+       width:800px;
+
+       height:669px;
+
+       border-top:0px;
+
+       border:1px #666666 solid;
+       
+       background-color: #003300;
+
+}
+
+#btRed,#btGreen,#btBlue
+
+{
+
+       width:30px;
+
+       height:15px;
+
+       border:1px #999999 solid;
+
+}
+
+#btRed
+
+{
+
+       background-color:#FF0000;
+
+}
+
+#btGreen
+
+{
+
+       background-color:#00FF00;
+
+}
+
+#btBlue
+
+{
+
+       background-color:#0000FF;
+
+}
+
+span
+
+{
+
+      margin-right:2px;
+
+       float:right;
+
+}
+
+</style>
+
+<link id="cssStyle" type="text/css" rel="stylesheet" href=""/>
+
+<script type="text/javascript">
+
+function init()
+
+{
+
+       /*当第一次加载网页的时候，随机产生一个样式表使用*/
+
+//     var skinArray=["red","green","blue"];
+//
+//     var index=Math.floor(Math.random()*skinArray.length);
+//
+//     var cssName=skinArray[index];
+//
+         document.getElementById("cssStyle").href="blue.css";
+
+        
+//     document.styleSheets[0].href=cssName+".css";
+
+}
+
+function changeSkin(cssName)
+
+{
+
+         document.getElementById("cssStyle").href=cssName+".css";
+
+//     document.styleSheets[0].href=cssName+".css";
+
+}
+
+</script>
+
+</head>
+
+<body onload="init()">
+
+<div id="main">
+
+       <div id="top">
+
+       <span>红色<input type="button" id="btRed" onclick="changeSkin('red')"/></span>
+　　 <span>绿色<input type="button" id="btGreen" onclick="changeSkin('green')"/></span><span>蓝色<input type="button" id="btBlue" onclick="changeSkin('blue')" /> </span>
+　　 <span>网页换肤:</span>
+
+       </div>
+
+       <div id="bottom">
+
+      </div>
+
+</div>
+
+</body>
+
+</html>

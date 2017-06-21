@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="s">
+			<li>11111111111111111</li>
+			<li>22222222222222222</li>
+			<li>33333333333333333</li>
+			<li>44444444444444444</li>
+			<li>55555555555555555</li>
+		</ul>
+		
+		<input type="button" value="删除" onclick="del();">
+		<script>
+		function del(){
+		  var s=document.getElementById('s');
+		  var li=s.getElementsByTagName("li");
+		  console.log(li.length);
+		  for(var i=li.length-1; i>=0; i--){
+		  	console.log(i);
+		  	
+		  	s.removeChild(li[i]);
+		  }
+		  //console.log(t.length);
+		  //list.removeChild(list.childNodes[0]);
+		}
+		</script>
+	</body>
+</html>
