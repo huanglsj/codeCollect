@@ -26,11 +26,88 @@
 		
 		<div class="div">dd</div>
 		<script>
-			$(function(){
-				$("img").mousemove(function(){
-					alert($(this).width());
-				})
-			})
+//			$(function(){
+//				$("img").mousemove(function(){
+//					alert($(this).width());
+//				})
+//			})
+function aa(){
+            for(var i=0;i<10;i++){
+            	if(i==1){
+            			continue;
+            		}
+            	console.log(i+'***');
+
+//          	}
+            }
+            
+//          console.log(i)
+           }
+            aa();
+            
+            document.addEventListener('touchstart', function(event) {
+            	console.log(event.preventDefault)
+            });
+            
+function htmlEncode(str) {
+            var s = "";
+            if (str.length == 0) return "";
+            s = str.replace(/&/g, "&amp;");
+            s = s.replace(/</g, "&lt;");
+            s = s.replace(/>/g, "&gt;");
+            s = s.replace(/ /g, "&nbsp;");
+            s = s.replace(/\'/g, "&#39;");
+            s = s.replace(/\"/g, "&quot;");
+            s = s.replace(/\n/g, "<br>");
+            return s;
+        }
+
+
+        function htmlDecode(str) {
+            var s = "";
+            if (str.length == 0) return "";
+            s = str.replace(/&amp;/g, "&");
+            s = s.replace(/&lt;/g, "<");
+            s = s.replace(/&gt;/g, ">");
+            s = s.replace(/&nbsp;/g, " ");
+            s = s.replace(/&#39;/g, "\'");
+            s = s.replace(/&quot;/g, "\"");
+            s = s.replace(/<br>/g, "\n");
+            return s;
+        }
+              
+
+console.log(htmlEncode('&lt;div&gt;123&lt;/div&gt;')); 
+console.log(htmlDecode('&lt;div&gt;123&lt;/div&gt;')); 
+
+function computed(money) {
+    var num = parseFloat(money) / 2;
+    var pingzi = num, gaizi = num;
+    var total = num;
+    reComputed();
+    function reComputed() {
+        if (pingzi < 2 && gaizi < 4) {
+            return;
+        }
+        if (pingzi >= 2) {
+            var beishu = Math.floor(pingzi / 2);
+            pingzi = pingzi - beishu * 2 + Math.floor(pingzi / 2);
+            gaizi = gaizi + beishu;
+            total = total + beishu;
+        } else {
+            var beishu_1 = Math.floor(gaizi / 4);
+            gaizi = gaizi - beishu_1 * 4 + Math.floor(gaizi / 4);
+            pingzi = pingzi + beishu_1;
+            total = total + beishu_1;
+        }
+        reComputed();
+    }
+
+    return total;
+}
+
+console.log(computed(10))
+            
 		</script>
 	</body>
 </html>
