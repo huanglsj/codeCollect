@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img id="randimg" onclick="reflush();return false;" src="http://192.168.8.185:8080/single/randCodeImage" />
+		<script>
+			 function reflush() 
+        { 
+            document.getElementById("randimg").src="http://192.168.8.185:8080/single/randCodeImage?rnd=" + Math.random(); 
+        } 
+		</script>
+	</body>
+</html>
